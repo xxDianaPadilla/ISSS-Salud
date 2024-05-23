@@ -7,7 +7,7 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/id_logo_isss"
-        android:label="@string/app_name"
+        android:label="ISSS salud"
         android:roundIcon="@drawable/id_logo_isss"
         android:supportsRtl="true"
         android:theme="@style/Theme.ISSS_Salud"
