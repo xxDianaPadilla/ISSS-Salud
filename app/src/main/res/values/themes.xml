@@ -4,6 +4,8 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
-
+    <style name="background">
+        <item name="android:background">@drawable/fondo_pantalla</item>
+    </style>
     <style name="Theme.ISSS_Salud" parent="Base.Theme.ISSS_Salud" />
 </resources>
