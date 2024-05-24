@@ -2,6 +2,7 @@
     <!-- Base application theme. -->
     <color name="buttonColor">#FFFFFF</color>
     <color name="buttonTextColor">#294898</color>
+
     <style name="Base.Theme.ISSS_Salud" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
@@ -16,6 +17,20 @@
     </style>
     <style name="TextColor">
         <item name="android:textColor">#FF0000</item>
+    </style>
+
+    <style name="backgroundBox">
+        <item name="android:background">@drawable/fondo_blanco</item>
+    </style>
+
+    <style name="buttonStyle2">
+        <item name="android:backgroundTint">#294898</item>
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
+    <style name="buttonStyle3">
+        <item name="android:backgroundTint">#CCCCCC</item>
+        <item name="android:textColor">#000000</item>
     </style>
     <style name="Theme.ISSS_Salud" parent="Base.Theme.ISSS_Salud" />
 </resources>
