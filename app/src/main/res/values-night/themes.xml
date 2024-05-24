@@ -17,4 +17,16 @@
     <style name="TextColor">
         <item name="android:textColor">#8AD2FF</item>
     </style>
+
+    <style name="TextColor2">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="TextColor3">
+        <item name="android:textColor">#ffffff</item>
+    </style>
+
+    <style name="backgroundBox">
+        <item name="android:background">@drawable/fondo_azul</item>
+    </style>
 </resources>
