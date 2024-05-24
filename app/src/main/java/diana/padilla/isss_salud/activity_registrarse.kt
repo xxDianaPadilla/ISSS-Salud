@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class activity_ingreso : AppCompatActivity() {
+class activity_registrarse : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_ingreso)
+        setContentView(R.layout.activity_registrarse)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -30,11 +30,11 @@ class activity_ingreso : AppCompatActivity() {
             logoISSS.setImageResource(R.drawable.id_logo_isss)
         }
 
-        val btnRegistrarse = findViewById<Button>(R.id.btnRegistrarse)
+        val btnIniciarSesion = findViewById<Button>(R.id.btnIniciarSesion)
 
-        btnRegistrarse.setOnClickListener {
-            val pantallaRegistrarse = Intent(this, activity_registrarse::class.java)
-            startActivity(pantallaRegistrarse)
+        btnIniciarSesion.setOnClickListener {
+            val pantallaIniciarSesion = Intent(this, activity_ingreso::class.java)
+            startActivity(pantallaIniciarSesion)
         }
     }
 }
