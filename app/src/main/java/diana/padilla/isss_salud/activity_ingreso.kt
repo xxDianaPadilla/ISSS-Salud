@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -35,6 +36,13 @@ class activity_ingreso : AppCompatActivity() {
         btnRegistrarse.setOnClickListener {
             val pantallaRegistrarse = Intent(this, activity_registrarse::class.java)
             startActivity(pantallaRegistrarse)
+        }
+
+        val txtOlvidoContrasena = findViewById<TextView>(R.id.txtForgotPassword)
+
+        txtOlvidoContrasena.setOnClickListener {
+            val pantallaOlvidoContrasena = Intent(this, activity_contrasena_enlace::class.java)
+            startActivity(pantallaOlvidoContrasena)
         }
     }
 }
