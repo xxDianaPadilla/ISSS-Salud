@@ -5,6 +5,7 @@ import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -35,6 +36,13 @@ class MainActivity : AppCompatActivity() {
         btnPantallaLogin.setOnClickListener {
             val pantallaLogin = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaLogin)
+        }
+
+        val txtPantallaRegistro = findViewById<TextView>(R.id.txtRegistrar)
+
+        txtPantallaRegistro.setOnClickListener{
+            val pantallaRegistros = Intent(this, activity_registrarse::class.java)
+            startActivity(pantallaRegistros)
         }
     }
 }
