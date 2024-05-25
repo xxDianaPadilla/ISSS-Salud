@@ -1,8 +1,11 @@
 package diana.padilla.isss_salud
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
@@ -54,6 +57,26 @@ class activity_contrasena_enlace : AppCompatActivity() {
             orLines.setImageResource(R.drawable.or_dark_line)
         }else{
             orLines.setImageResource(R.drawable.or_lines)
+        }
+
+        val btnEnvioCorreo = findViewById<Button>(R.id.btnEnvioCorreo)
+
+        btnEnvioCorreo.setOnClickListener {
+            val pantallaEnvioCorreo = Intent(this, activity_envio_correo::class.java)
+            startActivity(pantallaEnvioCorreo)
+        }
+
+        val btnVolverInicioSesion = findViewById<ConstraintLayout>(R.id.btnVolverInicioSesion)
+        val txtVolverInicioSesion = findViewById<TextView>(R.id.txtVolverInicioSesion)
+
+        btnVolverInicioSesion.setOnClickListener {
+            val pantallaInicioSesion = Intent(this, activity_ingreso::class.java)
+            startActivity(pantallaInicioSesion)
+        }
+
+        txtVolverInicioSesion.setOnClickListener {
+            val pantallaInicioSesion2 = Intent(this, activity_ingreso::class.java)
+            startActivity(pantallaInicioSesion2)
         }
     }
 }

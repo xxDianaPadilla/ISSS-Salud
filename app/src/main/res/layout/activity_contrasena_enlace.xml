@@ -95,7 +95,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/btnEnvioCorreo"
             android:layout_width="310dp"
             android:layout_height="50dp"
             android:layout_marginTop="8dp"
@@ -120,6 +120,7 @@
             app:layout_constraintTop_toBottomOf="@+id/ivOrLine" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/btnVolverInicioSesion"
             android:layout_width="326dp"
             android:layout_height="43dp"
             android:layout_marginBottom="4dp"
@@ -132,13 +133,13 @@
             app:layout_constraintVertical_bias="0.538">
 
             <TextView
-                android:id="@+id/textView9"
+                android:id="@+id/txtVolverInicioSesion"
+                style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/raleway_semibold"
                 android:text="Volver al inicio de sesión"
                 android:textSize="16sp"
-                style="@style/TextColor2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -153,7 +154,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.512"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button"
+            app:layout_constraintTop_toBottomOf="@+id/btnEnvioCorreo"
             app:layout_constraintVertical_bias="0.055"
             app:srcCompat="@drawable/or_lines" />
 

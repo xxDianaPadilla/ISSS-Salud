@@ -26,6 +26,10 @@
         <item name="android:textColor">#ffffff</item>
     </style>
 
+    <style name="TextColor4">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+
     <style name="buttonStyle4">
         <item name="android:backgroundTint">#294898</item>
     </style>

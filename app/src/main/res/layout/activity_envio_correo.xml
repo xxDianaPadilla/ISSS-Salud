@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/background"
+    tools:context=".activity_envio_correo">
+
+    <ImageView
+        android:id="@+id/IvLogoIsss"
+        android:layout_width="290dp"
+        android:layout_height="269dp"
+        android:layout_marginTop="60dp"
+        android:src="@drawable/id_logo_isss"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/backgroundBox"
+        android:layout_width="352dp"
+        android:layout_height="285dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IvLogoIsss"
+        app:layout_constraintVertical_bias="0.36">
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/TextColor2"
+            android:layout_width="310dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="68dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Correo electrónico enviado"
+            android:textAlignment="center"
+            android:textSize="18dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="226dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Enviamos un correo electrónico a tu cuenta con un enlace para que recuperes el acceso a tu cuenta. "
+            android:textAlignment="center"
+            android:textColor="#A4A5AE"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.508"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <TextView
+            android:id="@+id/txtVolver"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:fontFamily="@font/raleway_semibold"
+            android:text="Aceptar"
+            android:textSize="20sp"
+            style="@style/TextColor4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView6"
+            app:layout_constraintVertical_bias="0.04" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
