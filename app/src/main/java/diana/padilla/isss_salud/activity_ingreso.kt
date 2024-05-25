@@ -44,5 +44,12 @@ class activity_ingreso : AppCompatActivity() {
             val pantallaOlvidoContrasena = Intent(this, activity_contrasena_enlace::class.java)
             startActivity(pantallaOlvidoContrasena)
         }
+
+        val btnLogin = findViewById<Button>(R.id.btnLogin)
+
+        btnLogin.setOnClickListener {
+            val pantallaNoticias = Intent(this, activity_noticias::class.java)
+            startActivity(pantallaNoticias)
+        }
     }
 }

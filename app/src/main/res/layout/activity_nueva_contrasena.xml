@@ -46,8 +46,8 @@
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="258dp"
-            android:layout_height="47dp"
+            android:layout_width="255dp"
+            android:layout_height="57dp"
             android:layout_marginTop="28dp"
             android:fontFamily="@font/raleway_semibold"
             android:text="Vuelva a iniciar sesión para poder verificar que las nuevas credenciales funcionen."
