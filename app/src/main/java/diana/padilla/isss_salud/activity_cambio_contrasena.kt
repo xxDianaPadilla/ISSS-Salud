@@ -1,7 +1,9 @@
 package diana.padilla.isss_salud
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -45,6 +47,13 @@ class activity_cambio_contrasena : AppCompatActivity() {
             fondoIcon.setBackgroundResource(R.drawable.ic_dark_lock)
         }else{
             fondoIcon.setBackgroundResource(R.drawable.ic_lock)
+        }
+
+        val btnCambiarPassword = findViewById<Button>(R.id.btnCambiarPassword)
+
+        btnCambiarPassword.setOnClickListener {
+            val pantallaCambioContrasena = Intent(this, activity_nueva_contrasena::class.java)
+            startActivity(pantallaCambioContrasena)
         }
     }
 }

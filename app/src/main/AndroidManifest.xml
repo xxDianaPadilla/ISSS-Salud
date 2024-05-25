@@ -13,6 +13,9 @@
         android:theme="@style/Theme.ISSS_Salud"
         tools:targetApi="31">
         <activity
+            android:name=".activity_nueva_contrasena"
+            android:exported="false" />
+        <activity
             android:name=".activity_cambio_contrasena"
             android:exported="false" />
         <activity
