@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     style="@style/background"
-    tools:context=".activity_contrasena_enlace">
+    tools:context=".activity_cambio_contrasena">
 
     <ImageView
         android:id="@+id/IvLogoIsss"
@@ -51,15 +51,16 @@
                 app:layout_constraintTop_toTopOf="parent">
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/textView7"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="24dp"
+            android:text="Cambiar contraseña"
             android:fontFamily="@font/raleway_semibold"
-            android:text="¿Tienes problemas para iniciar sesión?"
             android:textSize="16sp"
             style="@style/TextColor2"
             app:layout_constraintEnd_toEndOf="parent"
@@ -67,96 +68,60 @@
             app:layout_constraintTop_toBottomOf="@+id/clFondoCirculo" />
 
         <TextView
-            android:id="@+id/textView5"
-            android:layout_width="271dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="8dp"
-            android:text="Ingresa tu correo electrónico y te enviaremos un enlace para que recuperes el acceso a tu cuenta"
+            android:id="@+id/textView9"
+            android:layout_width="306dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="16dp"
+            android:text="La contraseña debe tener al menos 6 caracteres e inlcuir una combinación de números, letras y caracteres especiales (!$@%)."
             android:textAlignment="center"
             android:textColor="#9E9E9E"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3" />
+            app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
         <EditText
-            android:id="@+id/editTextText5"
-            android:layout_width="310dp"
+            android:id="@+id/editTextText6"
+            android:layout_width="330dp"
             android:layout_height="41dp"
             android:layout_marginTop="16dp"
             android:background="@drawable/ic_edittext_background"
             android:ems="10"
-            android:hint="Correo electrónico"
+            android:hint="Contraseña nueva"
             android:inputType="text"
-            style="@style/TextColor2"
+            android:textColorHint="#cccccc"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <EditText
+            android:id="@+id/editTextText7"
+            android:layout_width="330dp"
+            android:layout_height="41dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/ic_edittext_background"
+            android:ems="10"
+            android:hint="Repetir contraseña"
+            android:inputType="text"
             android:textColorHint="#cccccc"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextText6" />
 
         <Button
-            android:id="@+id/btnEnvioCorreo"
-            android:layout_width="310dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
+            android:id="@+id/button"
             style="@style/buttonStyle4"
-            android:textColor="#ffffff"
-            android:text="Enviar enlace de inicio de sesión"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText5" />
-
-        <TextView
-            android:id="@+id/txtCrearContrasena"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:fontFamily="@font/raleway_semibold"
-            android:text="Crear contraseña nueva"
-            android:textSize="16sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivOrLine" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnVolverInicioSesion"
-            android:layout_width="326dp"
+            android:layout_width="333dp"
             android:layout_height="43dp"
-            android:layout_marginBottom="4dp"
-            android:background="@drawable/ic_button_background"
+            android:layout_marginTop="16dp"
+            android:text="Cambiar contraseña"
+            android:textColor="#ffffff"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.545"
+            app:layout_constraintHorizontal_bias="0.513"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCrearContrasena"
-            app:layout_constraintVertical_bias="0.538">
-
-            <TextView
-                android:id="@+id/txtVolverInicioSesion"
-                style="@style/TextColor2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/raleway_semibold"
-                android:text="Volver al inicio de sesión"
-                android:textSize="16sp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/ivOrLine"
-            android:layout_width="329dp"
-            android:layout_height="29dp"
-            android:layout_marginTop="12dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.512"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnEnvioCorreo"
-            app:layout_constraintVertical_bias="0.055"
-            app:srcCompat="@drawable/or_lines" />
+            app:layout_constraintTop_toBottomOf="@+id/editTextText7"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

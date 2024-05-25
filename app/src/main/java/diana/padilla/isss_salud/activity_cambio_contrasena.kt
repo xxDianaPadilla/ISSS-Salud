@@ -1,22 +1,19 @@
 package diana.padilla.isss_salud
 
-import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class activity_contrasena_enlace : AppCompatActivity() {
+class activity_cambio_contrasena : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_contrasena_enlace)
+        setContentView(R.layout.activity_cambio_contrasena)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -48,42 +45,6 @@ class activity_contrasena_enlace : AppCompatActivity() {
             fondoIcon.setBackgroundResource(R.drawable.ic_dark_lock)
         }else{
             fondoIcon.setBackgroundResource(R.drawable.ic_lock)
-        }
-
-        val orLines = findViewById<ImageView>(R.id.ivOrLine)
-        val modoOscuro4 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-        if(modoOscuro4 == Configuration.UI_MODE_NIGHT_YES){
-            orLines.setImageResource(R.drawable.or_dark_line)
-        }else{
-            orLines.setImageResource(R.drawable.or_lines)
-        }
-
-        val btnEnvioCorreo = findViewById<Button>(R.id.btnEnvioCorreo)
-
-        btnEnvioCorreo.setOnClickListener {
-            val pantallaEnvioCorreo = Intent(this, activity_envio_correo::class.java)
-            startActivity(pantallaEnvioCorreo)
-        }
-
-        val btnVolverInicioSesion = findViewById<ConstraintLayout>(R.id.btnVolverInicioSesion)
-        val txtVolverInicioSesion = findViewById<TextView>(R.id.txtVolverInicioSesion)
-
-        btnVolverInicioSesion.setOnClickListener {
-            val pantallaInicioSesion = Intent(this, activity_ingreso::class.java)
-            startActivity(pantallaInicioSesion)
-        }
-
-        txtVolverInicioSesion.setOnClickListener {
-            val pantallaInicioSesion2 = Intent(this, activity_ingreso::class.java)
-            startActivity(pantallaInicioSesion2)
-        }
-
-        val txtCrearContrasena = findViewById<TextView>(R.id.txtCrearContrasena)
-
-        txtCrearContrasena.setOnClickListener {
-            val pantallaCambioContrasena = Intent(this, activity_cambio_contrasena::class.java)
-            startActivity(pantallaCambioContrasena)
         }
     }
 }
