@@ -3,6 +3,7 @@
     <array name="preloaded_fonts" translatable="false">
         <item>@font/raleway_bold_italic</item>
         <item>@font/raleway_extrabold_italic</item>
+        <item>@font/raleway_italic</item>
         <item>@font/raleway_semibold</item>
     </array>
 </resources>

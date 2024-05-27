@@ -89,6 +89,7 @@
             android:hint="Contraseña nueva"
             android:inputType="text"
             android:textColorHint="#cccccc"
+            style="@style/TextColor2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.507"
             app:layout_constraintStart_toStartOf="parent"
@@ -104,6 +105,7 @@
             android:hint="Repetir contraseña"
             android:inputType="text"
             android:textColorHint="#cccccc"
+            style="@style/TextColor2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTextText6" />
