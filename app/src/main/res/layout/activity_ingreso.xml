@@ -10,58 +10,56 @@
 
     <ImageView
         android:id="@+id/IvLogoIsss"
-        android:layout_width="279dp"
-        android:layout_height="257dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="250dp"
+        android:layout_height="272dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/id_logo_isss"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="360dp"
-        android:layout_height="416dp"
-        android:layout_marginTop="28dp"
         style="@style/backgroundBox"
+        android:layout_width="333dp"
+        android:layout_height="466dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IvLogoIsss"
-        app:layout_constraintVertical_bias="0.695">
+        app:layout_constraintStart_toStartOf="parent">
 
         <Button
             android:id="@+id/btnRegistrarse"
             style="@style/buttonStyle3"
-            android:layout_width="157dp"
+            android:layout_width="160dp"
             android:layout_height="60dp"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
-            android:text="Registrarse"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btnIniciarSesion"
             style="@style/buttonStyle2"
-            android:layout_width="157dp"
+            android:layout_width="165dp"
             android:layout_height="60dp"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/raleway_bold_italic"
             android:text="Iniciar Sesión"
+            android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView2"
+            style="@style/TextColor2"
             android:layout_width="145dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/raleway_semibold"
+            android:layout_height="65dp"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/raleway_extrabold_italic"
             android:text="Bienvenido a ISSS Salud"
             android:textAlignment="center"
-            style="@style/TextColor2"
-            android:textSize="20sp"
+            android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
@@ -69,52 +67,77 @@
 
         <EditText
             android:id="@+id/txtPassword"
-            android:layout_width="298dp"
-            android:layout_height="44dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
             android:ems="10"
+            android:fontFamily="@font/raleway_bold_italic"
             android:hint="Contraseña"
             android:inputType="text"
+            android:textColor="#000000"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
         <EditText
             android:id="@+id/txtEmail"
-            android:layout_width="299dp"
-            android:layout_height="41dp"
-            android:layout_marginTop="20dp"
+            style="@style/TextColor3"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="55dp"
             android:ems="10"
+            android:fontFamily="@font/raleway_bold_italic"
             android:hint="E-mail"
             android:inputType="text"
-            style="@style/TextColor3"
+            android:singleLine="false"
+            android:textColor="#000000"
+            android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <Button
             android:id="@+id/btnLogin"
             style="@style/buttonStyle2"
-            android:layout_width="298dp"
-            android:layout_height="59dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="300dp"
+            android:layout_height="60dp"
+            android:layout_marginBottom="30dp"
+            android:fontFamily="@font/raleway_bold_italic"
             android:text="Iniciar Sesión"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/txtForgotPassword"
             style="@style/TextColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway_semibold"
+            android:fontFamily="@font/raleway_extrabold_italic"
             android:text="¿Olvidaste tu contraseña?"
+            android:textSize="12sp"
+            android:textStyle="italic"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+            app:layout_constraintTop_toBottomOf="@+id/btnLogin"
+            app:layout_constraintVertical_bias="0.16000003" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_extrabold_italic"
+            android:text="Registrarse"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/btnRegistrarse"
+            app:layout_constraintEnd_toEndOf="@+id/btnRegistrarse"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toStartOf="@+id/btnRegistrarse"
+            app:layout_constraintTop_toTopOf="@+id/btnRegistrarse" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
