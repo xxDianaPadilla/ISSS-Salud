@@ -43,6 +43,8 @@ class activity_ingreso : AppCompatActivity() {
         txtOlvidoContrasena.setOnClickListener {
             val pantallaOlvidoContrasena = Intent(this, activity_contrasena_enlace::class.java)
             startActivity(pantallaOlvidoContrasena)
+            finish()
+            overridePendingTransition(0, 0)
         }
 
         val btnLogin = findViewById<Button>(R.id.btnLogin)
