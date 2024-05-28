@@ -23,10 +23,12 @@
         style="@style/backgroundBox"
         android:layout_width="333dp"
         android:layout_height="288dp"
+        android:layout_marginTop="15dp"
         android:layout_marginBottom="150dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IvLogoIsss">
 
         <TextView
             android:id="@+id/textView4"
@@ -44,13 +46,13 @@
 
         <TextView
             android:id="@+id/textView6"
+            style="@style/TextColor2"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_marginBottom="35dp"
             android:fontFamily="@font/raleway_italic"
             android:text="Enviamos un correo electrónico a  d******6@gmail.com con un enlace para que recuperes el acceso a tu cuenta. "
             android:textAlignment="center"
-            style="@style/TextColor2"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/txtVolver"
             app:layout_constraintEnd_toEndOf="parent"
