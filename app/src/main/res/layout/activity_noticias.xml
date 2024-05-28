@@ -110,40 +110,40 @@
             app:layout_constraintEnd_toStartOf="@+id/imageView3"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_circulo_celeste" />
+            style="@style/backgroundMenu2"/>
 
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="48dp"
             android:layout_height="49dp"
             android:layout_marginEnd="44dp"
+            style="@style/backgroundMenu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/circulo_gris" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/imageView5"
             android:layout_width="48dp"
             android:layout_height="49dp"
             android:layout_marginEnd="56dp"
+            style="@style/backgroundMenu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/imageView6"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/circulo_gris" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/imageView6"
             android:layout_width="48dp"
             android:layout_height="49dp"
             android:layout_marginEnd="40dp"
+            style="@style/backgroundMenu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/circulo_gris" />
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
-            android:id="@+id/imageView7"
+            android:id="@+id/ivHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/imageView2"
@@ -153,7 +153,7 @@
             app:srcCompat="@drawable/ic_home" />
 
         <ImageView
-            android:id="@+id/imageView8"
+            android:id="@+id/ivCitas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/imageView3"
@@ -163,7 +163,7 @@
             app:srcCompat="@drawable/ic_citas" />
 
         <ImageView
-            android:id="@+id/imageView9"
+            android:id="@+id/ivChats"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/imageView5"
@@ -173,7 +173,7 @@
             app:srcCompat="@drawable/ic_chat" />
 
         <ImageView
-            android:id="@+id/imageView10"
+            android:id="@+id/ivPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="@+id/imageView6"

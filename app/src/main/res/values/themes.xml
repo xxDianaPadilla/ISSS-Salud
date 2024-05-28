@@ -51,6 +51,14 @@
         <item name="android:background">@drawable/fondo_gris</item>
     </style>
 
+    <style name="backgroundMenu">
+        <item name="android:background">@drawable/circulo_gris</item>
+    </style>
+
+    <style name="backgroundMenu2">
+        <item name="android:background">@drawable/ic_circulo_celeste</item>
+    </style>
+
     <style name="backgroundNotifications">
         <item name="android:background">@drawable/ic_circulo_celeste</item>
     </style>

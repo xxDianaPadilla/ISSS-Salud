@@ -57,4 +57,12 @@
     <style name="background2">
         <item name="android:background">@drawable/fondo_modo_oscuro</item>
     </style>
+
+    <style name="backgroundMenu">
+        <item name="android:background">@drawable/ic_circulo_menu_dm</item>
+    </style>
+
+    <style name="backgroundMenu2">
+        <item name="android:background">@drawable/ic_blue_circle</item>
+    </style>
 </resources>
