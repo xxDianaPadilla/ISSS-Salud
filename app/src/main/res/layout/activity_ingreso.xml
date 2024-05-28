@@ -12,20 +12,23 @@
         android:id="@+id/IvLogoIsss"
         android:layout_width="250dp"
         android:layout_height="272dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="30dp"
         android:src="@drawable/id_logo_isss"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout4"
         style="@style/backgroundBox"
         android:layout_width="333dp"
         android:layout_height="466dp"
+        android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IvLogoIsss">
 
         <Button
             android:id="@+id/btnRegistrarse"
@@ -67,6 +70,7 @@
 
         <EditText
             android:id="@+id/txtPassword"
+            style="@style/TextColor2"
             android:layout_width="290dp"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
@@ -74,7 +78,6 @@
             android:fontFamily="@font/raleway_bold_italic"
             android:hint="Contraseña"
             android:inputType="text"
-            style="@style/TextColor2"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -82,6 +85,7 @@
 
         <EditText
             android:id="@+id/txtEmail"
+            style="@style/TextColor2"
             android:layout_width="290dp"
             android:layout_height="40dp"
             android:layout_marginTop="55dp"
@@ -90,7 +94,6 @@
             android:hint="E-mail"
             android:inputType="text"
             android:singleLine="false"
-            style="@style/TextColor2"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -101,7 +104,7 @@
             style="@style/buttonStyle2"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="40dp"
             android:fontFamily="@font/raleway_bold_italic"
             android:text="Iniciar Sesión"
             android:textSize="17sp"
