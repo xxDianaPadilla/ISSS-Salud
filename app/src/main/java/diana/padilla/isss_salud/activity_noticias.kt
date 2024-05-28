@@ -1,5 +1,6 @@
 package diana.padilla.isss_salud
 
+import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.ImageView
@@ -71,6 +72,18 @@ class activity_noticias : AppCompatActivity() {
             iconPerfil.setImageResource(R.drawable.ic_perfil_dm)
         }else{
             iconPerfil.setImageResource(R.drawable.ic_perfil)
+        }
+
+        iconCitas.setOnClickListener{
+            val pantallaCitasMedicas = Intent(this, activity_citas_medicas::class.java)
+            startActivity(pantallaCitasMedicas)
+        }
+
+        val ivCitas2 = findViewById<ImageView>(R.id.ivCitas2)
+
+        ivCitas2.setOnClickListener{
+            val pantallaCitasMedicas2 = Intent(this, activity_citas_medicas::class.java)
+            startActivity(pantallaCitasMedicas2)
         }
     }
 }
