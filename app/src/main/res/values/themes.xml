@@ -11,6 +11,10 @@
         <item name="android:background">@drawable/fondo_pantalla</item>
     </style>
 
+    <style name="background2">
+        <item name="android:background">@drawable/fondo_blanco</item>
+    </style>
+
     <style name="buttonStyle">
         <item name="backgroundTint">@color/buttonColor</item>
         <item name="android:textColor">@color/buttonTextColor</item>
@@ -37,6 +41,22 @@
 
     <style name="backgroundBox">
         <item name="android:background">@drawable/fondo_blanco</item>
+    </style>
+
+    <style name="backgroundBox2">
+        <item name="android:background">@drawable/fondo_gris</item>
+    </style>
+
+    <style name="backgroundBox3">
+        <item name="android:background">@drawable/fondo_gris</item>
+    </style>
+
+    <style name="backgroundNotifications">
+        <item name="android:background">@drawable/ic_circulo_celeste</item>
+    </style>
+
+    <style name="backgroundNotifications2">
+        <item name="android:background">@drawable/ic_circulo_azul</item>
     </style>
 
     <style name="buttonStyle2">

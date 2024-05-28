@@ -5,21 +5,22 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_noticias">
+    tools:context=".activity_noticias"
+    style="@style/background2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="375dp"
         android:layout_height="106dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/fondo_gris"
+        style="@style/backgroundBox2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.47"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/ivSmallLogo"
             android:layout_width="115dp"
             android:layout_height="107dp"
             android:scaleType="centerCrop"
@@ -34,27 +35,28 @@
             android:id="@+id/textView11"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/raleway_semibold"
             android:text="Noticias"
             android:textSize="35dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintStart_toEndOf="@+id/ivSmallLogo"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
-            android:layout_width="59dp"
-            android:layout_height="58dp"
-            android:background="@drawable/ic_circulo_celeste"
+            style="@style/backgroundNotifications"
+            android:layout_width="56dp"
+            android:layout_height="51dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.578"
             app:layout_constraintStart_toEndOf="@+id/textView11"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.66">
+            app:layout_constraintVertical_bias="0.533">
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/ivNotificaciones"
                 android:layout_width="35dp"
                 android:layout_height="34dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -70,11 +72,11 @@
             android:layout_width="31dp"
             android:layout_height="30dp"
             android:layout_marginEnd="16dp"
+            style="@style/backgroundNotifications2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.195"
-            app:srcCompat="@drawable/ic_circulo_azul" />
+            app:layout_constraintVertical_bias="0.195" />
 
         <TextView
             android:id="@+id/textView14"
@@ -94,7 +96,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="416dp"
         android:layout_height="85dp"
-        android:background="@drawable/fondo_gris"
+        style="@style/backgroundBox3"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"

@@ -37,4 +37,24 @@
     <style name="backgroundBox">
         <item name="android:background">@drawable/fondo_azul</item>
     </style>
+
+    <style name="backgroundBox2">
+        <item name="android:background">@drawable/fondo_azul_darkmode</item>
+    </style>
+
+    <style name="backgroundNotifications">
+        <item name="android:background">@drawable/ic_circulo_darkmode</item>
+    </style>
+
+    <style name="backgroundNotifications2">
+        <item name="android:background">@drawable/ic_light_circle</item>
+    </style>
+
+    <style name="backgroundBox3">
+        <item name="android:background">@drawable/fondo_oscuro</item>
+    </style>
+
+    <style name="background2">
+        <item name="android:background">@drawable/fondo_modo_oscuro</item>
+    </style>
 </resources>
