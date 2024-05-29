@@ -162,98 +162,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout3"
-        style="@style/backgroundBox3"
-        android:layout_width="416dp"
-        android:layout_height="85dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.538"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView2"
-            style="@style/backgroundMenu2"
-            android:layout_width="48dp"
-            android:layout_height="49dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivCitas2"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/ivCitas2"
-            style="@style/backgroundMenu"
-            android:layout_width="48dp"
-            android:layout_height="49dp"
-            android:layout_marginEnd="44dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            style="@style/backgroundMenu"
-            android:layout_width="48dp"
-            android:layout_height="49dp"
-            android:layout_marginEnd="56dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/imageView6"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            style="@style/backgroundMenu"
-            android:layout_width="48dp"
-            android:layout_height="49dp"
-            android:layout_marginEnd="40dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/ivHome"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView2"
-            app:layout_constraintEnd_toEndOf="@+id/imageView2"
-            app:layout_constraintStart_toStartOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/imageView2"
-            app:srcCompat="@drawable/ic_home" />
-
-        <ImageView
-            android:id="@+id/ivCitas"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/ivCitas2"
-            app:layout_constraintEnd_toEndOf="@+id/ivCitas2"
-            app:layout_constraintStart_toStartOf="@+id/ivCitas2"
-            app:layout_constraintTop_toTopOf="@+id/ivCitas2"
-            app:srcCompat="@drawable/ic_citas" />
-
-        <ImageView
-            android:id="@+id/ivChats"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-            app:layout_constraintEnd_toEndOf="@+id/imageView5"
-            app:layout_constraintStart_toStartOf="@+id/imageView5"
-            app:layout_constraintTop_toTopOf="@+id/imageView5"
-            app:srcCompat="@drawable/ic_chat" />
-
-        <ImageView
-            android:id="@+id/ivPerfil"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView6"
-            app:layout_constraintEnd_toEndOf="@+id/imageView6"
-            app:layout_constraintStart_toStartOf="@+id/imageView6"
-            app:layout_constraintTop_toTopOf="@+id/imageView6"
-            app:srcCompat="@drawable/ic_perfil" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
     <TextView
         android:id="@+id/textView16"
         style="@style/TextColor2"
@@ -276,11 +184,75 @@
         android:background="@drawable/ic_edittext_background"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView16"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        style="@style/backgroundBox3"
+        android:layout_width="416dp"
+        android:layout_height="85dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            style="@style/backgroundMenu2"
+            android:layout_width="41dp"
+            android:layout_height="43dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="102dp"
+            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.094"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/ivCitas"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="72dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivChats"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.49"
+            app:srcCompat="@drawable/ic_active_file" />
+
+        <ImageView
+            android:id="@+id/ivChats"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="72dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivPerfil"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.509"
+            app:srcCompat="@drawable/ic_chat" />
+
+        <ImageView
+            android:id="@+id/ivPerfil"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_perfil" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/ivCitas"
+            app:layout_constraintHorizontal_bias="0.375"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_home" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
