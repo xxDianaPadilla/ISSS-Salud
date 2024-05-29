@@ -29,6 +29,15 @@ class activity_noticias : AppCompatActivity() {
             logoIsssSmall.setImageResource(R.drawable.ic_logo_isss_small)
         }
 
+        val iconHome = findViewById<ImageView>(R.id.ivHome)
+        val modoOscuro3 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        if(modoOscuro3 == Configuration.UI_MODE_NIGHT_YES){
+            iconHome.setImageResource(R.drawable.ic_home_menu_dm)
+        }else{
+            iconHome.setImageResource(R.drawable.ic_active_home)
+        }
+
         val iconNotificaciones = findViewById<ImageView>(R.id.ivNotificaciones)
         val modoOscuro2 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 

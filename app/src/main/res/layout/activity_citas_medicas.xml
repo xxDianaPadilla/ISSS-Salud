@@ -19,41 +19,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            style="@style/backgroundNotifications"
-            android:layout_width="43dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.533">
-
-            <ImageView
-                android:id="@+id/ivNotificaciones"
-                android:layout_width="25dp"
-                android:layout_height="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_notificaciones" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/imageView4"
-            style="@style/backgroundNotifications2"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.228" />
-
         <ImageView
             android:id="@+id/ivSmallLogo"
             android:layout_width="115dp"
@@ -69,29 +34,17 @@
             android:id="@+id/textView11"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="35dp"
+            android:layout_marginStart="30dp"
             android:fontFamily="@font/raleway_bold_italic"
             android:text="Citas médicas"
             android:textAlignment="center"
             android:textSize="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/ivSmallLogo"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5" />
-
-        <TextView
-            android:id="@+id/textView17"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:fontFamily="@font/pacifico"
-            android:text="2"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-            app:layout_constraintEnd_toEndOf="@+id/imageView4"
-            app:layout_constraintStart_toStartOf="@+id/imageView4"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintVertical_bias="0.500" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,6 +83,7 @@
         android:background="@drawable/ic_edittext_background"
         android:ems="10"
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
@@ -184,6 +138,7 @@
         android:background="@drawable/ic_edittext_background"
         android:ems="10"
         android:inputType="text"
+        android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.56"
         app:layout_constraintStart_toStartOf="parent"
@@ -205,7 +160,7 @@
             android:layout_height="43dp"
             android:layout_marginBottom="8dp"
             android:layout_marginLeft="102dp"
-            app:layout_constraintBottom_toTopOf="@+id/imageView"
+            app:layout_constraintBottom_toTopOf="@+id/ivHome"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.094"
             app:layout_constraintStart_toStartOf="parent" />
@@ -218,7 +173,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivChats"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.49"
+            app:layout_constraintVertical_bias="0.55"
             app:srcCompat="@drawable/ic_active_file" />
 
         <ImageView
@@ -243,7 +198,7 @@
             app:srcCompat="@drawable/ic_perfil" />
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/ivHome"
             android:layout_width="30dp"
             android:layout_height="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
