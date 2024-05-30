@@ -107,10 +107,10 @@
             style="@style/backgroundMenu2"
             android:layout_width="41dp"
             android:layout_height="43dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="13dp"
             app:layout_constraintBottom_toTopOf="@+id/ivHome"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.094"
+            app:layout_constraintHorizontal_bias="0.11331306"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
@@ -121,7 +121,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivChats"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.49"
+            app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/ic_citas" />
 
         <ImageView
@@ -132,7 +132,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivPerfil"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.509"
+            app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/ic_chat" />
 
         <ImageView
@@ -149,10 +149,9 @@
             android:id="@+id/ivHome"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginStart="48dp"
             android:layout_marginBottom="28dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivCitas"
-            app:layout_constraintHorizontal_bias="0.375"
             app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_active_home" />
 

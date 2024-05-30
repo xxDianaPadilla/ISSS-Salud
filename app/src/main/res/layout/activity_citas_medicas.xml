@@ -104,7 +104,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.078"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
+        app:layout_constraintTop_toBottomOf="@+id/button2"
+        app:layout_constraintVertical_bias="0.5" />
 
     <TextView
         android:id="@+id/textView16"
@@ -297,9 +298,9 @@
             style="@style/backgroundMenu2"
             android:layout_width="41dp"
             android:layout_height="43dp"
-            android:layout_marginLeft="102dp"
-            android:layout_marginBottom="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/ivHome"
+            android:layout_marginStart="102dp"
+            android:layout_marginBottom="13dp"
+            app:layout_constraintBottom_toTopOf="@+id/ivCitas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.094"
             app:layout_constraintStart_toStartOf="parent" />
@@ -312,7 +313,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivChats"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.55"
+            app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/ic_active_file" />
 
         <ImageView
@@ -323,7 +324,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivPerfil"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.509"
+            app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/ic_chat" />
 
         <ImageView
@@ -340,9 +341,8 @@
             android:id="@+id/ivHome"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginStart="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivCitas"
-            app:layout_constraintHorizontal_bias="0.375"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_home" />
