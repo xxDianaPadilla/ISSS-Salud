@@ -57,20 +57,19 @@
             android:id="@+id/textView2"
             style="@style/TextColor2"
             android:layout_width="145dp"
-            android:layout_height="65dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:fontFamily="@font/raleway_extrabold_italic"
             android:text="Bienvenido a ISSS Salud"
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesion" />
 
         <EditText
             android:id="@+id/txtPassword"
-            android:textColor="#000000"
             android:layout_width="290dp"
             android:layout_height="40dp"
             android:layout_marginTop="20dp"
@@ -78,30 +77,30 @@
             android:ems="10"
             android:fontFamily="@font/raleway_bold_italic"
             android:hint="Contraseña"
-            android:textColorHint="#828282"
             android:inputType="text"
-            android:textSize="16sp"
+            android:textColor="#000000"
+            android:textColorHint="#33000000"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.441"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtEmail" />
 
         <EditText
             android:id="@+id/txtEmail"
-            android:textColor="#000000"
             android:layout_width="290dp"
             android:layout_height="40dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="50dp"
             android:background="@drawable/ic_edittext_background"
             android:ems="10"
             android:fontFamily="@font/raleway_bold_italic"
             android:hint="E-mail"
-            android:textColorHint="#828282"
             android:inputType="text"
-            android:singleLine="false"
-            android:textSize="16sp"
+            android:textColor="#000000"
+            android:textColorHint="#33000000"
+            android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.441"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
@@ -110,13 +109,13 @@
             style="@style/buttonStyle2"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:layout_marginBottom="68dp"
+            android:layout_marginBottom="30dp"
             android:fontFamily="@font/raleway_bold_italic"
             android:text="Iniciar Sesión"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.484"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
@@ -124,6 +123,7 @@
             style="@style/TextColor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="13dp"
             android:fontFamily="@font/raleway_extrabold_italic"
             android:text="¿Olvidaste tu contraseña?"
             android:textSize="12sp"
@@ -132,7 +132,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btnLogin"
-            app:layout_constraintVertical_bias="0.314" />
+            app:layout_constraintVertical_bias="0.5" />
 
         <TextView
             android:id="@+id/textView13"

@@ -8,6 +8,231 @@
     tools:context=".activity_citas_medicas"
     style="@style/background2">
 
+    <EditText
+        android:id="@+id/editTextText9"
+        android:layout_width="373dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/ic_edittext_background"
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <TextView
+        android:id="@+id/textView15"
+        style="@style/TextColor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/raleway_bold_italic"
+        android:text="Nombre"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnFormulario" />
+
+    <TextView
+        android:id="@+id/textView16"
+        style="@style/TextColor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+
+        android:fontFamily="@font/raleway_bold_italic"
+        android:text="Dirección"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText9"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextText10"
+        android:layout_width="373dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/ic_edittext_background"
+        android:ems="10"
+        android:inputType="text"
+        android:textColor="#000000"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <TextView
+        android:id="@+id/textView27"
+        style="@style/TextColor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/raleway_bold_italic"
+        android:text="DUI"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText11"
+        app:layout_constraintEnd_toStartOf="@+id/textView18"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText10"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextText11"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/ic_edittext_background"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/editTextText12"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView27" />
+
+    <TextView
+        android:id="@+id/textView18"
+        style="@style/TextColor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="106dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/raleway_bold_italic"
+        android:text="Teléfono"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText12"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText10"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextText12"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/ic_edittext_background"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18" />
+
+    <TextView
+        android:id="@+id/textView19"
+        style="@style/TextColor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/raleway_bold_italic"
+        android:text="Correo"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText13"
+        app:layout_constraintEnd_toStartOf="@+id/textView20"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText11"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView20"
+        style="@style/TextColor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="3dp"
+        android:fontFamily="@font/raleway_bold_italic"
+        android:text="Tipo de sangre"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText12" />
+
+    <EditText
+        android:id="@+id/editTextText13"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/ic_edittext_background"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toStartOf="@+id/editTextText14"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView19" />
+
+    <EditText
+        android:id="@+id/editTextText14"
+        android:layout_width="180dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/ic_edittext_background"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    <TextView
+        android:id="@+id/textView21"
+        style="@style/TextColor2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/raleway_bold_italic"
+        android:text="Motivo"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText15"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText13"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextText15"
+        android:layout_width="373dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/ic_edittext_background"
+        android:ems="10"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView21" />
+
+    <Button
+        android:id="@+id/button3"
+        style="@style/buttonStyle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="21dp"
+        android:layout_marginEnd="296dp"
+        android:fontFamily="@font/raleway_bold_italic"
+        android:text="Enviar"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText15" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         style="@style/backgroundBox2"
@@ -53,12 +278,14 @@
         style="@style/buttonStyle3"
         android:layout_width="180dp"
         android:layout_height="50dp"
+        android:layout_marginStart="6dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/raleway_bold_italic"
         android:text="Agendadas"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnFormulario"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <Button
@@ -68,226 +295,19 @@
         android:layout_height="50dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
+        android:layout_marginEnd="6dp"
         android:fontFamily="@font/raleway_bold_italic"
         android:text="Formulario"
         android:textSize="18sp"
+        app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
-
-    <EditText
-        android:id="@+id/editTextText9"
-        android:layout_width="373dp"
-        android:layout_height="50dp"
-        android:background="@drawable/ic_edittext_background"
-        android:ems="10"
-        android:inputType="text"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="221dp" />
-
-    <TextView
-        android:id="@+id/textView15"
-        style="@style/TextColor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="3dp"
-        android:fontFamily="@font/raleway_bold_italic"
-        android:text="Nombre"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText9"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnFormulario" />
-
-    <TextView
-        android:id="@+id/textView16"
-        style="@style/TextColor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="3dp"
-
-        android:fontFamily="@font/raleway_bold_italic"
-        android:text="Dirección"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText10"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText9" />
-
-    <EditText
-        android:id="@+id/editTextText10"
-        android:layout_width="373dp"
-        android:layout_height="50dp"
-        android:background="@drawable/ic_edittext_background"
-        android:ems="10"
-        android:inputType="text"
-        android:textColor="#000000"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="313dp" />
-
-    <TextView
-        android:id="@+id/textView27"
-        style="@style/TextColor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="3dp"
-        android:fontFamily="@font/raleway_bold_italic"
-        android:text="DUI"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText11"
-        app:layout_constraintEnd_toStartOf="@+id/textView18"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText10" />
-
-    <EditText
-        android:id="@+id/editTextText11"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="4dp"
-        android:background="@drawable/ic_edittext_background"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText12"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="401dp" />
-
-    <TextView
-        android:id="@+id/textView18"
-        style="@style/TextColor2"
-        android:layout_width="65dp"
-        android:layout_height="18dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="127dp"
-        android:layout_marginBottom="3dp"
-        android:fontFamily="@font/raleway_bold_italic"
-        android:text="Teléfono"
-        android:textSize="15sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText12"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText10" />
-
-    <EditText
-        android:id="@+id/editTextText12"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="18dp"
-        android:background="@drawable/ic_edittext_background"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="401dp" />
-
-    <TextView
-        android:id="@+id/textView19"
-        style="@style/TextColor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/raleway_bold_italic"
-        android:text="Correo"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toStartOf="@+id/textView20"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText11" />
-
-    <TextView
-        android:id="@+id/textView20"
-        style="@style/TextColor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:layout_marginEnd="90dp"
-        android:fontFamily="@font/raleway_bold_italic"
-        android:text="Tipo de sangre"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText12" />
-
-    <EditText
-        android:id="@+id/editTextText13"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="3dp"
-        android:background="@drawable/ic_edittext_background"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText14"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-    <EditText
-        android:id="@+id/editTextText14"
-        android:layout_width="180dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="18dp"
-        android:background="@drawable/ic_edittext_background"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
-
-    <TextView
-        android:id="@+id/textView21"
-        style="@style/TextColor2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/raleway_bold_italic"
-        android:text="Motivo"
-        android:textSize="15sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.093"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText13" />
-
-    <EditText
-        android:id="@+id/editTextText15"
-        android:layout_width="212dp"
-        android:layout_height="92dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="3dp"
-        android:layout_marginEnd="28dp"
-        android:background="@drawable/ic_edittext_background"
-        android:ems="10"
-        android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/button3"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView21" />
-
-    <Button
-        android:id="@+id/button3"
-        style="@style/buttonStyle2"
-        android:layout_width="108dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="30dp"
-        android:layout_marginBottom="20dp"
-        android:fontFamily="@font/raleway_bold_italic"
-        android:text="Enviar"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
-        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
         style="@style/backgroundBox3"
-        android:layout_width="416dp"
-        android:layout_height="85dp"
+        android:layout_width="412dp"
+        android:layout_height="86dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -302,7 +322,7 @@
             android:layout_marginBottom="13dp"
             app:layout_constraintBottom_toTopOf="@+id/ivCitas"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.099"
+            app:layout_constraintHorizontal_bias="0.0836"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
@@ -348,7 +368,6 @@
             app:srcCompat="@drawable/ic_home" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
