@@ -51,7 +51,7 @@
             android:fontFamily="@font/raleway_italic"
             android:text="Vuelva a iniciar sesión para poder verificar que las nuevas credenciales funcionen."
             android:textAlignment="center"
-            android:textColor="#000000"
+            style="@style/TextColor2"
             android:textSize="13sp"
             app:layout_constraintBottom_toTopOf="@+id/txtReturnInicio"
             app:layout_constraintEnd_toEndOf="parent"
