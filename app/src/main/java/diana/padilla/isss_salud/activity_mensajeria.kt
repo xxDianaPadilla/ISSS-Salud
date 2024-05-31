@@ -83,5 +83,10 @@ class activity_mensajeria : AppCompatActivity() {
             val pantallaCitas = Intent(this, activity_citas_medicas::class.java)
             startActivity(pantallaCitas)
         }
+
+        iconPerfil.setOnClickListener {
+            val pantallaPerfil = Intent(this, activity_perfil::class.java)
+            startActivity(pantallaPerfil)
+        }
     }
 }

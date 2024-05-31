@@ -9,11 +9,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class activity_noticias : AppCompatActivity() {
+class activity_perfil : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_noticias)
+        setContentView(R.layout.activity_perfil)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -33,18 +33,9 @@ class activity_noticias : AppCompatActivity() {
         val modoOscuro3 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro3 == Configuration.UI_MODE_NIGHT_YES){
-            iconHome.setImageResource(R.drawable.ic_home_menu_dm)
+            iconHome.setImageResource(R.drawable.ic_home_dm)
         }else{
-            iconHome.setImageResource(R.drawable.ic_active_home)
-        }
-
-        val iconNotificaciones = findViewById<ImageView>(R.id.ivNotificaciones)
-        val modoOscuro2 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-        if(modoOscuro2 == Configuration.UI_MODE_NIGHT_YES){
-            iconNotificaciones.setImageResource(R.drawable.ic_darkmode_notificaciones)
-        }else{
-            iconNotificaciones.setImageResource(R.drawable.ic_notificaciones)
+            iconHome.setImageResource(R.drawable.ic_home)
         }
 
         val iconCitas = findViewById<ImageView>(R.id.ivCitas)
@@ -69,24 +60,24 @@ class activity_noticias : AppCompatActivity() {
         val modoOscuro6 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro6 == Configuration.UI_MODE_NIGHT_YES){
-            iconPerfil.setImageResource(R.drawable.ic_perfil_dm)
+            iconPerfil.setImageResource(R.drawable.ic_active_profile_dm)
         }else{
-            iconPerfil.setImageResource(R.drawable.ic_perfil)
+            iconPerfil.setImageResource(R.drawable.ic_active_profile)
         }
 
-        iconCitas.setOnClickListener{
-            val pantallaCitasMedicas = Intent(this, activity_citas_medicas::class.java)
-            startActivity(pantallaCitasMedicas)
+        iconHome.setOnClickListener{
+            val pantallaNoticias = Intent(this, activity_noticias::class.java)
+            startActivity(pantallaNoticias)
+        }
+
+        iconCitas.setOnClickListener {
+            val pantallaCitas = Intent(this, activity_citas_medicas::class.java)
+            startActivity(pantallaCitas)
         }
 
         iconChats.setOnClickListener {
             val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
             startActivity(pantallaMensajeria)
-        }
-
-        iconPerfil.setOnClickListener {
-            val pantallaPerfil = Intent(this, activity_perfil::class.java)
-            startActivity(pantallaPerfil)
         }
     }
 }

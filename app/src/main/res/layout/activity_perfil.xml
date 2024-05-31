@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity_mensajeria"
+    tools:context=".activity_perfil"
     style="@style/background2">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,63 +36,15 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:fontFamily="@font/raleway_bold_italic"
-            android:text="Mensajería"
+            android:text="Perfil"
             android:textAlignment="center"
-            android:textSize="25dp"
+            android:textSize="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/ivSmallLogo"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
-            style="@style/backgroundNotifications"
-            android:layout_width="43dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.533">
-
-            <ImageView
-                android:id="@+id/ivNotificaciones"
-                android:layout_width="25dp"
-                android:layout_height="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_notificaciones" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/imageView4"
-            style="@style/backgroundNotifications2"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.228" />
-
-        <TextView
-            android:id="@+id/textView14"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:fontFamily="@font/pacifico"
-            android:text="2"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-            app:layout_constraintEnd_toEndOf="@+id/imageView4"
-            app:layout_constraintStart_toStartOf="@+id/imageView4"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintVertical_bias="0.500" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -115,7 +67,7 @@
             android:layout_marginBottom="13dp"
             app:layout_constraintBottom_toTopOf="@+id/ivCitas"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.4600"
+            app:layout_constraintHorizontal_bias="0.8500"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
@@ -138,7 +90,7 @@
             app:layout_constraintEnd_toStartOf="@+id/ivPerfil"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
-            app:srcCompat="@drawable/ic_active_chat" />
+            app:srcCompat="@drawable/ic_chat" />
 
         <ImageView
             android:id="@+id/ivPerfil"
@@ -148,7 +100,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_perfil" />
+            app:srcCompat="@drawable/ic_active_profile" />
 
         <ImageView
             android:id="@+id/ivHome"
@@ -162,34 +114,33 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/editTextText16"
-        android:layout_width="372dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="20dp"
-        android:background="@drawable/ic_edittext_background"
-        android:ems="10"
-        android:hint="Buscar"
-        android:inputType="text"
-        android:textColor="#000000"
-        android:textColorHint="#888888"
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="130dp"
+        android:layout_height="121dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.542"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.0"
+        style="@style/backgroundMenu" />
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextText16"
-        app:layout_constraintEnd_toEndOf="@+id/editTextText16"
-        app:layout_constraintHorizontal_bias="0.948"
-        app:layout_constraintStart_toStartOf="@+id/editTextText16"
-        app:layout_constraintTop_toTopOf="@+id/editTextText16"
-        app:srcCompat="@drawable/ic_busqueda" />
+    <Button
+        android:id="@+id/button"
+        style="@style/buttonStyle2"
+        android:layout_width="182dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="64dp"
+        android:fontFamily="@font/raleway_bold_italic"
+        android:text="Editar perfil"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toEndOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.009" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -85,6 +85,11 @@ class activity_citas_agendadas : AppCompatActivity() {
             startActivity(pantallaMensajeria)
         }
 
+        iconPerfil.setOnClickListener {
+            val pantallaPerfil = Intent(this, activity_perfil::class.java)
+            startActivity(pantallaPerfil)
+        }
+
         val btnFormulario = findViewById<Button>(R.id.btnFormulario)
 
         btnFormulario.setOnClickListener {
