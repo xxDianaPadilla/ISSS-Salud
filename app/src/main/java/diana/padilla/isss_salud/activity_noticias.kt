@@ -78,5 +78,10 @@ class activity_noticias : AppCompatActivity() {
             val pantallaCitasMedicas = Intent(this, activity_citas_medicas::class.java)
             startActivity(pantallaCitasMedicas)
         }
+
+        iconChats.setOnClickListener {
+            val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
+            startActivity(pantallaMensajeria)
+        }
     }
 }

@@ -3,18 +3,17 @@ package diana.padilla.isss_salud
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class activity_citas_agendadas : AppCompatActivity() {
+class activity_mensajeria : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_citas_agendadas)
+        setContentView(R.layout.activity_mensajeria)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -52,18 +51,18 @@ class activity_citas_agendadas : AppCompatActivity() {
         val modoOscuro4 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro4 == Configuration.UI_MODE_NIGHT_YES){
-            iconCitas.setImageResource(R.drawable.ic_file_menu_dm_24)
+            iconCitas.setImageResource(R.drawable.ic_citas_dm)
         }else{
-            iconCitas.setImageResource(R.drawable.ic_active_file)
+            iconCitas.setImageResource(R.drawable.ic_citas)
         }
 
         val iconChats = findViewById<ImageView>(R.id.ivChats)
         val modoOscuro5 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro5 == Configuration.UI_MODE_NIGHT_YES){
-            iconChats.setImageResource(R.drawable.ic_chats_dm)
+            iconChats.setImageResource(R.drawable.ic_active_chat_dm)
         }else{
-            iconChats.setImageResource(R.drawable.ic_chat)
+            iconChats.setImageResource(R.drawable.ic_active_chat)
         }
 
         val iconPerfil = findViewById<ImageView>(R.id.ivPerfil)
@@ -80,16 +79,9 @@ class activity_citas_agendadas : AppCompatActivity() {
             startActivity(pantallaNoticias)
         }
 
-        iconChats.setOnClickListener {
-            val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
-            startActivity(pantallaMensajeria)
-        }
-
-        val btnFormulario = findViewById<Button>(R.id.btnFormulario)
-
-        btnFormulario.setOnClickListener {
-            val pantallaFormulario = Intent(this, activity_citas_medicas::class.java)
-            startActivity(pantallaFormulario)
+        iconCitas.setOnClickListener {
+            val pantallaCitas = Intent(this, activity_citas_medicas::class.java)
+            startActivity(pantallaCitas)
         }
     }
 }

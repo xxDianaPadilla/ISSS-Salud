@@ -71,6 +71,16 @@ class activity_citas_medicas : AppCompatActivity() {
             startActivity(pantallaNoticias)
         }
 
+        iconHome.setOnClickListener{
+            val pantallaNoticias = Intent(this, activity_noticias::class.java)
+            startActivity(pantallaNoticias)
+        }
+
+        iconChats.setOnClickListener {
+            val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
+            startActivity(pantallaMensajeria)
+        }
+
         val btnCitasAgendadas = findViewById<Button>(R.id.btnCitasAgendadas)
 
         btnCitasAgendadas.setOnClickListener {
