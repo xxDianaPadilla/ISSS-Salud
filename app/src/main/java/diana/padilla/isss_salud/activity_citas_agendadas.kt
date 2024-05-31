@@ -10,11 +10,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class activity_citas_medicas : AppCompatActivity() {
+class activity_citas_agendadas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_citas_medicas)
+        setContentView(R.layout.activity_citas_agendadas)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -71,11 +71,11 @@ class activity_citas_medicas : AppCompatActivity() {
             startActivity(pantallaNoticias)
         }
 
-        val btnCitasAgendadas = findViewById<Button>(R.id.btnCitasAgendadas)
+        val btnFormulario = findViewById<Button>(R.id.btnFormulario)
 
-        btnCitasAgendadas.setOnClickListener {
-            val pantallaCitasAgendadas = Intent(this, activity_citas_agendadas::class.java)
-            startActivity(pantallaCitasAgendadas)
+        btnFormulario.setOnClickListener {
+            val pantallaFormulario = Intent(this, activity_citas_medicas::class.java)
+            startActivity(pantallaFormulario)
         }
     }
 }
