@@ -3,18 +3,17 @@ package diana.padilla.isss_salud
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class activity_perfil : AppCompatActivity() {
+class activity_editar_perfil : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_perfil)
+        setContentView(R.layout.activity_editar_perfil)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -81,18 +80,5 @@ class activity_perfil : AppCompatActivity() {
             startActivity(pantallaMensajeria)
         }
 
-        val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
-
-        btnCerrarSesion.setOnClickListener {
-            val pantallaIngreso = Intent(this, activity_ingreso::class.java)
-            startActivity(pantallaIngreso)
-        }
-
-        val btnEditarPerfil = findViewById<Button>(R.id.btnEditarPerfil)
-
-        btnEditarPerfil.setOnClickListener {
-            val pantallaEditarPerfil = Intent(this, activity_editar_perfil::class.java)
-            startActivity(pantallaEditarPerfil)
-        }
     }
 }
