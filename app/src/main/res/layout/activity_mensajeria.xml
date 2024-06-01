@@ -122,7 +122,7 @@
             android:id="@+id/ivCitas"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="72dp"
+            android:layout_marginEnd="67dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivChats"
             app:layout_constraintTop_toTopOf="parent"
@@ -152,8 +152,8 @@
 
         <ImageView
             android:id="@+id/ivHome"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
             android:layout_marginStart="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

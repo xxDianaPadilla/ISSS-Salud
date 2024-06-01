@@ -37,7 +37,7 @@
             android:fontFamily="@font/raleway_extrabold_italic"
             android:text="Cambio de contraseña exitoso"
             android:textAlignment="center"
-            android:textSize="16dp"
+            android:textSize="17dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
@@ -45,14 +45,14 @@
 
         <TextView
             android:id="@+id/textView10"
+            style="@style/TextColor2"
             android:layout_width="241dp"
             android:layout_height="57dp"
             android:layout_marginBottom="35dp"
             android:fontFamily="@font/raleway_italic"
             android:text="Vuelva a iniciar sesión para poder verificar que las nuevas credenciales funcionen."
             android:textAlignment="center"
-            style="@style/TextColor2"
-            android:textSize="13sp"
+            android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@+id/txtReturnInicio"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -65,7 +65,7 @@
             android:layout_marginBottom="55dp"
             android:fontFamily="@font/raleway_extrabold_italic"
             android:text="Aceptar"
-            android:textSize="16sp"
+            android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

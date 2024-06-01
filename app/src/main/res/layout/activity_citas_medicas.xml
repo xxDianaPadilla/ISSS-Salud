@@ -10,7 +10,7 @@
 
     <EditText
         android:id="@+id/editTextText9"
-        android:layout_width="373dp"
+        android:layout_width="360dp"
         android:layout_height="30dp"
         android:layout_marginTop="3dp"
         android:background="@drawable/ic_edittext_background"
@@ -47,6 +47,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="15dp"
 
+        android:layout_marginBottom="3dp"
         android:fontFamily="@font/raleway_bold_italic"
         android:text="Dirección"
         android:textSize="20sp"
@@ -59,7 +60,7 @@
 
     <EditText
         android:id="@+id/editTextText10"
-        android:layout_width="373dp"
+        android:layout_width="360dp"
         android:layout_height="100dp"
         android:layout_marginTop="3dp"
         android:background="@drawable/ic_edittext_background"
@@ -76,15 +77,13 @@
         style="@style/TextColor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="3dp"
         android:fontFamily="@font/raleway_bold_italic"
         android:text="DUI"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/editTextText11"
-        app:layout_constraintEnd_toStartOf="@+id/textView18"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextText10"
         app:layout_constraintVertical_bias="0.0" />
@@ -93,12 +92,11 @@
         android:id="@+id/editTextText11"
         android:layout_width="180dp"
         android:layout_height="30dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="3dp"
         android:background="@drawable/ic_edittext_background"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText12"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView27" />
 
@@ -108,7 +106,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="106dp"
+        android:layout_marginEnd="50dp"
         android:layout_marginBottom="3dp"
         android:fontFamily="@font/raleway_bold_italic"
         android:text="Teléfono"
@@ -120,10 +118,10 @@
 
     <EditText
         android:id="@+id/editTextText12"
-        android:layout_width="180dp"
+        android:layout_width="120dp"
         android:layout_height="30dp"
         android:layout_marginTop="3dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="25dp"
         android:background="@drawable/ic_edittext_background"
         android:ems="10"
         android:inputType="text"
@@ -135,7 +133,7 @@
         style="@style/TextColor2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginBottom="3dp"
         android:fontFamily="@font/raleway_bold_italic"
@@ -154,7 +152,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="21dp"
         android:layout_marginBottom="3dp"
         android:fontFamily="@font/raleway_bold_italic"
         android:text="Tipo de sangre"
@@ -165,24 +163,22 @@
 
     <EditText
         android:id="@+id/editTextText13"
-        android:layout_width="180dp"
+        android:layout_width="220dp"
         android:layout_height="30dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginStart="17dp"
         android:layout_marginTop="3dp"
         android:background="@drawable/ic_edittext_background"
         android:ems="10"
         android:inputType="text"
-        app:layout_constraintEnd_toStartOf="@+id/editTextText14"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
     <EditText
         android:id="@+id/editTextText14"
-        android:layout_width="180dp"
+        android:layout_width="80dp"
         android:layout_height="30dp"
         android:layout_marginTop="3dp"
-        android:layout_marginEnd="12dp"
+        android:layout_marginEnd="50dp"
         android:background="@drawable/ic_edittext_background"
         android:ems="10"
         android:inputType="text"
@@ -208,7 +204,7 @@
 
     <EditText
         android:id="@+id/editTextText15"
-        android:layout_width="373dp"
+        android:layout_width="360dp"
         android:layout_height="100dp"
         android:layout_marginTop="3dp"
         android:background="@drawable/ic_edittext_background"
@@ -281,6 +277,7 @@
         android:layout_marginStart="6dp"
         android:layout_marginTop="15dp"
         android:layout_marginEnd="20dp"
+        android:backgroundTint="#d6d6d6"
         android:fontFamily="@font/raleway_bold_italic"
         android:text="Agendadas"
         android:textSize="18sp"
@@ -322,14 +319,14 @@
             android:layout_marginBottom="13dp"
             app:layout_constraintBottom_toTopOf="@+id/ivCitas"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0836"
+            app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/ivCitas"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="72dp"
+            android:layout_marginEnd="67dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/ivChats"
             app:layout_constraintTop_toTopOf="parent"
@@ -359,8 +356,8 @@
 
         <ImageView
             android:id="@+id/ivHome"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
             android:layout_marginStart="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
