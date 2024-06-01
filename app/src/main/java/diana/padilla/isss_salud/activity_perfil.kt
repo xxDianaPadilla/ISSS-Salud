@@ -3,6 +3,7 @@ package diana.padilla.isss_salud
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -78,6 +79,13 @@ class activity_perfil : AppCompatActivity() {
         iconChats.setOnClickListener {
             val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
             startActivity(pantallaMensajeria)
+        }
+
+        val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
+
+        btnCerrarSesion.setOnClickListener {
+            val pantallaIngreso = Intent(this, activity_ingreso::class.java)
+            startActivity(pantallaIngreso)
         }
     }
 }
