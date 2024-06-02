@@ -67,7 +67,7 @@
             android:layout_marginBottom="13dp"
             app:layout_constraintBottom_toTopOf="@+id/ivPerfil"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.85"
+            app:layout_constraintHorizontal_bias="0.836"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
@@ -94,8 +94,8 @@
 
         <ImageView
             android:id="@+id/ivPerfil"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
             android:layout_marginEnd="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

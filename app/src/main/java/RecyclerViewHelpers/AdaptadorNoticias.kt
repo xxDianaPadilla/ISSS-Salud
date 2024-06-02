@@ -1,5 +1,6 @@
-package diana.padilla.isss_salud
+package RecyclerViewHelpers
 
+import Modelo.NoticiasNuevas
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import diana.padilla.isss_salud.R
+import diana.padilla.isss_salud.activity_Noticias_completas
 
 class AdaptadorNoticias(private val context: Context, private val newsList: List<NoticiasNuevas>) :
     RecyclerView.Adapter<AdaptadorNoticias.NewsViewHolder>() {

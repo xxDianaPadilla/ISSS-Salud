@@ -1,5 +1,7 @@
 package diana.padilla.isss_salud
 
+import Modelo.NoticiasNuevas
+import RecyclerViewHelpers.AdaptadorNoticias
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -26,8 +28,14 @@ class activity_noticias : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         val newsList = listOf(
-            NoticiasNuevas("Title 1", "Description 1", "01-01-2024", "ic_logo_isss_small"),
-            NoticiasNuevas("Title 2", "Description 2", "02-01-2024", "ic_logo_isss_small")
+            NoticiasNuevas("Científicos advierten que la gripe podría causar la próxima pandemia", "Una encuesta realizada entre 187 científicos de alto nivel revela que una cepa del virus de la gripe será la causa de la próxima pandemia; por su parte, la OMS indica que la última crisis sanitaria mundial (covid 19) evidenció lo mal preparado que estaba el mundo para enfrentar una emergencia como esa.", "01-01-2024", "https://www.laprensagrafica.com/__export/1713984859692/sites/prensagrafica/img/2024/04/24/pandemia-1654083868.jpg_554688467.jpg"),
+            NoticiasNuevas("Title 2", "Description 2", "02-01-2024", "ic_logo_isss_small"),
+            NoticiasNuevas("Title 3", "Description 3", "03-01-2024", "ic_logo_isss_small"),
+            NoticiasNuevas("Title 4", "Description 4", "04-01-2024", "ic_logo_isss_small"),
+            NoticiasNuevas("Title 5", "Description 5", "05-01-2024", "ic_logo_isss_small"),
+            NoticiasNuevas("Title 6", "Description 6", "06-01-2024", "ic_logo_isss_small"),
+            NoticiasNuevas("Title 7", "Description 7", "07-01-2024", "ic_logo_isss_small"),
+            NoticiasNuevas("Title 8", "Description 8", "08-01-2024", "ic_logo_isss_small")
             // Add more news items
         )
 

@@ -2,6 +2,7 @@
 <resources>
     <array name="preloaded_fonts" translatable="false">
         <item>@font/pacifico</item>
+        <item>@font/raleway_black_italic</item>
         <item>@font/raleway_bold_italic</item>
         <item>@font/raleway_extrabold_italic</item>
         <item>@font/raleway_italic</item>

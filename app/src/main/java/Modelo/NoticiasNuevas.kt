@@ -1,4 +1,4 @@
-package diana.padilla.isss_salud
+package Modelo
 
 data class NoticiasNuevas(
     val title: String,
