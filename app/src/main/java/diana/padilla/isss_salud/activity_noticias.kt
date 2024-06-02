@@ -8,6 +8,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class activity_noticias : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,6 +21,18 @@ class activity_noticias : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val newsList = listOf(
+            NoticiasNuevas("Title 1", "Description 1", "01-01-2024", "ic_logo_isss_small"),
+            NoticiasNuevas("Title 2", "Description 2", "02-01-2024", "ic_logo_isss_small")
+            // Add more news items
+        )
+
+        val adapter = AdaptadorNoticias(this, newsList)
+        recyclerView.adapter = adapter
 
         val logoIsssSmall = findViewById<ImageView>(R.id.ivSmallLogo)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
