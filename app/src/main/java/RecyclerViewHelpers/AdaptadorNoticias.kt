@@ -17,10 +17,10 @@ class AdaptadorNoticias(private val context: Context, private val newsList: List
     RecyclerView.Adapter<AdaptadorNoticias.NewsViewHolder>() {
 
     class NewsViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val title = view.findViewById<TextView>(R.id.news_title)
-        val description = view.findViewById<TextView>(R.id.news_description)
-        val date = view.findViewById<TextView>(R.id.news_date)
-        val image = view.findViewById<ImageView>(R.id.news_image)
+        val title = view.findViewById<TextView>(R.id.TituloCard)
+        val description = view.findViewById<TextView>(R.id.DescripcionCard)
+        val date = view.findViewById<TextView>(R.id.FechaCard)
+        val image = view.findViewById<ImageView>(R.id.ImagenCard)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): NewsViewHolder {
