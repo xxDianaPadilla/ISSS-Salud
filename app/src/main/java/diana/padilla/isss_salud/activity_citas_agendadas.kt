@@ -1,5 +1,8 @@
 package diana.padilla.isss_salud
 
+import Modelo.CitasAgendadas
+import Modelo.NoticiasNuevas
+import RecyclerViewHelpers.AdaptadorAgendadas
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -9,6 +12,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 class activity_citas_agendadas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,6 +25,25 @@ class activity_citas_agendadas : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val recyclerView: RecyclerView = findViewById(R.id.rcvPacientes)
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        val CitasAgendadas = listOf(
+            CitasAgendadas("Nombre 1", "Descripcion 1", "URL paciente"),
+            CitasAgendadas("Nombre 2", "Descripcion 2", "URL paciente 2"),
+            CitasAgendadas("Nombre 3", "Descripcion 3", "URL paciente 3"),
+            CitasAgendadas("Nombre 4", "Descripcion 4", "URL paciente 4"),
+            CitasAgendadas("Nombre 5", "Descripcion 5", "URL paciente 5"),
+            CitasAgendadas("Nombre 6", "Descripcion 6", "URL paciente 6"),
+            CitasAgendadas("Nombre 7", "Descripcion 7", "URL paciente 7"),
+            CitasAgendadas("Nombre 8", "Descripcion 8", "URL paciente 8"),
+            CitasAgendadas("Nombre 9", "Descripcion 9", "URL paciente 9"),
+            CitasAgendadas("Nombre 10", "Descripcion 10", "URL paciente 10")
+        )
+
+        val adapter = AdaptadorAgendadas(this, CitasAgendadas)
+        recyclerView.adapter = adapter
 
         val logoIsssSmall = findViewById<ImageView>(R.id.ivSmallLogo)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK

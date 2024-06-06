@@ -1,4 +1,0 @@
-package RecyclerViewHelpers
-
-class ViewHolderAgendadas {
-}
