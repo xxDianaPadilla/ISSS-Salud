@@ -65,4 +65,12 @@
     <style name="backgroundMenu2">
         <item name="android:background">@drawable/ic_blue_circle</item>
     </style>
+
+    <style name="backgroundNews">
+        <item name="android:backgroundTint">#3E4453</item>
+    </style>
+
+    <style name="backgroundCard">
+        <item name="android:background">#3E4453</item>
+    </style>
 </resources>

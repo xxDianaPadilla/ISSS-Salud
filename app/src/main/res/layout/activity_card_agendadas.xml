@@ -9,6 +9,7 @@
     app:cardElevation="6dp">
 
     <LinearLayout
+        style="@style/backgroundCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -23,6 +24,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/backgroundNews"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -41,12 +43,12 @@
 
             <TextView
                 android:id="@+id/PacienteNombre"
+                style="@style/TextColor2"
                 android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:paddingLeft="15dp"
                 android:paddingBottom="4dp"
                 android:text="Nombre del paciente"
-                android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/CitaDescripcion"
@@ -58,13 +60,13 @@
 
             <TextView
                 android:id="@+id/CitaDescripcion"
+                style="@style/TextColor2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="30dp"
                 android:paddingLeft="15dp"
                 android:paddingBottom="4dp"
                 android:text="Descrpcion"
-                android:textColor="#555"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +78,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            android:orientation="vertical"/>
+            android:orientation="vertical" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
