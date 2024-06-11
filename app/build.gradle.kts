@@ -46,6 +46,7 @@ dependencies {
     implementation ("androidx.cardview:cardview:1.0.0")
     implementation ("androidx.constraintlayout:constraintlayout:2.1.1")
     implementation ("androidx.appcompat:appcompat:1.3.1")
+    implementation("com.oracle.database.jdbc:ojdbc6:11.2.0.4")
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
