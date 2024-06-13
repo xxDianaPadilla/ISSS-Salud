@@ -113,7 +113,7 @@
             app:layout_constraintTop_toTopOf="@+id/btnRegistrarse" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress2"
+            android:id="@+id/txtCorreo"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="60dp"
@@ -130,7 +130,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <EditText
-            android:id="@+id/editTextTextPassword2"
+            android:id="@+id/txtContrasena"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="25dp"
@@ -143,7 +143,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress2" />
+            app:layout_constraintTop_toBottomOf="@+id/txtCorreo" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
