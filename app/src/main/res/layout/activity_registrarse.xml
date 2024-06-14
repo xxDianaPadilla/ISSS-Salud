@@ -81,7 +81,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword" />
+            app:layout_constraintTop_toBottomOf="@+id/txtContrasena1" />
 
         <TextView
             android:id="@+id/textView12"
@@ -99,7 +99,7 @@
             app:layout_constraintTop_toTopOf="@+id/btnIniciarSesion" />
 
         <EditText
-            android:id="@+id/editTextText3"
+            android:id="@+id/txtDUI"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -115,7 +115,7 @@
             app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
         <EditText
-            android:id="@+id/editTextTextPassword"
+            android:id="@+id/txtContrasena1"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -129,10 +129,10 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextTextEmailAddress" />
+            app:layout_constraintTop_toBottomOf="@+id/txtCorreo1" />
 
         <EditText
-            android:id="@+id/editTextTextEmailAddress"
+            android:id="@+id/txtCorreo1"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -146,10 +146,10 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextPhone" />
+            app:layout_constraintTop_toBottomOf="@+id/txtTelefono" />
 
         <EditText
-            android:id="@+id/editTextPhone"
+            android:id="@+id/txtTelefono"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -163,10 +163,10 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText4" />
+            app:layout_constraintTop_toBottomOf="@+id/txtSangre" />
 
         <EditText
-            android:id="@+id/editTextText4"
+            android:id="@+id/txtSangre"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
@@ -180,7 +180,7 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTextText3" />
+            app:layout_constraintTop_toBottomOf="@+id/txtDUI" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
