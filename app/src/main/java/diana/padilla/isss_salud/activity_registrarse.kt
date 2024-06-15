@@ -31,6 +31,13 @@ class activity_registrarse : AppCompatActivity() {
             insets
         }
 
+        val btnIniciarSesion = findViewById<Button>(R.id.btnIniciarSesion)
+
+        btnIniciarSesion.setOnClickListener {
+            val pantallaIniciarSesion = Intent(this, activity_ingreso::class.java)
+            startActivity(pantallaIniciarSesion)
+        }
+
         val txtDUI = findViewById<EditText>(R.id.txtDUI)
         val txtSangre = findViewById<EditText>(R.id.txtSangre)
         val txtTelefono = findViewById<EditText>(R.id.txtTelefono)
@@ -45,70 +52,68 @@ class activity_registrarse : AppCompatActivity() {
             val tel = txtTelefono.text.toString()
             val correo = txtCorreo1.text.toString()
             val contrasena = txtContrasena1.text.toString()
-            val telefonoRegex = Regex("^\\d{8}\$")
+            val telefonoRegex = Regex("^\\d{4}-\\d{4}\$")
             val correoPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}".toRegex()
 
             if (dui.isEmpty() || tipoDeSangre.isEmpty() || tel.isEmpty() || correo.isEmpty() || contrasena.isEmpty()) {
 
                 Toast.makeText(
-                    this,
+                    this@activity_registrarse,
                     "Error, para crear la cuenta debe llenar todas las casillas.",
                     Toast.LENGTH_SHORT
                 ).show()
             } else if (!telefonoRegex.matches(tel)) {
                 Toast.makeText(
-                    this,
-                    "Error, el número de teléfono debe contener 8 dígitos.",
+                    this@activity_registrarse,
+                    "Error, El número de teléfono no es válido.",
                     Toast.LENGTH_SHORT
                 ).show()
             } else if (!correoPattern.matches(correo)) {
                 Toast.makeText(
-                    this,
+                    this@activity_registrarse,
                     "Error, el correo electrónico no es válido.",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                Log.i("Test de credenciales", "DUI: $dui, tipo de sangre: $tipoDeSangre, Telefono: $tel,  Correo: $correo y Contraseña: $contrasena")
-            }
-        }
+                CoroutineScope(Dispatchers.IO).launch {
 
-        btnCrearRegistro.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
+                    val objConexion = ClaseConexion().cadenaConexion()
 
-                val objConexion = ClaseConexion().cadenaConexion()
+                    val addUsuarios = objConexion?.prepareStatement("insert into Usuarios (uuid_usuario, dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?, ?)")!!
+                    addUsuarios.setString(1, UUID.randomUUID().toString())
+                    addUsuarios.setString(2, txtDUI.text.toString())
+                    addUsuarios.setString(3, txtSangre.text.toString())
+                    addUsuarios.setString(4, txtTelefono.text.toString())
+                    addUsuarios.setString(5, txtCorreo1.text.toString())
+                    addUsuarios.setString(6, txtContrasena1.text.toString())
 
-                val addUsuarios = objConexion?.prepareStatement("insert into Usuarios (uuid_usuario, dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?, ?)")!!
-                addUsuarios.setString(1, UUID.randomUUID().toString())
-                addUsuarios.setString(2, txtDUI.text.toString())
-                addUsuarios.setString(3, txtSangre.text.toString())
-                addUsuarios.setString(4, txtTelefono.text.toString())
-                addUsuarios.setString(5, txtCorreo1.text.toString())
-                addUsuarios.setString(3, txtContrasena1.text.toString())
+                    addUsuarios.executeUpdate()
 
-                addUsuarios.executeUpdate()
-
-                withContext(Dispatchers.Main) {
-                    AlertDialog.Builder(this@activity_registrarse)
-                        .setTitle("Registro exitoso")
-                        .setMessage("La cuenta se ha creado exitosamente.")
-                        .setPositiveButton("Aceptar", null)
-                        .show()
+                    withContext(Dispatchers.Main) {
+                        AlertDialog.Builder(this@activity_registrarse)
+                            .setTitle("Registro exitoso")
+                            .setMessage("La cuenta se ha creado exitosamente.")
+                            .setPositiveButton("Aceptar", null)
+                            .show()
                         txtDUI.setText("")
                         txtSangre.setText("")
                         txtTelefono.setText("")
                         txtCorreo1.setText("")
                         txtContrasena1.setText("")
                     }
-
-                    val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
-                    val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-                    if(modoOscuro == Configuration.UI_MODE_NIGHT_YES){
-                    logoISSS.setImageResource(R.drawable.ic_modo_oscuro_logo)
-                    }else{
-                    logoISSS.setImageResource(R.drawable.id_logo_isss)
-                    }
+                }
             }
+
+            val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
+            val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+            if (modoOscuro == Configuration.UI_MODE_NIGHT_YES) {
+                logoISSS.setImageResource(R.drawable.ic_modo_oscuro_logo)
+            } else {
+                logoISSS.setImageResource(R.drawable.id_logo_isss)
+            }
+
+
         }
     }
 }
