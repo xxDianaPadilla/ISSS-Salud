@@ -58,46 +58,45 @@ class activity_ingreso : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                Log.i("Test de credenciales", "Correo: $correo y Contraseña: $contrasena")
-            }
-        }
+                val pantallaNoticias = Intent(this, activity_noticias::class.java)
 
-        btnLogin.setOnClickListener {
-            val pantallaNoticias = Intent(this, activity_noticias::class.java)
-            CoroutineScope(Dispatchers.IO).launch {
+                CoroutineScope(Dispatchers.IO).launch {
 
-                val objConexion = ClaseConexion().cadenaConexion()
+                    val objConexion = ClaseConexion().cadenaConexion()
 
-                val comprobarUsuario =
-                    objConexion?.prepareStatement("SELECT * FROM Usuarios WHERE correo_electronico = ? AND contrasena = ?")!!
+                    val comprobarUsuario =
+                        objConexion?.prepareStatement("SELECT * FROM Usuarios WHERE correo_electronico = ? AND contrasena = ?")!!
                     comprobarUsuario.setString(1, txtCorreo.text.toString())
                     comprobarUsuario.setString(2, txtContrasena.text.toString())
-
                     val resultado = comprobarUsuario.executeQuery()
+
                     if (resultado.next()) {
                         startActivity(pantallaNoticias)
                     } else {
-                        println("Usuario no encontrado, verifique las credenciales")
+                        runOnUiThread{
+                            Toast.makeText(this@activity_ingreso, "Usuario no encontrado, verifique las credenciales", Toast.LENGTH_LONG).show()
+                        }
                     }
+                }
             }
-        }
 
-        if(modoOscuro == Configuration.UI_MODE_NIGHT_YES){
-            logoISSS.setImageResource(R.drawable.ic_modo_oscuro_logo)
-        }else{
-            logoISSS.setImageResource(R.drawable.id_logo_isss)
-        }
+            if (modoOscuro == Configuration.UI_MODE_NIGHT_YES) {
+                logoISSS.setImageResource(R.drawable.ic_modo_oscuro_logo)
+            } else {
+                logoISSS.setImageResource(R.drawable.id_logo_isss)
+            }
 
-        btnRegistrarse.setOnClickListener {
-            val pantallaRegistrarse = Intent(this, activity_registrarse::class.java)
-            startActivity(pantallaRegistrarse)
-        }
+            btnRegistrarse.setOnClickListener {
+                val pantallaRegistrarse = Intent(this, activity_registrarse::class.java)
+                startActivity(pantallaRegistrarse)
+            }
 
-        val txtOlvidoContrasena = findViewById<TextView>(R.id.txtForgotPassword)
+            val txtOlvidoContrasena = findViewById<TextView>(R.id.txtForgotPassword)
 
-        txtOlvidoContrasena.setOnClickListener {
-            val pantallaOlvidoContrasena = Intent(this, activity_contrasena_enlace::class.java)
-            startActivity(pantallaOlvidoContrasena)
+            txtOlvidoContrasena.setOnClickListener {
+                val pantallaOlvidoContrasena = Intent(this, activity_contrasena_enlace::class.java)
+                startActivity(pantallaOlvidoContrasena)
+            }
         }
     }
 }
