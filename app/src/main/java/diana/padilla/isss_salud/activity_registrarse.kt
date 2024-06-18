@@ -52,8 +52,11 @@ class activity_registrarse : AppCompatActivity() {
             val tel = txtTelefono.text.toString()
             val correo = txtCorreo1.text.toString()
             val contrasena = txtContrasena1.text.toString()
+            val duiRegex = Regex("^\\d{8}-\\d\$")
+            val tipoSangreRegex = Regex("^[ABO][+-]\$")
             val telefonoRegex = Regex("^\\d{4}-\\d{4}\$")
-            val correoPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}".toRegex()
+            val correoPattern = Regex ("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
+            val contrasenaRegex = Regex("^(?=.*[0-9!@#\$%^&*()-_=+\\|\\[{\\]};:'\",<.>/?]).{6,}\$")
 
             if (dui.isEmpty() || tipoDeSangre.isEmpty() || tel.isEmpty() || correo.isEmpty() || contrasena.isEmpty()) {
 
@@ -62,6 +65,18 @@ class activity_registrarse : AppCompatActivity() {
                     "Error, para crear la cuenta debe llenar todas las casillas.",
                     Toast.LENGTH_SHORT
                 ).show()
+            } else if (!duiRegex.matches(dui)) {
+                Toast.makeText(
+                    this@activity_registrarse,
+                    "Error, el DUI no es válido. Debe tener el formato adecuado, por ejemplo, 12345678-9.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (!tipoSangreRegex.matches(tipoDeSangre)) {
+            Toast.makeText(
+                this@activity_registrarse,
+                "Error, el tipo de sangre no es válido. Debe tener el formato adecuado, por ejemplo, A+, B-, O+.",
+                Toast.LENGTH_SHORT
+            ).show()
             } else if (!telefonoRegex.matches(tel)) {
                 Toast.makeText(
                     this@activity_registrarse,
@@ -72,6 +87,12 @@ class activity_registrarse : AppCompatActivity() {
                 Toast.makeText(
                     this@activity_registrarse,
                     "Error, el correo electrónico no es válido.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (!contrasenaRegex.matches(contrasena)) {
+                Toast.makeText(
+                    this@activity_registrarse,
+                    "Error, la contraseña debe contener al menos un caracter especial y tener más de 6 caracteres.",
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
