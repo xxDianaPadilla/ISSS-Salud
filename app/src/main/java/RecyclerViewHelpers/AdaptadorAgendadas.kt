@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import diana.padilla.isss_salud.R
 
-class AdaptadorAgendadas(private val context: Context, private val newsList: List<CitasAgendadas>) :
+class AdaptadorAgendadas(private val context: Context, private var newsList: List<CitasAgendadas>) :
     RecyclerView.Adapter<ViewHolderAgendadas>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderAgendadas {
@@ -24,4 +24,9 @@ class AdaptadorAgendadas(private val context: Context, private val newsList: Lis
     }
 
     override fun getItemCount(): Int = newsList.size
+
+    fun actualizarLista(nuevaLista: List<CitasAgendadas>) {
+        newsList = nuevaLista
+        notifyDataSetChanged()
+    }
 }

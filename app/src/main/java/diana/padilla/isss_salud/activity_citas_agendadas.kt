@@ -1,6 +1,7 @@
 package diana.padilla.isss_salud
 
 import Modelo.CitasAgendadas
+import Modelo.ClaseConexion
 import Modelo.NoticiasNuevas
 import RecyclerViewHelpers.AdaptadorAgendadas
 import android.content.Intent
@@ -44,6 +45,26 @@ class activity_citas_agendadas : AppCompatActivity() {
 
         val adapter = AdaptadorAgendadas(this, CitasAgendadas)
         recyclerView.adapter = adapter
+
+        fun obtenerDatos(): List<CitasAgendadas>{
+            val objConexion = ClaseConexion().cadenaConexion()
+
+            val statement = objConexion?.createStatement()
+            val resultSet = statement?.executeQuery("SELECT * FROM CitasMedicas")!!
+
+            val listaCitas = mutableListOf<CitasAgendadas>()
+
+            while (resultSet.next()) {
+                val nombre = resultSet.getString("nombre")
+                val descripcionCita = resultSet.getString("descripcionCita")
+                val urlPaciente = resultSet.getString("urlPaciente")
+
+                val citaAgendada = CitasAgendadas(nombre, descripcionCita, urlPaciente)
+                listaCitas.add(citaAgendada)
+            }
+            return listaCitas
+        }
+
 
         val logoIsssSmall = findViewById<ImageView>(R.id.ivSmallLogo)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
