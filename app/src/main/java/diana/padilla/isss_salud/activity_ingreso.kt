@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import java.security.MessageDigest
 
 class activity_ingreso : AppCompatActivity() {
     @SuppressLint("SuspiciousIndentation")
@@ -37,8 +38,12 @@ class activity_ingreso : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        val correoPattern = "[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}".toRegex()
+        val correoPattern = Regex ("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
 
+        fun hashSHA256(input: String): String {
+            val bytes = MessageDigest.getInstance("SHA-256").digest(input.toByteArray())
+            return bytes.joinToString("") { "%02x".format(it) }
+        }
 
         btnLogin.setOnClickListener {
 
@@ -64,10 +69,12 @@ class activity_ingreso : AppCompatActivity() {
 
                     val objConexion = ClaseConexion().cadenaConexion()
 
+                    val contraseniaEncriptada = hashSHA256(txtContrasena.text.toString())
+
                     val comprobarUsuario =
                         objConexion?.prepareStatement("SELECT * FROM Usuarios WHERE correo_electronico = ? AND contrasena = ?")!!
                     comprobarUsuario.setString(1, txtCorreo.text.toString())
-                    comprobarUsuario.setString(2, txtContrasena.text.toString())
+                    comprobarUsuario.setString(2, contraseniaEncriptada)
                     val resultado = comprobarUsuario.executeQuery()
 
                     if (resultado.next()) {
@@ -75,6 +82,7 @@ class activity_ingreso : AppCompatActivity() {
                     } else {
                         runOnUiThread{
                             Toast.makeText(this@activity_ingreso, "Usuario no encontrado, verifique las credenciales", Toast.LENGTH_LONG).show()
+                            println("contraseña $contraseniaEncriptada")
                         }
                     }
                 }
