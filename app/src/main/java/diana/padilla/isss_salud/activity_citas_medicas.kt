@@ -87,5 +87,11 @@ class activity_citas_medicas : AppCompatActivity() {
             val pantallaCitasAgendadas = Intent(this, activity_citas_agendadas::class.java)
             startActivity(pantallaCitasAgendadas)
         }
+
+        ////////////////////Poner dentro del boton de Agregar para actualizar la card////////////////////
+        /*val nuevasCitas = obtenerDatos()
+                withContext(Dispatchers.Main){
+                    (rcvPacientes.adapter as? Adaptador)?.actualizarListanuevasCitas
+                }      */
     }
 }
