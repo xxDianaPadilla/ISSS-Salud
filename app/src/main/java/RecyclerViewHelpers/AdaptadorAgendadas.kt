@@ -12,7 +12,7 @@ class AdaptadorAgendadas(private val context: Context, private var newsList: Lis
     RecyclerView.Adapter<ViewHolderAgendadas>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderAgendadas {
-        val view = LayoutInflater.from(context).inflate(R.layout.activity_card_agendadas, parent, false)
+        val view = LayoutInflater.from(context).inflate(R.layout.activity_card_citas, parent, false)
         return ViewHolderAgendadas(view)
     }
 

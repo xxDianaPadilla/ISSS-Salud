@@ -38,6 +38,15 @@ class activity_registrarse : AppCompatActivity() {
             startActivity(pantallaIniciarSesion)
         }
 
+        val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
+        val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        if (modoOscuro == Configuration.UI_MODE_NIGHT_YES) {
+            logoISSS.setImageResource(R.drawable.ic_modo_oscuro_logo)
+        } else {
+            logoISSS.setImageResource(R.drawable.id_logo_isss)
+        }
+
         val txtDUI = findViewById<EditText>(R.id.txtDUI)
         val txtSangre = findViewById<EditText>(R.id.txtSangre)
         val txtTelefono = findViewById<EditText>(R.id.txtTelefono)
@@ -53,7 +62,6 @@ class activity_registrarse : AppCompatActivity() {
             val correo = txtCorreo1.text.toString()
             val contrasena = txtContrasena1.text.toString()
             val duiRegex = Regex("^\\d{8}-\\d\$")
-            val tipoSangreRegex = Regex("^[ABO][+-]\$")
             val telefonoRegex = Regex("^\\d{4}-\\d{4}\$")
             val correoPattern = Regex ("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
             val contrasenaRegex = Regex("^(?=.*[0-9!@#\$%^&*()-_=+\\|\\[{\\]};:'\",<.>/?]).{6,}\$")
@@ -71,12 +79,6 @@ class activity_registrarse : AppCompatActivity() {
                     "Error, el DUI no es válido. Debe tener el formato adecuado, por ejemplo, 12345678-9.",
                     Toast.LENGTH_SHORT
                 ).show()
-            } else if (!tipoSangreRegex.matches(tipoDeSangre)) {
-            Toast.makeText(
-                this@activity_registrarse,
-                "Error, el tipo de sangre no es válido. Debe tener el formato adecuado, por ejemplo, A+, B-, O+.",
-                Toast.LENGTH_SHORT
-            ).show()
             } else if (!telefonoRegex.matches(tel)) {
                 Toast.makeText(
                     this@activity_registrarse,
@@ -100,13 +102,12 @@ class activity_registrarse : AppCompatActivity() {
 
                     val objConexion = ClaseConexion().cadenaConexion()
 
-                    val addUsuarios = objConexion?.prepareStatement("insert into Usuarios (uuid_usuario, dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?, ?)")!!
-                    addUsuarios.setString(1, UUID.randomUUID().toString())
-                    addUsuarios.setString(2, txtDUI.text.toString())
-                    addUsuarios.setString(3, txtSangre.text.toString())
-                    addUsuarios.setString(4, txtTelefono.text.toString())
-                    addUsuarios.setString(5, txtCorreo1.text.toString())
-                    addUsuarios.setString(6, txtContrasena1.text.toString())
+                    val addUsuarios = objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?)")!!
+                    addUsuarios.setString(1, txtDUI.text.toString())
+                    addUsuarios.setString(2, txtSangre.text.toString())
+                    addUsuarios.setString(3, txtTelefono.text.toString())
+                    addUsuarios.setString(4, txtCorreo1.text.toString())
+                    addUsuarios.setString(5, txtContrasena1.text.toString())
 
                     addUsuarios.executeUpdate()
 
@@ -124,17 +125,6 @@ class activity_registrarse : AppCompatActivity() {
                     }
                 }
             }
-
-            val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
-            val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-            if (modoOscuro == Configuration.UI_MODE_NIGHT_YES) {
-                logoISSS.setImageResource(R.drawable.ic_modo_oscuro_logo)
-            } else {
-                logoISSS.setImageResource(R.drawable.id_logo_isss)
-            }
-
-
         }
     }
 }
