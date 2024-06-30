@@ -1,7 +1,9 @@
 package Modelo
 
 data class CitasAgendadas (
+    val idCita: Int,
+    val fechaCita: String,
+    val horaCita: String,
     val nomPaciente: String,
-    val descripcionCita: String,
-    val imgPaciente: String
+    val doctorCita: String
 )

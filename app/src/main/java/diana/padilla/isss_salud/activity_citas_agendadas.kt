@@ -15,6 +15,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class activity_citas_agendadas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,6 +33,37 @@ class activity_citas_agendadas : AppCompatActivity() {
 
         val recyclerView: RecyclerView = findViewById(R.id.rcvPacientes)
         recyclerView.layoutManager = LinearLayoutManager(this)
+
+        fun obtenerCitasAgendadas(): List<CitasAgendadas>{
+            val objConexion = ClaseConexion().cadenaConexion()
+
+            val statement = objConexion?.createStatement()
+            val resultSet = statement?.executeQuery("SELECT * FROM CitasMedicas")!!
+
+            val listaCitasAgendadas = mutableListOf<CitasAgendadas>()
+
+            while (resultSet.next()){
+                val id_cita = resultSet.getInt("id_cita")
+                val fecha_cita = resultSet.getDate("fecha_cita")
+                val hora_cita = resultSet.getString("hora_cita")
+                val id_usuario = resultSet.getInt("id_usuario")
+                val id_doctor = resultSet.getInt("id_doctor")
+
+                val valoresJuntos = CitasAgendadas(id_cita, fecha_cita.toString(), hora_cita, id_usuario.toString(), id_doctor.toString())
+
+                listaCitasAgendadas.add(valoresJuntos)
+            }
+
+            return listaCitasAgendadas
+        }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val citasAgendadas = obtenerCitasAgendadas()
+            withContext(Dispatchers.Main){
+                val adapter = AdaptadorAgendadas(citasAgendadas)
+                recyclerView.adapter = adapter
+            }
+        }
 
 
         val logoIsssSmall = findViewById<ImageView>(R.id.ivSmallLogo)

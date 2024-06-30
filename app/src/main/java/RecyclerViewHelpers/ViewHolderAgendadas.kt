@@ -8,6 +8,7 @@ import diana.padilla.isss_salud.R
 
 class ViewHolderAgendadas(view: View) : RecyclerView.ViewHolder(view) {
     val nombre: TextView = view.findViewById(R.id.PacienteNombre)
-    val descripcionCita: TextView = view.findViewById(R.id.CitaDescripcion)
-    val imgPaciente: ImageView = view.findViewById(R.id.ImgCard)
+    val FechaCita: TextView = view.findViewById(R.id.FechaCita)
+    val horaCita: TextView = view.findViewById(R.id.HoraCita)
+    val doctorCita: TextView = view.findViewById(R.id.DoctorCita)
 }

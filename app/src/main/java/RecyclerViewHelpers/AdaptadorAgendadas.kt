@@ -8,25 +8,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import diana.padilla.isss_salud.R
 
-class AdaptadorAgendadas(private val context: Context, private var newsList: List<CitasAgendadas>) :
-    RecyclerView.Adapter<ViewHolderAgendadas>() {
+class AdaptadorAgendadas(var Datos: List<CitasAgendadas>): RecyclerView.Adapter<ViewHolderAgendadas>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolderAgendadas {
-        val view = LayoutInflater.from(context).inflate(R.layout.activity_card_citas, parent, false)
-        return ViewHolderAgendadas(view)
+        val vista = LayoutInflater.from(parent.context).inflate(R.layout.activity_card_citas, parent, false)
+        return ViewHolderAgendadas(vista)
     }
+
+    override fun getItemCount(): Int = Datos.size
 
     override fun onBindViewHolder(holder: ViewHolderAgendadas, position: Int) {
-        val agendadas = newsList[position]
+        val agendadas = Datos[position]
         holder.nombre.text = agendadas.nomPaciente
-        holder.descripcionCita.text = agendadas.descripcionCita
-        Glide.with(context).load(agendadas.imgPaciente).into(holder.imgPaciente)
-    }
-
-    override fun getItemCount(): Int = newsList.size
-
-    fun actualizarLista(nuevaLista: List<CitasAgendadas>) {
-        newsList = nuevaLista
-        notifyDataSetChanged()
+        holder.FechaCita.text = agendadas.fechaCita
+        holder.horaCita.text = agendadas.horaCita
+        holder.doctorCita.text = agendadas.doctorCita
     }
 }
