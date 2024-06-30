@@ -60,6 +60,11 @@ class activity_ingreso : AppCompatActivity() {
         val btnLogin = findViewById<Button>(R.id.btnLogin)
         val correoPattern = Regex ("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
 
+        fun hashSHA256(contrasenaEncriptada: String): String{
+            val bytes = MessageDigest.getInstance("SHA-256").digest(contrasenaEncriptada.toByteArray())
+            return bytes.joinToString(""){ "%02x".format(it) }
+        }
+
         btnLogin.setOnClickListener {
 
             val correo = txtCorreo.text.toString()
@@ -84,10 +89,12 @@ class activity_ingreso : AppCompatActivity() {
 
                     val objConexion = ClaseConexion().cadenaConexion()
 
+                    val contrasenaEncriptacion = hashSHA256(txtContrasena.text.toString())
+
                     val comprobarUsuario =
                         objConexion?.prepareStatement("SELECT * FROM Usuarios WHERE correo_electronico = ? AND contrasena = ?")!!
                     comprobarUsuario.setString(1, txtCorreo.text.toString())
-                    comprobarUsuario.setString(2, txtContrasena.text.toString())
+                    comprobarUsuario.setString(2, contrasenaEncriptacion)
                     val resultado = comprobarUsuario.executeQuery()
 
                     if (resultado.next()) {

@@ -18,6 +18,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.security.MessageDigest
 import java.util.UUID
 
 class activity_registrarse : AppCompatActivity() {
@@ -53,6 +54,11 @@ class activity_registrarse : AppCompatActivity() {
         val txtCorreo1 = findViewById<EditText>(R.id.txtCorreo1)
         val txtContrasena1 = findViewById<EditText>(R.id.txtContrasena1)
         val btnCrearRegistro: Button = findViewById(R.id.btnCrearRegistro)
+
+        fun hashSHA256(contrasenaEncriptada: String): String{
+            val bytes = MessageDigest.getInstance("SHA-256").digest(contrasenaEncriptada.toByteArray())
+            return bytes.joinToString(""){ "%02x".format(it) }
+        }
 
         btnCrearRegistro.setOnClickListener {
 
@@ -102,12 +108,14 @@ class activity_registrarse : AppCompatActivity() {
 
                     val objConexion = ClaseConexion().cadenaConexion()
 
+                    val contrasenaEncriptacion = hashSHA256(txtContrasena1.text.toString())
+
                     val addUsuarios = objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?)")!!
                     addUsuarios.setString(1, txtDUI.text.toString())
                     addUsuarios.setString(2, txtSangre.text.toString())
                     addUsuarios.setString(3, txtTelefono.text.toString())
                     addUsuarios.setString(4, txtCorreo1.text.toString())
-                    addUsuarios.setString(5, txtContrasena1.text.toString())
+                    addUsuarios.setString(5, contrasenaEncriptacion)
 
                     addUsuarios.executeUpdate()
 
