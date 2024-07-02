@@ -1,5 +1,6 @@
 package diana.padilla.isss_salud
 
+import Modelo.ClaseConexion
 import Modelo.NoticiasNuevas
 import RecyclerViewHelpers.AdaptadorNoticias
 import android.content.Intent
@@ -12,6 +13,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class activity_noticias : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -27,12 +32,36 @@ class activity_noticias : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        val newsList = listOf(
-            NoticiasNuevas("Científicos advierten que la gripe podría causar la próxima pandemia", "Una encuesta realizada entre 187 científicos de alto nivel revela que una cepa del virus de la gripe será la causa de la próxima pandemia; por su parte, la OMS indica que la última crisis sanitaria mundial (covid 19) evidenció lo mal preparado que estaba el mundo para enfrentar una emergencia como esa.", "01-01-2024", "https://www.laprensagrafica.com/__export/1713984859692/sites/prensagrafica/img/2024/04/24/pandemia-1654083868.jpg_554688467.jpg"),
-        )
+        fun obtenerNoticias(): List<NoticiasNuevas>{
+            val objConexion = ClaseConexion().cadenaConexion()
 
-        val adapter = AdaptadorNoticias(this, newsList)
-        recyclerView.adapter = adapter
+            val statement = objConexion?.createStatement()
+            val resultSet = statement?.executeQuery("SELECT * FROM NoticiasMedicas")!!
+
+            val listaNoticias = mutableListOf<NoticiasNuevas>()
+
+            while(resultSet.next()){
+                val id_noticia = resultSet.getInt("id_noticia")
+                val imagen_noticia = resultSet.getString("imagen_noticia")
+                val titulo_noticia = resultSet.getString("titulo_noticia")
+                val descripcion_noticia = resultSet.getString("descripcion_noticia")
+                val fecha_noticia = resultSet.getDate("fecha_noticia")
+
+                val valoresJuntos = NoticiasNuevas(id_noticia, imagen_noticia, titulo_noticia, descripcion_noticia, fecha_noticia.toString())
+
+                listaNoticias.add(valoresJuntos)
+            }
+
+            return listaNoticias
+        }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val noticiasNuevas = obtenerNoticias()
+            withContext(Dispatchers.Main){
+                val adapter = AdaptadorNoticias(noticiasNuevas)
+                recyclerView.adapter = adapter
+            }
+        }
 
         val logoIsssSmall = findViewById<ImageView>(R.id.ivSmallLogo)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK

@@ -2,7 +2,6 @@ package diana.padilla.isss_salud
 
 import Modelo.CitasAgendadas
 import Modelo.ClaseConexion
-import Modelo.NoticiasNuevas
 import RecyclerViewHelpers.AdaptadorAgendadas
 import android.content.Intent
 import android.content.res.Configuration
