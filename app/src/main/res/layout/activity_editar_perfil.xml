@@ -59,7 +59,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/ivMenuCircle"
             style="@style/backgroundMenu2"
             android:layout_width="41dp"
             android:layout_height="43dp"

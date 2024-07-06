@@ -21,6 +21,11 @@ import kotlinx.coroutines.launch
 import java.security.MessageDigest
 
 class activity_ingreso : AppCompatActivity() {
+
+companion object variablesGlobales{
+     lateinit var miMorreo: String
+}
+
     @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +58,7 @@ class activity_ingreso : AppCompatActivity() {
         btnRegistrarse.setOnClickListener{
             val pantallaRegistrarse = Intent(this, activity_registrarse::class.java)
             startActivity(pantallaRegistrarse)
+            overridePendingTransition(0, 0)
         }
 
         val txtCorreo = findViewById<EditText>(R.id.txtCorreo)
@@ -98,6 +104,10 @@ class activity_ingreso : AppCompatActivity() {
                     val resultado = comprobarUsuario.executeQuery()
 
                     if (resultado.next()) {
+                        val correoIng = txtCorreo.text.toString()
+                        pantallaNoticias.putExtra("correoIng", correoIng)
+
+                        miMorreo = txtCorreo.text.toString()
                         startActivity(pantallaNoticias)
                     } else {
                         runOnUiThread{

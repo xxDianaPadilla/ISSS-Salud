@@ -40,6 +40,7 @@ class activity_registrarse : AppCompatActivity() {
         btnIniciarSesion.setOnClickListener {
             val pantallaIniciarSesion = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaIniciarSesion)
+            overridePendingTransition(0, 0)
         }
 
         val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)

@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/editTextText9"
+                android:id="@+id/txtNombreSolicitante"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -46,7 +46,7 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Nombre"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText9"
+                app:layout_constraintBottom_toTopOf="@+id/txtNombreSolicitante"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnFormulario" />
 
@@ -62,20 +62,26 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Tipo de sangre"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText10"
+                app:layout_constraintBottom_toTopOf="@+id/txtTipoSangreSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtFechaSolicitud" />
 
             <EditText
-                android:id="@+id/editTextText10"
+                android:id="@+id/txtTipoSangreSolicitud"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
+<<<<<<< HEAD
                 android:inputType="text"
                 android:textColor="#000000"
                 android:textSize="16sp"
+=======
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
+>>>>>>> 810ad44d40aa043741546475dc0dfd38eaaaf046
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -91,19 +97,25 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="DUI"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText11"
+                app:layout_constraintBottom_toTopOf="@+id/txtDuiSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText9" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNombreSolicitante" />
 
             <EditText
-                android:id="@+id/editTextText11"
+                android:id="@+id/txtDuiSolicitud"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
+<<<<<<< HEAD
                 android:inputType="text"
                 android:textSize="16sp"
+=======
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
+>>>>>>> 810ad44d40aa043741546475dc0dfd38eaaaf046
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
@@ -119,19 +131,25 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Teléfono"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText12"
+                app:layout_constraintBottom_toTopOf="@+id/txtTelefonoSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText13" />
+                app:layout_constraintTop_toBottomOf="@+id/txtCorreoSolicitud" />
 
             <EditText
-                android:id="@+id/editTextText12"
+                android:id="@+id/txtTelefonoSolicitud"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
+<<<<<<< HEAD
                 android:inputType="text"
                 android:textSize="16sp"
+=======
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
+>>>>>>> 810ad44d40aa043741546475dc0dfd38eaaaf046
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -147,9 +165,9 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Correo"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText13"
+                app:layout_constraintBottom_toTopOf="@+id/txtCorreoSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText11" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDuiSolicitud" />
 
             <TextView
                 android:id="@+id/textView20"
@@ -164,17 +182,23 @@
                 android:textSize="19sp"
                 app:layout_constraintBottom_toTopOf="@+id/txtFechaSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText12" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTelefonoSolicitud" />
 
             <EditText
-                android:id="@+id/editTextText13"
+                android:id="@+id/txtCorreoSolicitud"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
+<<<<<<< HEAD
                 android:inputType="text"
                 android:textSize="16sp"
+=======
+                android:inputType="none"
+                android:focusable="false"
+                android:clickable="false"
+>>>>>>> 810ad44d40aa043741546475dc0dfd38eaaaf046
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
@@ -203,12 +227,12 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Motivo"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText15"
+                app:layout_constraintBottom_toTopOf="@+id/txtMotivoSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText10" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTipoSangreSolicitud" />
 
             <EditText
-                android:id="@+id/editTextText15"
+                android:id="@+id/txtMotivoSolicitud"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -233,7 +257,7 @@
                 android:text="Enviar"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText15" />
+                app:layout_constraintTop_toBottomOf="@+id/txtMotivoSolicitud" />
 
             <TextView
                 android:id="@+id/textView28"
@@ -327,7 +351,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/imageView2"
+            android:id="@+id/ivMenuCircle"
             style="@style/backgroundMenu2"
             android:layout_width="41dp"
             android:layout_height="43dp"
