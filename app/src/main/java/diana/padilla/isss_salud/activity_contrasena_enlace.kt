@@ -62,7 +62,7 @@ class activity_contrasena_enlace : AppCompatActivity() {
         val btnEnvioCorreo = findViewById<Button>(R.id.btnEnvioCorreo)
 
         btnEnvioCorreo.setOnClickListener {
-            val pantallaEnvioCorreo = Intent(this, activity_envio_correo::class.java)
+            val pantallaEnvioCorreo = Intent(this, activity_codigo::class.java)
             startActivity(pantallaEnvioCorreo)
         }
 

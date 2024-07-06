@@ -49,7 +49,7 @@
             android:name=".activity_cambio_contrasena"
             android:exported="false" />
         <activity
-            android:name=".activity_envio_correo"
+            android:name=".activity_codigo"
             android:exported="false" />
         <activity
             android:name=".activity_contrasena_enlace"

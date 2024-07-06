@@ -52,8 +52,8 @@ class activity_cambio_contrasena : AppCompatActivity() {
         val btnCambiarPassword = findViewById<Button>(R.id.btnCambiarPassword)
 
         btnCambiarPassword.setOnClickListener {
-            val pantallaCambioContrasena = Intent(this, activity_nueva_contrasena::class.java)
-            startActivity(pantallaCambioContrasena)
+            val pantallaMensajeContrasena = Intent(this, activity_nueva_contrasena::class.java)
+            startActivity(pantallaMensajeContrasena)
         }
     }
 }

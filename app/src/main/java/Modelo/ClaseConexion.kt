@@ -7,9 +7,9 @@ class ClaseConexion {
 
     fun cadenaConexion(): Connection? {
         try {
-            val url = "jdbc:oracle:thin:@192.168.0.4:1521:xe"
-            val usuario = "DIANA_DEVELOPER"
-            val contrasena = "Diana#2006"
+            val url = "jdbc:oracle:thin:@192.168.0.12:1521:xe"
+            val usuario = "Ricardo_developer"
+            val contrasena ="Ricardo2024."
 
             val connection = DriverManager.getConnection(url, usuario, contrasena)
             return connection

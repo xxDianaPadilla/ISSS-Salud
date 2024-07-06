@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    style="@style/background"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_codigo">
+
+    <ImageView
+        android:id="@+id/IvLogoIsss"
+        android:layout_width="250dp"
+        android:layout_height="272dp"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/id_logo_isss"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout3"
+        style="@style/backgroundBox"
+        android:layout_width="370dp"
+        android:layout_height="300dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="150dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/IvLogoIsss">
+
+        <Button
+            android:id="@+id/btnConfirmarCodigo"
+            style="@style/buttonStyle4"
+            android:layout_width="306dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/raleway_bold_italic"
+            android:text="CONFIRMAR"
+            android:textColor="#d4e2f6"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView4"
+            style="@style/TextColor2"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/raleway_extrabold_italic"
+            android:text="Verifique su codigo"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            style="@style/TextColor2"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/raleway_italic"
+            android:text="Ingrese correctamente el codigo que se le ha enviado con anterioridad a su correo electronico"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+        <EditText
+            android:id="@+id/textView29"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/ic_edittext_background"
+            android:ems="10"
+            android:fontFamily="@font/raleway_semibold"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirmarCodigo"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/textView30"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/ic_edittext_background"
+            android:ems="10"
+            android:fontFamily="@font/raleway_semibold"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirmarCodigo"
+            app:layout_constraintEnd_toStartOf="@+id/textView33"
+            app:layout_constraintStart_toEndOf="@+id/textView34" />
+
+        <EditText
+            android:id="@+id/textView31"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/ic_edittext_background"
+            android:ems="10"
+            android:fontFamily="@font/raleway_semibold"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirmarCodigo"
+            app:layout_constraintStart_toEndOf="@+id/textView29" />
+
+        <EditText
+            android:id="@+id/textView32"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/ic_edittext_background"
+            android:ems="10"
+            android:fontFamily="@font/raleway_semibold"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirmarCodigo"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <EditText
+            android:id="@+id/textView33"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/ic_edittext_background"
+            android:ems="10"
+            android:fontFamily="@font/raleway_semibold"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirmarCodigo"
+            app:layout_constraintEnd_toStartOf="@+id/textView32" />
+
+        <EditText
+            android:id="@+id/textView34"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="25dp"
+            android:background="@drawable/ic_edittext_background"
+            android:ems="10"
+            android:fontFamily="@font/raleway_semibold"
+            android:inputType="phone"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnConfirmarCodigo"
+            app:layout_constraintStart_toEndOf="@+id/textView31" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
