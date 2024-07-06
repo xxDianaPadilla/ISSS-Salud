@@ -30,12 +30,6 @@ class activity_noticias : AppCompatActivity() {
             insets
         }
 
-        val correoRecibidoPeroNoticias = intent.getStringExtra("correoIng")
-        println("ESTE ES EL CORREO RECIBIDO DESDE NOTICIAS $correoRecibidoPeroNoticias")
-        Toast.makeText(this, "COREO $correoRecibidoPeroNoticias", Toast.LENGTH_SHORT).show()
-
-
-
         val ivMenuCircle = findViewById<ImageView>(R.id.ivMenuCircle)
 
         /*ivMenuCircle.setOnClickListener {
@@ -134,7 +128,6 @@ class activity_noticias : AppCompatActivity() {
 
         iconCitas.setOnClickListener{
             val pantallaCitasMedicas = Intent(this, activity_citas_medicas::class.java)
-            pantallaCitasMedicas.putExtra("correoIng2", correoRecibidoPeroNoticias)
             startActivity(pantallaCitasMedicas)
         }
 
