@@ -67,8 +67,12 @@ class activity_citas_medicas : AppCompatActivity() {
             if (usuarios.isNotEmpty()) {
                 val miDui = usuarios[0].dui
                 dui.hint = miDui
-
-
+                val miCorreo = usuarios[0].correo_electronico
+                correo.hint = miCorreo
+                val miTelefono = usuarios[0].telefono
+                telefono.hint = miTelefono
+                val miTipoSangre = usuarios[0].tipo_sangre
+                tipoSangre.hint = miTipoSangre
             }
         }
 
