@@ -24,12 +24,13 @@
             <EditText
                 android:id="@+id/editTextText9"
                 android:layout_width="360dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
                 android:inputType="text"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView15" />
@@ -63,17 +64,18 @@
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/editTextText10"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editTextText14" />
+                app:layout_constraintTop_toBottomOf="@+id/txtFechaSolicitud" />
 
             <EditText
                 android:id="@+id/editTextText10"
                 android:layout_width="360dp"
-                android:layout_height="50dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
                 android:inputType="text"
                 android:textColor="#000000"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -96,11 +98,12 @@
             <EditText
                 android:id="@+id/editTextText11"
                 android:layout_width="360dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
                 android:inputType="text"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView27" />
@@ -123,11 +126,12 @@
             <EditText
                 android:id="@+id/editTextText12"
                 android:layout_width="360dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
                 android:inputType="text"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
@@ -158,33 +162,35 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Fecha solicitud"
                 android:textSize="19sp"
-                app:layout_constraintBottom_toTopOf="@+id/editTextText14"
+                app:layout_constraintBottom_toTopOf="@+id/txtFechaSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextText12" />
 
             <EditText
                 android:id="@+id/editTextText13"
                 android:layout_width="360dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
                 android:inputType="text"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
             <EditText
-                android:id="@+id/editTextText14"
+                android:id="@+id/txtFechaSolicitud"
                 android:layout_width="360dp"
-                android:layout_height="30dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="none"
+                android:focusable="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView20" />
+                app:layout_constraintTop_toBottomOf="@+id/textView20"  />
 
             <TextView
                 android:id="@+id/textView21"
@@ -204,12 +210,13 @@
             <EditText
                 android:id="@+id/editTextText15"
                 android:layout_width="360dp"
-                android:layout_height="100dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="7dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
                 android:inputType="text"
+                android:textSize="16sp"
                 app:layout_constraintBottom_toTopOf="@+id/button3"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

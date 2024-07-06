@@ -163,19 +163,19 @@
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtSangre" />
+            app:layout_constraintTop_toBottomOf="@+id/spTipoSangre" />
 
-        <EditText
-            android:id="@+id/txtSangre"
+        <Spinner
+            android:id="@+id/spTipoSangre"
+            style="@style/TextColor2"
             android:layout_width="290dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_marginTop="7dp"
             android:backgroundTint="#E5E5E5"
             android:ems="10"
             android:fontFamily="@font/raleway_bold_italic"
             android:hint="Tipo de sangre"
             android:inputType="text"
-            style="@style/TextColor2"
             android:textColorHint="#c8c8c8"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"

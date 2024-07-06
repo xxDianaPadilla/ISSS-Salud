@@ -6,12 +6,15 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.util.Log
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
@@ -49,11 +52,17 @@ class activity_registrarse : AppCompatActivity() {
         }
 
         val txtDUI = findViewById<EditText>(R.id.txtDUI)
-        val txtSangre = findViewById<EditText>(R.id.txtSangre)
         val txtTelefono = findViewById<EditText>(R.id.txtTelefono)
         val txtCorreo1 = findViewById<EditText>(R.id.txtCorreo1)
         val txtContrasena1 = findViewById<EditText>(R.id.txtContrasena1)
         val btnCrearRegistro: Button = findViewById(R.id.btnCrearRegistro)
+
+        val spTipoSangre = findViewById<Spinner>(R.id.spTipoSangre)
+        val listaTipoSangre = listOf("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-")
+        val adapterTipoSangre = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaTipoSangre)
+        spTipoSangre.adapter = adapterTipoSangre
+
+
 
         fun hashSHA256(contrasenaEncriptada: String): String{
             val bytes = MessageDigest.getInstance("SHA-256").digest(contrasenaEncriptada.toByteArray())
@@ -63,7 +72,7 @@ class activity_registrarse : AppCompatActivity() {
         btnCrearRegistro.setOnClickListener {
 
             val dui = txtDUI.text.toString()
-            val tipoDeSangre = txtSangre.text.toString()
+            val tipoDeSangre = spTipoSangre.selectedItem.toString()
             val tel = txtTelefono.text.toString()
             val correo = txtCorreo1.text.toString()
             val contrasena = txtContrasena1.text.toString()
@@ -112,7 +121,7 @@ class activity_registrarse : AppCompatActivity() {
 
                     val addUsuarios = objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?)")!!
                     addUsuarios.setString(1, txtDUI.text.toString())
-                    addUsuarios.setString(2, txtSangre.text.toString())
+                    addUsuarios.setString(2, spTipoSangre.selectedItemPosition.toString())
                     addUsuarios.setString(3, txtTelefono.text.toString())
                     addUsuarios.setString(4, txtCorreo1.text.toString())
                     addUsuarios.setString(5, contrasenaEncriptacion)
@@ -126,7 +135,6 @@ class activity_registrarse : AppCompatActivity() {
                             .setPositiveButton("Aceptar", null)
                             .show()
                         txtDUI.setText("")
-                        txtSangre.setText("")
                         txtTelefono.setText("")
                         txtCorreo1.setText("")
                         txtContrasena1.setText("")
