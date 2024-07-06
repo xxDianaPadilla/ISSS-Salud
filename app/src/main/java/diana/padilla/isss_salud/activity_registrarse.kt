@@ -122,7 +122,7 @@ class activity_registrarse : AppCompatActivity() {
 
                     val addUsuarios = objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?)")!!
                     addUsuarios.setString(1, txtDUI.text.toString())
-                    addUsuarios.setString(2, spTipoSangre.selectedItemPosition.toString())
+                    addUsuarios.setString(2, spTipoSangre.selectedItem.toString())
                     addUsuarios.setString(3, txtTelefono.text.toString())
                     addUsuarios.setString(4, txtCorreo1.text.toString())
                     addUsuarios.setString(5, contrasenaEncriptacion)

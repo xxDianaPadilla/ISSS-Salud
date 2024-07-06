@@ -1,11 +1,9 @@
 package diana.padilla.isss_salud
 
-<<<<<<< HEAD
-import android.app.DatePickerDialog
-=======
+
+
 import Modelo.ClaseConexion
 import Modelo.Usuarios
->>>>>>> 810ad44d40aa043741546475dc0dfd38eaaaf046
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -18,15 +16,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-<<<<<<< HEAD
-import java.util.Calendar
-=======
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.sql.ResultSet
->>>>>>> 810ad44d40aa043741546475dc0dfd38eaaaf046
 
 class activity_citas_medicas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -145,7 +139,7 @@ class activity_citas_medicas : AppCompatActivity() {
             val pantallaCitasAgendadas = Intent(this, activity_citas_agendadas::class.java)
             startActivity(pantallaCitasAgendadas)
         }
-<<<<<<< HEAD
+
 
         /*val txtFechaNacimiento = root.findViewById<EditText>(R.id.txtFechaSolicitud)
 
@@ -171,7 +165,5 @@ class activity_citas_medicas : AppCompatActivity() {
                 withContext(Dispatchers.Main){
                     (rcvPacientes.adapter as? Adaptador)?.actualizarListanuevasCitas
                 }      */
-=======
->>>>>>> 810ad44d40aa043741546475dc0dfd38eaaaf046
     }
 }

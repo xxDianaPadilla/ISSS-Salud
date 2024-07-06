@@ -81,7 +81,7 @@ class activity_perfil : AppCompatActivity() {
             startActivity(pantallaMensajeria)
         }
 
-        val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
+        /*val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
 
         btnCerrarSesion.setOnClickListener {
             val pantallaIngreso = Intent(this, activity_ingreso::class.java)
@@ -93,6 +93,6 @@ class activity_perfil : AppCompatActivity() {
         btnEditarPerfil.setOnClickListener {
             val pantallaEditarPerfil = Intent(this, activity_editar_perfil::class.java)
             startActivity(pantallaEditarPerfil)
-        }
+        }*/
     }
 }

@@ -174,7 +174,6 @@
             android:backgroundTint="#E5E5E5"
             android:ems="10"
             android:fontFamily="@font/raleway_bold_italic"
-            android:hint="Tipo de sangre"
             android:inputType="text"
             android:textColorHint="#c8c8c8"
             android:textSize="15sp"
