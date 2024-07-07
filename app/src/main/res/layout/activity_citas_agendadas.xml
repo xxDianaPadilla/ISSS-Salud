@@ -9,7 +9,7 @@
     style="@style/background2">
 
     <Button
-        android:id="@+id/btnCitasAgendadas"
+        android:id="@+id/btnCitasAgendadasA"
         style="@style/buttonStyle2"
         android:layout_width="180dp"
         android:layout_height="50dp"
@@ -20,11 +20,11 @@
         android:text="Agendadas"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/btnFormulario"
+        app:layout_constraintStart_toEndOf="@+id/btnFormularioCitas"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <Button
-        android:id="@+id/btnFormulario"
+        android:id="@+id/btnFormularioCitas"
         style="@style/buttonStyle3"
         android:layout_width="180dp"
         android:layout_height="50dp"
@@ -34,7 +34,7 @@
         android:fontFamily="@font/raleway_bold_italic"
         android:text="Formulario"
         android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/btnCitasAgendadas"
+        app:layout_constraintEnd_toStartOf="@+id/btnCitasAgendadasA"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
@@ -69,14 +69,14 @@
             android:textAlignment="center"
             android:textSize="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toStartOf="@+id/btnNotificaciones"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/ivSmallLogo"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.523" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
+            android:id="@+id/btnNotificaciones"
             style="@style/backgroundNotifications"
             android:layout_width="43dp"
             android:layout_height="40dp"
@@ -111,7 +111,7 @@
             app:layout_constraintVertical_bias="0.228" />
 
         <TextView
-            android:id="@+id/textView14"
+            android:id="@+id/txtViewNumNotis"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="14dp"
@@ -134,7 +134,7 @@
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCitasAgendadas" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCitasAgendadasA" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -161,35 +161,35 @@
             android:layout_height="43dp"
             android:layout_marginStart="102dp"
             android:layout_marginBottom="13dp"
-            app:layout_constraintBottom_toTopOf="@+id/ivCitas"
+            app:layout_constraintBottom_toTopOf="@+id/btnCitas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/ivCitas"
+            android:id="@+id/btnCitas"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="67dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivChats"
+            app:layout_constraintEnd_toStartOf="@+id/BtnChats"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/ic_active_file" />
 
         <ImageView
-            android:id="@+id/ivChats"
+            android:id="@+id/BtnChats"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="72dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivPerfil"
+            app:layout_constraintEnd_toStartOf="@+id/btnPerfil"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/ic_chat" />
 
         <ImageView
-            android:id="@+id/ivPerfil"
+            android:id="@+id/btnPerfil"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="48dp"
@@ -199,7 +199,7 @@
             app:srcCompat="@drawable/ic_perfil" />
 
         <ImageView
-            android:id="@+id/ivHome"
+            android:id="@+id/btnNoticias"
             android:layout_width="35dp"
             android:layout_height="34dp"
             android:layout_marginStart="48dp"

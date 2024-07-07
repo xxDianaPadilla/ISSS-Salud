@@ -49,7 +49,7 @@ class activity_cambio_contrasena : AppCompatActivity() {
             fondoIcon.setBackgroundResource(R.drawable.ic_lock)
         }
 
-        val btnCambiarPassword = findViewById<Button>(R.id.btnCambiarPassword)
+        val btnCambiarPassword = findViewById<Button>(R.id.btnCambiarContraseña)
 
         btnCambiarPassword.setOnClickListener {
             val pantallaMensajeContrasena = Intent(this, activity_nueva_contrasena::class.java)

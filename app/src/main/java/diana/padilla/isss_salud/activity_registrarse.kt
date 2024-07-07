@@ -5,7 +5,6 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -14,7 +13,6 @@ import android.widget.Spinner
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
@@ -22,7 +20,6 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.security.MessageDigest
-import java.util.UUID
 
 class activity_registrarse : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -35,7 +32,7 @@ class activity_registrarse : AppCompatActivity() {
             insets
         }
 
-        val btnIniciarSesion = findViewById<Button>(R.id.btnIniciarSesion)
+        val btnIniciarSesion = findViewById<Button>(R.id.btnIniciarSesionIngresoInterfaz)
 
         btnIniciarSesion.setOnClickListener {
             val pantallaIniciarSesion = Intent(this, activity_ingreso::class.java)
@@ -54,7 +51,7 @@ class activity_registrarse : AppCompatActivity() {
 
         val txtDUI = findViewById<EditText>(R.id.txtDUI)
         val txtTelefono = findViewById<EditText>(R.id.txtTelefono)
-        val txtCorreo1 = findViewById<EditText>(R.id.txtCorreo1)
+        val txtCorreo1 = findViewById<EditText>(R.id.txtCorreoRegistro)
         val txtContrasena1 = findViewById<EditText>(R.id.txtContrasena1)
         val btnCrearRegistro: Button = findViewById(R.id.btnCrearRegistro)
 

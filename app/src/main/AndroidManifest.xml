@@ -55,7 +55,7 @@
             android:name=".activity_codigo"
             android:exported="false" />
         <activity
-            android:name=".activity_contrasena_enlace"
+            android:name=".activity_correo_para_codigo"
             android:exported="false" />
         <activity
             android:name=".activity_registrarse"

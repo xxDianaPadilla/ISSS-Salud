@@ -3,7 +3,6 @@ package diana.padilla.isss_salud
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.widget.Button
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -30,7 +29,7 @@ class activity_perfil : AppCompatActivity() {
             logoIsssSmall.setImageResource(R.drawable.ic_logo_isss_small)
         }
 
-        val iconHome = findViewById<ImageView>(R.id.ivHome)
+        val iconHome = findViewById<ImageView>(R.id.btnNoticias)
         val modoOscuro3 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro3 == Configuration.UI_MODE_NIGHT_YES){
@@ -39,7 +38,7 @@ class activity_perfil : AppCompatActivity() {
             iconHome.setImageResource(R.drawable.ic_home)
         }
 
-        val iconCitas = findViewById<ImageView>(R.id.ivCitas)
+        val iconCitas = findViewById<ImageView>(R.id.btnCitas)
         val modoOscuro4 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro4 == Configuration.UI_MODE_NIGHT_YES){
@@ -48,7 +47,7 @@ class activity_perfil : AppCompatActivity() {
             iconCitas.setImageResource(R.drawable.ic_citas)
         }
 
-        val iconChats = findViewById<ImageView>(R.id.ivChats)
+        val iconChats = findViewById<ImageView>(R.id.BtnChats)
         val modoOscuro5 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro5 == Configuration.UI_MODE_NIGHT_YES){
@@ -57,7 +56,7 @@ class activity_perfil : AppCompatActivity() {
             iconChats.setImageResource(R.drawable.ic_chat)
         }
 
-        val iconPerfil = findViewById<ImageView>(R.id.ivPerfil)
+        val iconPerfil = findViewById<ImageView>(R.id.btnPerfil)
         val modoOscuro6 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro6 == Configuration.UI_MODE_NIGHT_YES){

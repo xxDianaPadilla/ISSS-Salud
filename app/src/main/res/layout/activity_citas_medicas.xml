@@ -22,7 +22,7 @@
             android:layout_height="wrap_content">
 
             <EditText
-                android:id="@+id/txtNombreSolicitante"
+                android:id="@+id/txtNombreCitas"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -46,9 +46,9 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Nombre"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtNombreSolicitante"
+                app:layout_constraintBottom_toTopOf="@+id/txtNombreCitas"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnFormulario" />
+                app:layout_constraintTop_toBottomOf="@+id/btnFormularioCitas" />
 
             <TextView
                 android:id="@+id/textView16"
@@ -94,7 +94,7 @@
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/txtDuiSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtNombreSolicitante" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNombreCitas" />
 
             <EditText
                 android:id="@+id/txtDuiSolicitud"
@@ -123,12 +123,12 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Teléfono"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtTelefonoSolicitud"
+                app:layout_constraintBottom_toTopOf="@+id/txtTelefonoCitas"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtCorreoSolicitud" />
 
             <EditText
-                android:id="@+id/txtTelefonoSolicitud"
+                android:id="@+id/txtTelefonoCitas"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -171,7 +171,7 @@
                 android:textSize="19sp"
                 app:layout_constraintBottom_toTopOf="@+id/txtFechaSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtTelefonoSolicitud" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTelefonoCitas" />
 
             <EditText
                 android:id="@+id/txtCorreoSolicitud"
@@ -182,7 +182,7 @@
                 android:ems="10"
                 android:textColorHint="@color/black"
                 android:textSize="16sp"
-                android:inputType="none"
+                android:inputType="textEmailAddress"
                 android:focusable="false"
                 android:clickable="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -196,7 +196,7 @@
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
-                android:inputType="none"
+                android:inputType="date"
                 android:focusable="false"
                 android:clickable="false"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -214,12 +214,12 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Motivo"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtMotivoSolicitud"
+                app:layout_constraintBottom_toTopOf="@+id/txtMotivoCitas"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtTipoSangreSolicitud" />
 
             <EditText
-                android:id="@+id/txtMotivoSolicitud"
+                android:id="@+id/txtMotivoCitas"
                 android:layout_width="360dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -229,13 +229,13 @@
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/button3"
+                app:layout_constraintBottom_toTopOf="@+id/btnEnviarFormulario"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView21" />
 
             <Button
-                android:id="@+id/button3"
+                android:id="@+id/btnEnviarFormulario"
                 style="@style/buttonStyle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -245,7 +245,7 @@
                 android:text="Enviar"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtMotivoSolicitud" />
+                app:layout_constraintTop_toBottomOf="@+id/txtMotivoCitas" />
 
             <TextView
                 android:id="@+id/textView28"
@@ -253,7 +253,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="80dp"
                 android:text="TextView"
-                app:layout_constraintTop_toBottomOf="@+id/button3"
+                app:layout_constraintTop_toBottomOf="@+id/btnEnviarFormulario"
                 tools:layout_editor_absoluteX="37dp" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -296,7 +296,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
-                android:id="@+id/btnCitasAgendadas"
+                android:id="@+id/btnCitasAgendadasA"
                 style="@style/buttonStyle3"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
@@ -308,11 +308,11 @@
                 android:text="Agendadas"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btnFormulario"
+                app:layout_constraintStart_toEndOf="@+id/btnFormularioCitas"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
             <Button
-                android:id="@+id/btnFormulario"
+                android:id="@+id/btnFormularioCitas"
                 style="@style/buttonStyle2"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
@@ -322,7 +322,7 @@
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Formulario"
                 android:textSize="18sp"
-                app:layout_constraintEnd_toStartOf="@+id/btnCitasAgendadas"
+                app:layout_constraintEnd_toStartOf="@+id/btnCitasAgendadasA"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
@@ -346,35 +346,35 @@
             android:layout_height="43dp"
             android:layout_marginStart="102dp"
             android:layout_marginBottom="13dp"
-            app:layout_constraintBottom_toTopOf="@+id/ivCitas"
+            app:layout_constraintBottom_toTopOf="@+id/btnCitas"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
-            android:id="@+id/ivCitas"
+            android:id="@+id/btnCitas"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="67dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivChats"
+            app:layout_constraintEnd_toStartOf="@+id/BtnChats"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/ic_active_file" />
 
         <ImageView
-            android:id="@+id/ivChats"
+            android:id="@+id/BtnChats"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="72dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/ivPerfil"
+            app:layout_constraintEnd_toStartOf="@+id/btnPerfil"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5"
             app:srcCompat="@drawable/ic_chat" />
 
         <ImageView
-            android:id="@+id/ivPerfil"
+            android:id="@+id/btnPerfil"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="48dp"
@@ -384,7 +384,7 @@
             app:srcCompat="@drawable/ic_perfil" />
 
         <ImageView
-            android:id="@+id/ivHome"
+            android:id="@+id/btnNoticias"
             android:layout_width="35dp"
             android:layout_height="34dp"
             android:layout_marginStart="48dp"

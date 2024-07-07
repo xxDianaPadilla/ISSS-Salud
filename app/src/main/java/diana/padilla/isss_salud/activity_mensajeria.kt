@@ -84,7 +84,7 @@ class activity_mensajeria : AppCompatActivity() {
             iconNotificaciones.setImageResource(R.drawable.ic_notificaciones)
         }
 
-        val iconHome = findViewById<ImageView>(R.id.ivHome)
+        val iconHome = findViewById<ImageView>(R.id.btnNoticias)
         val modoOscuro3 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro3 == Configuration.UI_MODE_NIGHT_YES){
@@ -93,7 +93,7 @@ class activity_mensajeria : AppCompatActivity() {
             iconHome.setImageResource(R.drawable.ic_home)
         }
 
-        val iconCitas = findViewById<ImageView>(R.id.ivCitas)
+        val iconCitas = findViewById<ImageView>(R.id.btnCitas)
         val modoOscuro4 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro4 == Configuration.UI_MODE_NIGHT_YES){
@@ -102,7 +102,7 @@ class activity_mensajeria : AppCompatActivity() {
             iconCitas.setImageResource(R.drawable.ic_citas)
         }
 
-        val iconChats = findViewById<ImageView>(R.id.ivChats)
+        val iconChats = findViewById<ImageView>(R.id.BtnChats)
         val modoOscuro5 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro5 == Configuration.UI_MODE_NIGHT_YES){
@@ -111,7 +111,7 @@ class activity_mensajeria : AppCompatActivity() {
             iconChats.setImageResource(R.drawable.ic_active_chat)
         }
 
-        val iconPerfil = findViewById<ImageView>(R.id.ivPerfil)
+        val iconPerfil = findViewById<ImageView>(R.id.btnPerfil)
         val modoOscuro6 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if(modoOscuro6 == Configuration.UI_MODE_NIGHT_YES){

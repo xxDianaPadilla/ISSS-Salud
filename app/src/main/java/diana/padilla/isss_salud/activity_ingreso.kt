@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -46,14 +45,14 @@ companion object variablesGlobales{
             logoISSS.setImageResource(R.drawable.id_logo_isss)
         }
 
-        val txtOlvidoContrasena = findViewById<TextView>(R.id.txtForgotPassword)
+        val txtOlvidoContrasena = findViewById<TextView>(R.id.btnCambioContraseñaIngreso)
 
         txtOlvidoContrasena.setOnClickListener {
-            val pantallaOlvidoContrasena = Intent(this, activity_contrasena_enlace::class.java)
+            val pantallaOlvidoContrasena = Intent(this, activity_correo_para_codigo::class.java)
             startActivity(pantallaOlvidoContrasena)
         }
 
-        val btnRegistrarse = findViewById<Button>(R.id.btnRegistrarse)
+        val btnRegistrarse = findViewById<Button>(R.id.btnRegistrarseIngresoInterfaz)
 
         btnRegistrarse.setOnClickListener{
             val pantallaRegistrarse = Intent(this, activity_registrarse::class.java)
@@ -61,9 +60,9 @@ companion object variablesGlobales{
             overridePendingTransition(0, 0)
         }
 
-        val txtCorreo = findViewById<EditText>(R.id.txtCorreo)
-        val txtContrasena = findViewById<EditText>(R.id.txtContrasena)
-        val btnLogin = findViewById<Button>(R.id.btnLogin)
+        val txtCorreo = findViewById<EditText>(R.id.txtCorreoIngreso)
+        val txtContrasena = findViewById<EditText>(R.id.txtContrasenaIngreso)
+        val btnLogin = findViewById<Button>(R.id.btnIniciarSesionIngreso)
         val correoPattern = Regex ("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
 
         fun hashSHA256(contrasenaEncriptada: String): String{

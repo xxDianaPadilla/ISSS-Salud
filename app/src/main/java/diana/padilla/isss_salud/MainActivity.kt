@@ -31,14 +31,14 @@ class MainActivity : AppCompatActivity() {
             logoISSS.setImageResource(R.drawable.id_logo_isss)
         }
 
-        val btnPantallaLogin = findViewById<Button>(R.id.btnPantallaLogin)
+        val btnPantallaLogin = findViewById<Button>(R.id.btnIniciarSesionPantalla)
 
         btnPantallaLogin.setOnClickListener {
             val pantallaLogin = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaLogin)
         }
 
-        val txtPantallaRegistro = findViewById<TextView>(R.id.txtRegistrar)
+        val txtPantallaRegistro = findViewById<TextView>(R.id.btnRegistrarPantalla)
 
         txtPantallaRegistro.setOnClickListener{
             val pantallaRegistros = Intent(this, activity_registrarse::class.java)

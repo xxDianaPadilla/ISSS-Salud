@@ -12,11 +12,11 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
-class activity_contrasena_enlace : AppCompatActivity() {
+class activity_correo_para_codigo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContentView(R.layout.activity_contrasena_enlace)
+        setContentView(R.layout.activity_correo_para_codigo)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
@@ -59,7 +59,7 @@ class activity_contrasena_enlace : AppCompatActivity() {
             orLines.setImageResource(R.drawable.or_lines)
         }
 
-        val btnEnvioCorreo = findViewById<Button>(R.id.btnEnvioCorreo)
+        val btnEnvioCorreo = findViewById<Button>(R.id.btnEnvioCorreoRecuperacion)
 
         btnEnvioCorreo.setOnClickListener {
             val pantallaEnvioCorreo = Intent(this, activity_codigo::class.java)
@@ -79,11 +79,11 @@ class activity_contrasena_enlace : AppCompatActivity() {
             startActivity(pantallaInicioSesion2)
         }
 
-        val txtCrearContrasena = findViewById<TextView>(R.id.txtCrearContrasena)
+        val txtCrearCuenta = findViewById<TextView>(R.id.txtCrearCuentaNueva)
 
-        txtCrearContrasena.setOnClickListener {
-            val pantallaCambioContrasena = Intent(this, activity_cambio_contrasena::class.java)
-            startActivity(pantallaCambioContrasena)
+        txtCrearCuenta.setOnClickListener {
+            val pantallaRegistrarse = Intent(this, activity_registrarse::class.java)
+            startActivity(pantallaRegistrarse)
         }
     }
 }
