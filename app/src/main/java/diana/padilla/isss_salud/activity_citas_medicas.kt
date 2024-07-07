@@ -4,8 +4,10 @@ package diana.padilla.isss_salud
 
 import Modelo.ClaseConexion
 import Modelo.Usuarios
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.res.Configuration
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -31,6 +33,25 @@ class activity_citas_medicas : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val txtFechaSolicitud = findViewById<EditText>(R.id.txtFechaSolicitud)
+
+        txtFechaSolicitud.setOnClickListener {
+            val calendario = Calendar.getInstance()
+            val anio = calendario.get(Calendar.YEAR)
+            val mes = calendario.get(Calendar.MONTH)
+            val dia = calendario.get(Calendar.DAY_OF_MONTH)
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { view, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
+                    val fechaSeleccionada =
+                        "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
+                    txtFechaSolicitud.setText(fechaSeleccionada)
+                },
+                anio, mes, dia
+            )
+            datePickerDialog.show()
         }
 
         val dui = findViewById<EditText>(R.id.txtDuiSolicitud)
@@ -143,31 +164,5 @@ class activity_citas_medicas : AppCompatActivity() {
             val pantallaCitasAgendadas = Intent(this, activity_citas_agendadas::class.java)
             startActivity(pantallaCitasAgendadas)
         }
-
-
-        /*val txtFechaNacimiento = root.findViewById<EditText>(R.id.txtFechaSolicitud)
-
-        txtFechaSolicitud.setOnClickListener {
-            val calendario = Calendar.getInstance()
-            val anio = calendario.get(Calendar.YEAR)
-            val mes = calendario.get(Calendar.MONTH)
-            val dia = calendario.get(Calendar.DAY_OF_MONTH)
-            val datePickerDialog = DatePickerDialog(
-                requireContext(),
-                { view, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
-                    val fechaSeleccionada =
-                        "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
-                    txtFechaNacimiento.setText(fechaSeleccionada)
-                },
-                anio, mes, dia
-            )
-            datePickerDialog.show()
-        }*/
-
-        ////////////////////Poner dentro del boton de Agregar para actualizar la card////////////////////
-        /*val nuevasCitas = obtenerDatos()
-                withContext(Dispatchers.Main){
-                    (rcvPacientes.adapter as? Adaptador)?.actualizarListanuevasCitas
-                }      */
     }
 }

@@ -35,22 +35,45 @@ class activity_citas_agendadas : AppCompatActivity() {
 
         fun obtenerCitasAgendadas(): List<CitasAgendadas>{
             val objConexion = ClaseConexion().cadenaConexion()
-
-            val statement = objConexion?.createStatement()
-            val resultSet = statement?.executeQuery("SELECT * FROM CitasMedicas")!!
-
             val listaCitasAgendadas = mutableListOf<CitasAgendadas>()
 
-            while (resultSet.next()){
-                val id_cita = resultSet.getInt("id_cita")
-                val fecha_cita = resultSet.getDate("fecha_cita")
-                val hora_cita = resultSet.getString("hora_cita")
-                val id_usuario = resultSet.getInt("id_usuario")
-                val id_doctor = resultSet.getInt("id_doctor")
+            if (objConexion != null) {
+                val statement = objConexion.createStatement()
+                val query = """
+            SELECT 
+                cm.id_cita, 
+                cm.fecha_cita, 
+                cm.hora_cita, 
+                u.correo_electronico AS solicitante, 
+                d.nombre_doctor AS doctor 
+            FROM 
+                CitasMedicas cm 
+            INNER JOIN 
+                Usuarios u ON cm.id_usuario = u.id_usuario 
+            INNER JOIN 
+                Doctores d ON cm.id_doctor = d.id_doctor
+        """
 
-                val valoresJuntos = CitasAgendadas(id_cita, fecha_cita.toString(), hora_cita, id_usuario.toString(), id_doctor.toString())
+                val resultSet = statement.executeQuery(query)
 
-                listaCitasAgendadas.add(valoresJuntos)
+                while (resultSet.next()) {
+                    val idCita = resultSet.getString("id_cita").toInt()
+                    val fechaCita = resultSet.getDate("fecha_cita").toString() // Convierte la fecha a string
+                    val horaCita = resultSet.getString("hora_cita")
+                    val solicitante = resultSet.getString("solicitante")
+                    val doctor = resultSet.getString("doctor")
+
+                    val citaAgendada = CitasAgendadas(
+                        idCita,
+                        fechaCita,
+                        horaCita,
+                        solicitante,
+                        doctor
+                    )
+
+                    listaCitasAgendadas.add(citaAgendada)
+                }
+
             }
 
             return listaCitasAgendadas
