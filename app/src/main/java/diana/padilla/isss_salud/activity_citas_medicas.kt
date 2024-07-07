@@ -12,17 +12,14 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.sql.ResultSet
 
 class activity_citas_medicas : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,7 +53,7 @@ class activity_citas_medicas : AppCompatActivity() {
 
         val dui = findViewById<EditText>(R.id.txtDuiSolicitud)
         val correo = findViewById<EditText>(R.id.txtCorreoSolicitud)
-        val telefono = findViewById<EditText>(R.id.txtTelefonoSolicitud)
+        val telefono = findViewById<EditText>(R.id.txtTelefonoCitas)
         val tipoSangre = findViewById<EditText>(R.id.txtTipoSangreSolicitud)
 
         fun obtenerCosas(): List<Usuarios> {
@@ -107,7 +104,7 @@ class activity_citas_medicas : AppCompatActivity() {
             logoIsssSmall.setImageResource(R.drawable.ic_logo_isss_small)
         }
 
-        val iconHome = findViewById<ImageView>(R.id.ivHome)
+        val iconHome = findViewById<ImageView>(R.id.btnNoticias)
         val modoOscuro3 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if (modoOscuro3 == Configuration.UI_MODE_NIGHT_YES) {
@@ -116,7 +113,7 @@ class activity_citas_medicas : AppCompatActivity() {
             iconHome.setImageResource(R.drawable.ic_home)
         }
 
-        val iconCitas = findViewById<ImageView>(R.id.ivCitas)
+        val iconCitas = findViewById<ImageView>(R.id.btnCitas)
         val modoOscuro4 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if (modoOscuro4 == Configuration.UI_MODE_NIGHT_YES) {
@@ -125,7 +122,7 @@ class activity_citas_medicas : AppCompatActivity() {
             iconCitas.setImageResource(R.drawable.ic_active_file)
         }
 
-        val iconChats = findViewById<ImageView>(R.id.ivChats)
+        val iconChats = findViewById<ImageView>(R.id.BtnChats)
         val modoOscuro5 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if (modoOscuro5 == Configuration.UI_MODE_NIGHT_YES) {
@@ -134,7 +131,7 @@ class activity_citas_medicas : AppCompatActivity() {
             iconChats.setImageResource(R.drawable.ic_chat)
         }
 
-        val iconPerfil = findViewById<ImageView>(R.id.ivPerfil)
+        val iconPerfil = findViewById<ImageView>(R.id.btnPerfil)
         val modoOscuro6 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
         if (modoOscuro6 == Configuration.UI_MODE_NIGHT_YES) {
@@ -158,7 +155,7 @@ class activity_citas_medicas : AppCompatActivity() {
             startActivity(pantallaPerfil)
         }
 
-        val btnCitasAgendadas = findViewById<Button>(R.id.btnCitasAgendadas)
+        val btnCitasAgendadas = findViewById<Button>(R.id.btnCitasAgendadasA)
 
         btnCitasAgendadas.setOnClickListener {
             val pantallaCitasAgendadas = Intent(this, activity_citas_agendadas::class.java)

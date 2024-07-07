@@ -18,7 +18,7 @@
 
 
         <ImageView
-            android:id="@+id/ImagenCard"
+            android:id="@+id/ImgViewNoticias"
             android:layout_width="0dp"
             android:layout_height="150dp"
             android:scaleType="centerCrop"
@@ -27,7 +27,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/TituloCard"
+            android:id="@+id/txtViewTituloNoticias"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
@@ -39,10 +39,10 @@
             style="@style/TextColor2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ImagenCard" />
+            app:layout_constraintTop_toBottomOf="@id/ImgViewNoticias" />
 
         <TextView
-            android:id="@+id/DescripcionCard"
+            android:id="@+id/txtViewDescripcionNoticias"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
@@ -53,10 +53,10 @@
             android:justificationMode="inter_word"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/TituloCard" />
+            app:layout_constraintTop_toBottomOf="@id/txtViewTituloNoticias" />
 
         <TextView
-            android:id="@+id/FechaCard"
+            android:id="@+id/txtViewFehaNoticias"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
@@ -67,7 +67,7 @@
             android:textColor="#D9D9D9"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/DescripcionCard" />
+            app:layout_constraintTop_toBottomOf="@+id/txtViewDescripcionNoticias" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.cardview.widget.CardView>
