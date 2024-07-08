@@ -3,6 +3,8 @@ package diana.padilla.isss_salud
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -80,18 +82,18 @@ class activity_perfil : AppCompatActivity() {
             startActivity(pantallaMensajeria)
         }
 
-        /*val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
+        val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
 
         btnCerrarSesion.setOnClickListener {
             val pantallaIngreso = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaIngreso)
         }
 
-        val btnEditarPerfil = findViewById<Button>(R.id.btnEditarPerfil)
+        val btnEditarPerfil = findViewById<Button>(R.id.btnCargarImagen)
 
         btnEditarPerfil.setOnClickListener {
             val pantallaEditarPerfil = Intent(this, activity_editar_perfil::class.java)
             startActivity(pantallaEditarPerfil)
-        }*/
+        }
     }
 }
