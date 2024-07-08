@@ -3,10 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    style="@style/background2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    style="@style/background2"
     tools:context=".activity_perfil">
 
     <ScrollView
@@ -56,15 +55,15 @@
                 style="@style/buttonStyle2"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="50dp"
-                android:backgroundTint="#89D1FE"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Expediente"
-                android:textColor="#FFFFFF"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/button"
-                app:layout_constraintStart_toStartOf="parent" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewDuiPerfilE"
+                app:layout_constraintVertical_bias="0.3" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
@@ -106,7 +105,7 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/txtViewNombrePerfil"
+                android:id="@+id/txtViewNombrePerfilE"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -126,7 +125,7 @@
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="Nombre"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtViewNombrePerfil"
+                app:layout_constraintBottom_toTopOf="@+id/txtViewNombrePerfilE"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/ImgPerfilSinCargar" />
 
@@ -141,9 +140,9 @@
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="Correo"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtViewCorreoPerfil"
+                app:layout_constraintBottom_toTopOf="@+id/txtViewCorreoPerfilE"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtViewNombrePerfil" />
+                app:layout_constraintTop_toBottomOf="@+id/txtViewNombrePerfilE" />
 
             <TextView
                 android:id="@+id/textView23"
@@ -156,9 +155,9 @@
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="Dirección"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtViewDireccionPerfil"
+                app:layout_constraintBottom_toTopOf="@+id/txtViewDireccionPerfilE"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtViewCorreoPerfil" />
+                app:layout_constraintTop_toBottomOf="@+id/txtViewCorreoPerfilE" />
 
             <TextView
                 android:id="@+id/textView24"
@@ -171,9 +170,9 @@
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="DUI"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtViewDuiPerfil"
+                app:layout_constraintBottom_toTopOf="@+id/txtViewDuiPerfilE"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtViewTelefonoPerfil" />
+                app:layout_constraintTop_toBottomOf="@+id/txtViewTelefonoPerfilE" />
 
             <TextView
                 android:id="@+id/textView26"
@@ -181,14 +180,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="7dp"
-                android:layout_marginEnd="43dp"
+                android:layout_marginEnd="48dp"
                 android:layout_marginBottom="3dp"
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="Tipo de sangre"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtViewTipoSangre"
+                app:layout_constraintBottom_toTopOf="@+id/txtViewTipoSangreE"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtViewTelefonoPerfil" />
+                app:layout_constraintTop_toBottomOf="@+id/txtViewTelefonoPerfilE" />
 
             <TextView
                 android:id="@+id/textView25"
@@ -201,12 +200,12 @@
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="Teléfono"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtViewTelefonoPerfil"
+                app:layout_constraintBottom_toTopOf="@+id/txtViewTelefonoPerfilE"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtViewDireccionPerfil" />
+                app:layout_constraintTop_toBottomOf="@+id/txtViewDireccionPerfilE" />
 
             <TextView
-                android:id="@+id/txtViewCorreoPerfil"
+                android:id="@+id/txtViewCorreoPerfilE"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -216,7 +215,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
             <TextView
-                android:id="@+id/txtViewDireccionPerfil"
+                android:id="@+id/txtViewDireccionPerfilE"
                 android:layout_width="373dp"
                 android:layout_height="80dp"
                 android:layout_marginTop="3dp"
@@ -226,7 +225,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
             <TextView
-                android:id="@+id/txtViewTelefonoPerfil"
+                android:id="@+id/txtViewTelefonoPerfilE"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="3dp"
@@ -236,20 +235,22 @@
                 app:layout_constraintTop_toBottomOf="@+id/textView25" />
 
             <TextView
-                android:id="@+id/txtViewTipoSangre"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/txtViewTipoSangreE"
+                android:layout_width="170dp"
+                android:layout_height="40dp"
                 android:layout_marginTop="3dp"
                 android:layout_marginEnd="20dp"
                 android:background="@drawable/ic_edittext_background"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/txtViewDuiPerfilE"
                 app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
             <TextView
-                android:id="@+id/txtViewDuiPerfil"
-                android:layout_width="180dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
+                android:id="@+id/txtViewDuiPerfilE"
+                android:layout_width="173dp"
+                android:layout_height="39dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="3dp"
                 android:background="@drawable/ic_edittext_background"
                 app:layout_constraintStart_toStartOf="parent"
@@ -260,13 +261,16 @@
                 style="@style/buttonStyle2"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="50dp"
+                android:layout_marginBottom="16dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Cerrar sesión"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/button"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.542"
+                app:layout_constraintStart_toEndOf="@+id/btnDescargarExpediente"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewTipoSangreE"
+                app:layout_constraintVertical_bias="0.285" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
