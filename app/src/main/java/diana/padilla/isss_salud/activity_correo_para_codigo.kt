@@ -4,6 +4,7 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -11,6 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class activity_correo_para_codigo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +25,17 @@ class activity_correo_para_codigo : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val txtCorreoRecuperacion = findViewById<EditText>(R.id.txtCorreoRecuperacion)
+        val btnCorreoRecuperacion = findViewById<Button>(R.id.btnEnvioCorreoRecuperacion)
+
+        btnCorreoRecuperacion.setOnClickListener {
+            CoroutineScope(Dispatchers.Main).launch {
+                val codigoRecuperacion = (100000..999999).random()
+                enviarCorreo(
+                )
+            }
         }
 
         val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
