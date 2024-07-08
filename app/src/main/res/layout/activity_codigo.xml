@@ -65,7 +65,7 @@
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:fontFamily="@font/raleway_italic"
-            android:text="Ingrese correctamente el codigo que se le ha enviado con anterioridad a su correo electronico"
+            android:text="Ingrese correctamente el código que se le ha enviado con anterioridad a su correo electronico"
             android:textAlignment="center"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
