@@ -74,9 +74,9 @@
 
         <EditText
             android:id="@+id/txtNum1"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="50dp"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="45dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/ic_edittext_background"
             android:ems="10"
@@ -89,10 +89,9 @@
 
         <EditText
             android:id="@+id/txtNum4"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
-            android:layout_marginEnd="10dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/ic_edittext_background"
             android:ems="10"
@@ -101,12 +100,11 @@
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/btnConfirmarCodigo"
-            app:layout_constraintEnd_toStartOf="@+id/txtNum5"
             app:layout_constraintStart_toEndOf="@+id/txtNum3" />
 
         <EditText
             android:id="@+id/txtNum2"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="25dp"
@@ -121,9 +119,9 @@
 
         <EditText
             android:id="@+id/txtNum6"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/ic_edittext_background"
             android:ems="10"
@@ -132,13 +130,13 @@
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/btnConfirmarCodigo"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/txtNum5" />
 
         <EditText
             android:id="@+id/txtNum5"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="50dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="25dp"
             android:background="@drawable/ic_edittext_background"
             android:ems="10"
@@ -147,11 +145,11 @@
             android:textAlignment="center"
             android:textSize="24sp"
             app:layout_constraintBottom_toTopOf="@+id/btnConfirmarCodigo"
-            app:layout_constraintEnd_toStartOf="@+id/txtNum6" />
+            app:layout_constraintStart_toEndOf="@+id/txtNum4" />
 
         <EditText
             android:id="@+id/txtNum3"
-            android:layout_width="50dp"
+            android:layout_width="40dp"
             android:layout_height="50dp"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="25dp"
