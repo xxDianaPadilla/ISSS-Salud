@@ -156,6 +156,7 @@ class activity_perfil : AppCompatActivity() {
         btnEditarPerfil.setOnClickListener {
             val pantallaEditarPerfil = Intent(this, activity_editar_perfil::class.java)
             startActivity(pantallaEditarPerfil)
+            overridePendingTransition(0,0)
         }
     }
 }

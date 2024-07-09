@@ -2,13 +2,18 @@ package diana.padilla.isss_salud
 
 import Modelo.ClaseConexion
 import Modelo.Perfil
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
@@ -18,6 +23,15 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class activity_editar_perfil : AppCompatActivity() {
+
+    val codigo_opcion_galeria = 102
+    val codigo_opcion_tomar_foto = 103
+    val CAMERA_REQUEST_CODE = 0
+    val STORAGE_REQUEST_CODE = 1
+
+    lateinit var imageView: ImageView
+    lateinit var miPath: String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,11 +42,26 @@ class activity_editar_perfil : AppCompatActivity() {
             insets
         }
 
-        val imagenPerfil = findViewById<ImageView>(R.id.ImgPerfilSinCargar2)
+        val imagenPerfil2 = findViewById<ImageView>(R.id.ImgPerfilSinCargar2)
         val txtCorrePerfil = findViewById<EditText>(R.id.txtCorrePerfil)
         val txtViewTelefonoPerfil = findViewById<EditText>(R.id.txtViewTelefonoPerfil)
         val txtViewDuiPerfil = findViewById<EditText>(R.id.txtViewDuiPerfil)
         val txtViewTipoSangre = findViewById<EditText>(R.id.txtViewTipoSangre)
+        val btnCargarImagen = findViewById<Button>(R.id.btnCargarImagen)
+
+        fun checkStoragePermission(){
+            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+
+            }
+        }
+
+        fun pedriPermisoAlmacenamiento(){
+            
+        }
+
+        btnCargarImagen.setOnClickListener {
+
+        }
 
         fun datosPerfil(): List<Perfil> {
             val perfil2 = mutableListOf<Perfil>()
@@ -70,7 +99,7 @@ class activity_editar_perfil : AppCompatActivity() {
                 val miFoto2 = perfiles2[0].foto_usuario
                 Glide.with(this@activity_editar_perfil)
                     .load(miFoto2)
-                    .into(imagenPerfil)
+                    .into(imagenPerfil2)
                 val miDui2 = perfiles2[0].dui
                 txtViewDuiPerfil.hint = miDui2
                 val miCorreo2 = perfiles2[0].correo_electronico
