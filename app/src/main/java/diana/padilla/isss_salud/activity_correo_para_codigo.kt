@@ -18,6 +18,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class activity_correo_para_codigo : AppCompatActivity() {
+
+    companion object variablesGlobalesCorreoparacodigo{
+        lateinit var codigoRecuperacion: String
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -34,7 +39,7 @@ class activity_correo_para_codigo : AppCompatActivity() {
         btnCorreoRecuperacion.setOnClickListener {
             try {
                 CoroutineScope(Dispatchers.Main).launch {
-                    val codigoRecuperacion = (100000..999999).random()
+                     codigoRecuperacion = (100000..999999).random().toString()
                     println("correo $txtCorreoRecuperacion")
                     Toast.makeText(this@activity_correo_para_codigo, "Código de recuperación enviado a ${txtCorreoRecuperacion.text.toString()}", Toast.LENGTH_SHORT).show()
                     enviarCorreo(
@@ -43,6 +48,8 @@ class activity_correo_para_codigo : AppCompatActivity() {
                         "Su código de recuperación es: $codigoRecuperacion"
                     )
                 }
+                val pantallaCodigo = Intent(this, activity_codigo::class.java)
+                startActivity(pantallaCodigo)
             }catch (e: Exception){
                 println("eeeeeeeeeerro $e")
             }
