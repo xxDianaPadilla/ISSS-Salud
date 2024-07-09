@@ -41,6 +41,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
+    implementation ("com.google.android.material:material:1.4.0")
     implementation ("com.github.bumptech.glide:glide:4.12.0")
     implementation(files("libs\\activation.jar"))
     implementation(files("libs\\additionnal.jar"))
