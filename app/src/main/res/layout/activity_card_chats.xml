@@ -44,20 +44,20 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.35"
-                app:layout_constraintStart_toEndOf="@+id/ivDoctorFoto"
+                app:layout_constraintStart_toEndOf="@+id/ImgDoctorChats"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.296" />
 
-            <ImageView
-                android:id="@+id/ivDoctorFoto"
-                android:layout_width="70dp"
-                android:layout_height="58dp"
-                android:layout_marginStart="28dp"
-                app:layout_constraintBottom_toBottomOf="parent"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:id="@+id/ImgDoctorChats"
+                android:layout_width="67dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="7dp"
+                android:layout_marginTop="7dp"
+                android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.482"
-                tools:srcCompat="@tools:sample/avatars" />
+                app:shapeAppearanceOverlay="@style/RoundImage" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

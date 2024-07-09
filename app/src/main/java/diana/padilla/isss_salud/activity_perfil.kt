@@ -42,6 +42,10 @@ class activity_perfil : AppCompatActivity() {
             CoroutineScope(Dispatchers.IO).launch {
                 val objConexion = ClaseConexion().cadenaConexion()
                 val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
+
+                println("este $correoDeLaVariableGlobal")
+
+
                 val obtenerPerfil =
                     objConexion?.prepareStatement("SELECT foto_usuario, dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
                 obtenerPerfil.setString(1, correoDeLaVariableGlobal)

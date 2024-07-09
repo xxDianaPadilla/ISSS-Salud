@@ -4,6 +4,7 @@ package diana.padilla.isss_salud
 
 import Modelo.ClaseConexion
 import Modelo.Usuarios
+import android.app.AlertDialog
 import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.res.Configuration
@@ -12,6 +13,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -55,6 +57,9 @@ class activity_citas_medicas : AppCompatActivity() {
         val correo = findViewById<EditText>(R.id.txtCorreoSolicitud)
         val telefono = findViewById<EditText>(R.id.txtTelefonoCitas)
         val tipoSangre = findViewById<EditText>(R.id.txtTipoSangreSolicitud)
+        val txtNombreCitas = findViewById<EditText>(R.id.txtNombreCitas)
+        val txtMotivoCitas = findViewById<EditText>(R.id.txtMotivoCitas)
+        val btnEnviarFormulario = findViewById<Button>(R.id.btnEnviarFormulario)
 
         fun obtenerCosas(): List<Usuarios> {
             val usuario = mutableListOf<Usuarios>()
@@ -94,6 +99,41 @@ class activity_citas_medicas : AppCompatActivity() {
             }
         }
 
+        btnEnviarFormulario.setOnClickListener {
+            val nombreSolicitante = txtNombreCitas.text.toString()
+            val motivoCita = txtMotivoCitas.text.toString()
+            val fechaSolicitud = txtFechaSolicitud.text.toString()
+
+            if(nombreSolicitante.isEmpty() || motivoCita.isEmpty() || fechaSolicitud.isEmpty()){
+                Toast.makeText(
+                    this@activity_citas_medicas,
+                    "Error, para enviar el formulario debe llenar todas las casillas.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }else{
+                CoroutineScope(Dispatchers.IO).launch {
+                    val objConexion = ClaseConexion().cadenaConexion()
+
+                    val addSolicitud = objConexion?.prepareStatement("INSERT INTO SolicitudCitas (nombre_solicitante, motivo_cita, fecha_solicitud) VALUES (?, ?, ?)")!!
+                    addSolicitud.setString(1, txtNombreCitas.text.toString())
+                    addSolicitud.setString(2, txtMotivoCitas.text.toString())
+                    addSolicitud.setString(3, txtFechaSolicitud.text.toString())
+
+                    addSolicitud.executeQuery()
+
+                    withContext(Dispatchers.Main) {
+                        AlertDialog.Builder(this@activity_citas_medicas)
+                            .setTitle("Envío exitoso")
+                            .setMessage("El formulario se ha enviado exitosamente.")
+                            .setPositiveButton("Aceptar", null)
+                            .show()
+                        txtNombreCitas.setText("")
+                        txtMotivoCitas.setText("")
+                        txtFechaSolicitud.setText("")
+                    }
+                }
+            }
+        }
 
         val logoIsssSmall = findViewById<ImageView>(R.id.ivSmallLogo)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
