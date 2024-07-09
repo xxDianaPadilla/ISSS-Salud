@@ -88,107 +88,55 @@
                 app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
             <TextView
-                android:id="@+id/textView17"
-                style="@style/TextColor2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="3dp"
-                android:fontFamily="@font/raleway_extrabold_italic"
-                android:text="Nombre"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtViewNombrePerfil"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ImgPerfilSinCargar" />
-
-            <TextView
-                android:id="@+id/txtViewNombrePerfil"
-                android:layout_width="373dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:background="@drawable/ic_edittext_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView17" />
-
-            <TextView
                 android:id="@+id/textView22"
                 style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginBottom="3dp"
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="Correo"
                 android:textSize="20sp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/txtCorrePerfil"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtViewNombrePerfil" />
+                app:layout_constraintTop_toBottomOf="@+id/ImgPerfilSinCargar" />
 
             <EditText
                 android:id="@+id/txtCorrePerfil"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
                 android:ems="10"
                 android:inputType="text"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/ic_edittext_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
             <TextView
-                android:id="@+id/textView23"
-                style="@style/TextColor2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="7dp"
-                android:layout_marginBottom="3dp"
-                android:fontFamily="@font/raleway_extrabold_italic"
-                android:text="Dirección"
-                android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtViewDireccionPerfil"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtCorrePerfil" />
-
-            <EditText
-                android:id="@+id/txtViewDireccionPerfil"
-                android:layout_width="373dp"
-                android:layout_height="80dp"
-                android:layout_marginTop="3dp"
-                android:ems="10"
-                android:inputType="text"
-                android:background="@drawable/ic_edittext_background"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-            <TextView
                 android:id="@+id/textView25"
                 style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="7dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginBottom="3dp"
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="Teléfono"
                 android:textSize="20sp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/txtViewTelefonoPerfil"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtViewDireccionPerfil" />
+                app:layout_constraintTop_toBottomOf="@+id/txtCorrePerfil" />
 
             <EditText
                 android:id="@+id/txtViewTelefonoPerfil"
                 android:layout_width="373dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/ic_edittext_background"
                 android:ems="10"
                 android:inputType="text"
-                android:background="@drawable/ic_edittext_background"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView25" />
@@ -199,11 +147,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="7dp"
                 android:layout_marginBottom="3dp"
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="DUI"
                 android:textSize="20sp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/txtViewDuiPerfil"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtViewTelefonoPerfil" />
@@ -235,12 +183,12 @@
                 style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
                 android:layout_marginEnd="43dp"
                 android:layout_marginBottom="3dp"
                 android:fontFamily="@font/raleway_extrabold_italic"
                 android:text="Tipo de sangre"
                 android:textSize="20sp"
+                android:layout_marginTop="20dp"
                 app:layout_constraintBottom_toTopOf="@+id/txtViewTipoSangre"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtViewTelefonoPerfil" />
@@ -255,9 +203,10 @@
                 android:textSize="20sp"
                 app:layout_constraintBottom_toTopOf="@+id/btnActualizar2"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.526"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtViewDuiPerfil"
-                app:layout_constraintVertical_bias="0.272" />
+                app:layout_constraintVertical_bias="0.171" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
