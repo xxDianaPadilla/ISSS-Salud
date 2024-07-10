@@ -46,9 +46,37 @@ class activity_editar_perfil : AppCompatActivity() {
         val txtViewDuiPerfil = findViewById<EditText>(R.id.txtViewDuiPerfil)
         val txtViewTipoSangre = findViewById<EditText>(R.id.txtViewTipoSangre)
         val btnCargarImagen = findViewById<Button>(R.id.btnCargarImagen)
+        val btnActualizar = findViewById<Button>(R.id.btnActualizar)
 
         btnCargarImagen.setOnClickListener {
             checkStoragePermissions()
+        }
+
+        btnActualizar.setOnClickListener {
+            val nuevoTelefono = txtViewTelefonoPerfil.text.toString()
+            val telefonoRegex = Regex("^\\d{4}-\\d{4}\$")
+            if(nuevoTelefono.isEmpty()){
+                Toast.makeText(
+                    this,
+                    "Error, para actualizar debes llenar el campo de teléfono",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }else if (!telefonoRegex.matches(nuevoTelefono)) {
+                Toast.makeText(
+                    this@activity_editar_perfil,
+                    "Error, El número de teléfono no es válido.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }else{
+                ActualizarTelefonoEnBaseDeDatos(nuevoTelefono)
+                Toast.makeText(
+                    this@activity_editar_perfil,
+                    "El teléfono se ha actualizado exitosamente.",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                txtViewTelefonoPerfil.setText("")
+            }
         }
 
         fun datosPerfil(): List<Perfil> {
@@ -207,6 +235,18 @@ class activity_editar_perfil : AppCompatActivity() {
 
             }
         }
+
+    private fun ActualizarTelefonoEnBaseDeDatos(nuevoTelefono: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val objConexion = ClaseConexion().cadenaConexion()
+            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
+
+            val updateTelefono = objConexion?.prepareStatement("UPDATE Usuarios SET telefono = ? WHERE correo_electronico = ?")
+            updateTelefono?.setString(1, nuevoTelefono)
+            updateTelefono?.setString(2, correoDeLaVariableGlobal)
+            updateTelefono?.executeUpdate()
+        }
+    }
 
     private fun updateImageUrlInDatabase(correo: String, imageUrl: String) {
         CoroutineScope(Dispatchers.IO).launch {
