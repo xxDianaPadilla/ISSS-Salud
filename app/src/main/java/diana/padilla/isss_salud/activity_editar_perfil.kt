@@ -6,10 +6,13 @@ import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -25,12 +28,7 @@ import kotlinx.coroutines.withContext
 class activity_editar_perfil : AppCompatActivity() {
 
     val codigo_opcion_galeria = 102
-    val codigo_opcion_tomar_foto = 103
-    val CAMERA_REQUEST_CODE = 0
     val STORAGE_REQUEST_CODE = 1
-
-    lateinit var imageView: ImageView
-    lateinit var miPath: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,18 +47,8 @@ class activity_editar_perfil : AppCompatActivity() {
         val txtViewTipoSangre = findViewById<EditText>(R.id.txtViewTipoSangre)
         val btnCargarImagen = findViewById<Button>(R.id.btnCargarImagen)
 
-        fun checkStoragePermission(){
-            if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
-
-            }
-        }
-
-        fun pedriPermisoAlmacenamiento(){
-            
-        }
-
         btnCargarImagen.setOnClickListener {
-
+            checkStoragePermissions()
         }
 
         fun datosPerfil(): List<Perfil> {
@@ -171,5 +159,64 @@ class activity_editar_perfil : AppCompatActivity() {
             startActivity(pantallaMensajeria)
         }
 
+    }
+
+    private fun checkStoragePermissions(){
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            requestStoragePermissions()
+        }else{
+            openGallery()
+        }
+    }
+
+        private fun requestStoragePermissions() {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_REQUEST_CODE)
+        }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>, grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == STORAGE_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openGallery()
+            } else {
+                Toast.makeText(this, "Permiso de almacenamiento denegado", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, codigo_opcion_galeria)
+    }
+
+         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            super.onActivityResult(requestCode, resultCode, data)
+            if (requestCode == codigo_opcion_galeria && resultCode == Activity.RESULT_OK) {
+                val selectedImageUri = data?.data
+                if(selectedImageUri != null){
+                    val imagenPerfil2 = findViewById<ImageView>(R.id.ImgPerfilSinCargar2)
+                    Glide.with(this).load(selectedImageUri).into(imagenPerfil2)
+
+                    val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
+                    updateImageUrlInDatabase(correoDeLaVariableGlobal, selectedImageUri.toString())
+                }
+
+            }
+        }
+
+    private fun updateImageUrlInDatabase(correo: String, imageUrl: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val objConexion = ClaseConexion().cadenaConexion()
+
+            val updateProfileImage =
+                objConexion?.prepareStatement("UPDATE Usuarios SET foto_usuario = ? WHERE correo_electronico = ?")
+            updateProfileImage?.setString(1, imageUrl)
+            updateProfileImage?.setString(2, correo)
+            updateProfileImage?.executeUpdate()
+        }
     }
 }
