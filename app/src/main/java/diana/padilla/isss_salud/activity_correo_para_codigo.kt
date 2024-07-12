@@ -4,13 +4,18 @@ import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 class activity_correo_para_codigo : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,6 +26,26 @@ class activity_correo_para_codigo : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        val btnCorreoRecuperacion = findViewById<Button>(R.id.btnEnvioCorreoRecuperacion)
+        val txtCorreoRecuperacion = findViewById<EditText>(R.id.txtCorreoRecuperacion)
+
+        btnCorreoRecuperacion.setOnClickListener {
+            try {
+                CoroutineScope(Dispatchers.Main).launch {
+                    val codigoRecuperacion = (100000..999999).random()
+                    println("correo $txtCorreoRecuperacion")
+                    Toast.makeText(this@activity_correo_para_codigo, "Código de recuperación enviado a ${txtCorreoRecuperacion.text.toString()}", Toast.LENGTH_SHORT).show()
+                    enviarCorreo(
+                        txtCorreoRecuperacion.text.toString(),
+                        "Recuperación de contraseña",
+                        "Su código de recuperación es: $codigoRecuperacion"
+                    )
+                }
+            }catch (e: Exception){
+                println("eeeeeeeeeerro $e")
+            }
         }
 
         val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
@@ -59,12 +84,9 @@ class activity_correo_para_codigo : AppCompatActivity() {
             orLines.setImageResource(R.drawable.or_lines)
         }
 
-        val btnEnvioCorreo = findViewById<Button>(R.id.btnEnvioCorreoRecuperacion)
 
-        btnEnvioCorreo.setOnClickListener {
-            val pantallaEnvioCorreo = Intent(this, activity_codigo::class.java)
-            startActivity(pantallaEnvioCorreo)
-        }
+
+
 
         val btnVolverInicioSesion = findViewById<ConstraintLayout>(R.id.btnVolverInicioSesion)
         val txtVolverInicioSesion = findViewById<TextView>(R.id.txtVolverInicioSesion)

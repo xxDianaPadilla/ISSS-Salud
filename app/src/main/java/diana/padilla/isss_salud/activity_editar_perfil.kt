@@ -2,13 +2,21 @@ package diana.padilla.isss_salud
 
 import Modelo.ClaseConexion
 import Modelo.Perfil
+import android.app.Activity
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
+import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.bumptech.glide.Glide
@@ -18,6 +26,10 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class activity_editar_perfil : AppCompatActivity() {
+
+    val codigo_opcion_galeria = 102
+    val STORAGE_REQUEST_CODE = 1
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -28,11 +40,44 @@ class activity_editar_perfil : AppCompatActivity() {
             insets
         }
 
-        val imagenPerfil = findViewById<ImageView>(R.id.ImgPerfilSinCargar2)
+        val imagenPerfil2 = findViewById<ImageView>(R.id.ImgPerfilSinCargar2)
         val txtCorrePerfil = findViewById<EditText>(R.id.txtCorrePerfil)
         val txtViewTelefonoPerfil = findViewById<EditText>(R.id.txtViewTelefonoPerfil)
         val txtViewDuiPerfil = findViewById<EditText>(R.id.txtViewDuiPerfil)
         val txtViewTipoSangre = findViewById<EditText>(R.id.txtViewTipoSangre)
+        val btnCargarImagen = findViewById<Button>(R.id.btnCargarImagen)
+        val btnActualizar = findViewById<Button>(R.id.btnActualizar)
+
+        btnCargarImagen.setOnClickListener {
+            checkStoragePermissions()
+        }
+
+        btnActualizar.setOnClickListener {
+            val nuevoTelefono = txtViewTelefonoPerfil.text.toString()
+            val telefonoRegex = Regex("^\\d{4}-\\d{4}\$")
+            if(nuevoTelefono.isEmpty()){
+                Toast.makeText(
+                    this,
+                    "Error, para actualizar debes llenar el campo de teléfono",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }else if (!telefonoRegex.matches(nuevoTelefono)) {
+                Toast.makeText(
+                    this@activity_editar_perfil,
+                    "Error, El número de teléfono no es válido.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }else{
+                ActualizarTelefonoEnBaseDeDatos(nuevoTelefono)
+                Toast.makeText(
+                    this@activity_editar_perfil,
+                    "El teléfono se ha actualizado exitosamente.",
+                    Toast.LENGTH_SHORT
+                ).show()
+
+                txtViewTelefonoPerfil.setText("")
+            }
+        }
 
         fun datosPerfil(): List<Perfil> {
             val perfil2 = mutableListOf<Perfil>()
@@ -70,7 +115,7 @@ class activity_editar_perfil : AppCompatActivity() {
                 val miFoto2 = perfiles2[0].foto_usuario
                 Glide.with(this@activity_editar_perfil)
                     .load(miFoto2)
-                    .into(imagenPerfil)
+                    .into(imagenPerfil2)
                 val miDui2 = perfiles2[0].dui
                 txtViewDuiPerfil.hint = miDui2
                 val miCorreo2 = perfiles2[0].correo_electronico
@@ -142,5 +187,76 @@ class activity_editar_perfil : AppCompatActivity() {
             startActivity(pantallaMensajeria)
         }
 
+    }
+
+    private fun checkStoragePermissions(){
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED){
+            requestStoragePermissions()
+        }else{
+            openGallery()
+        }
+    }
+
+        private fun requestStoragePermissions() {
+            ActivityCompat.requestPermissions(this, arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE), STORAGE_REQUEST_CODE)
+        }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<String>, grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if (requestCode == STORAGE_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                openGallery()
+            } else {
+                Toast.makeText(this, "Permiso de almacenamiento denegado", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
+
+    private fun openGallery() {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, codigo_opcion_galeria)
+    }
+
+         override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            super.onActivityResult(requestCode, resultCode, data)
+            if (requestCode == codigo_opcion_galeria && resultCode == Activity.RESULT_OK) {
+                val selectedImageUri = data?.data
+                if(selectedImageUri != null){
+                    val imagenPerfil2 = findViewById<ImageView>(R.id.ImgPerfilSinCargar2)
+                    Glide.with(this).load(selectedImageUri).into(imagenPerfil2)
+
+                    val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
+                    updateImageUrlInDatabase(correoDeLaVariableGlobal, selectedImageUri.toString())
+                }
+
+            }
+        }
+
+    private fun ActualizarTelefonoEnBaseDeDatos(nuevoTelefono: String){
+        CoroutineScope(Dispatchers.IO).launch {
+            val objConexion = ClaseConexion().cadenaConexion()
+            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
+
+            val updateTelefono = objConexion?.prepareStatement("UPDATE Usuarios SET telefono = ? WHERE correo_electronico = ?")
+            updateTelefono?.setString(1, nuevoTelefono)
+            updateTelefono?.setString(2, correoDeLaVariableGlobal)
+            updateTelefono?.executeUpdate()
+        }
+    }
+
+    private fun updateImageUrlInDatabase(correo: String, imageUrl: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val objConexion = ClaseConexion().cadenaConexion()
+
+            val updateProfileImage =
+                objConexion?.prepareStatement("UPDATE Usuarios SET foto_usuario = ? WHERE correo_electronico = ?")
+            updateProfileImage?.setString(1, imageUrl)
+            updateProfileImage?.setString(2, correo)
+            updateProfileImage?.executeUpdate()
+        }
     }
 }
