@@ -48,37 +48,44 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
-        android:id="@+id/email_value"
+        android:id="@+id/txtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:text="Carlos_Ga@gmail.com"
+        android:fontFamily="@font/raleway_extrabold_italic"
         app:layout_constraintTop_toBottomOf="@+id/email_label"
-        tools:layout_editor_absoluteX="37dp" />
+        tools:layout_editor_absoluteX="37dp"
+        tools:text="Correo:" />
 
     <TextView
         android:id="@+id/specialty"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Especialista: Médico general"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="467dp" />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_extrabold_italic"
+        android:text="Especialidad:"
+        app:layout_constraintTop_toBottomOf="@+id/doctor_title"
+        tools:layout_editor_absoluteX="37dp" />
 
     <TextView
         android:id="@+id/doctor_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Doctor: Carlos García"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="441dp" />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_extrabold_italic"
+        android:text="Doctor:"
+        app:layout_constraintTop_toBottomOf="@+id/txtView"
+        tools:layout_editor_absoluteX="37dp" />
 
     <TextView
         android:id="@+id/medical_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Unidad médica: Clínica Comunal San Miguelito"
-        tools:layout_editor_absoluteX="37dp"
-        tools:layout_editor_absoluteY="494dp" />
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_extrabold_italic"
+        android:text="Unidad médica:"
+        app:layout_constraintTop_toBottomOf="@+id/specialty"
+        tools:layout_editor_absoluteX="37dp" />
 
     <TextView
         android:id="@+id/location_label"
@@ -110,5 +117,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ImgDoctorPerfil"
         app:srcCompat="@drawable/ic_linea_division" />
+
+    <TextView
+        android:id="@+id/txtViewCorreoDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_semibold"
+        android:textColor="#294898"
+        app:layout_constraintStart_toEndOf="@+id/txtView"
+        app:layout_constraintTop_toBottomOf="@+id/email_label" />
+
+    <TextView
+        android:id="@+id/txtViewNombreDoctorP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_italic"
+        app:layout_constraintStart_toEndOf="@+id/doctor_title"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewCorreoDoctor" />
+
+    <TextView
+        android:id="@+id/txtViewEspecialidadDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_italic"
+        app:layout_constraintStart_toEndOf="@+id/specialty"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewNombreDoctorP" />
+
+    <TextView
+        android:id="@+id/txtViewUnidadMedicaDoctor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/raleway_italic"
+        app:layout_constraintStart_toEndOf="@+id/medical_unit"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewEspecialidadDoctor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
