@@ -1,8 +1,10 @@
 package diana.padilla.isss_salud
 
+import android.widget.Toast
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
@@ -21,6 +23,31 @@ class activity_codigo : AppCompatActivity() {
             insets
         }
 
+        val num1 = findViewById<EditText>(R.id.txtNum1)
+        val num2 = findViewById<EditText>(R.id.txtNum2)
+        val num3 = findViewById<EditText>(R.id.txtNum3)
+        val num4 = findViewById<EditText>(R.id.txtNum4)
+        val num5 = findViewById<EditText>(R.id.txtNum5)
+        val num6 = findViewById<EditText>(R.id.txtNum6)
+        val btnConfirmarCodigo = findViewById<TextView>(R.id.btnConfirmarCodigo)
+
+        val codigoQueEnvie = activity_correo_para_codigo.variablesGlobalesCorreoparacodigo.codigoRecuperacion
+
+
+
+        btnConfirmarCodigo.setOnClickListener {
+            val codigoRecu = "${num1.text.toString()}${num2.text.toString()}${num3.text.toString()}${num4.text.toString()}${num5.text.toString()}${num6.text.toString()}"
+            println("Codigo correcto $codigoRecu $codigoQueEnvie")
+        if (codigoRecu == codigoQueEnvie){
+            val PantallaCambioContrasena = Intent(this, activity_cambio_contrasena::class.java)
+            startActivity(PantallaCambioContrasena)
+            finish()
+        }
+        else{
+            Toast.makeText(this, "Codigo incorrecto", Toast.LENGTH_SHORT).show()
+        }
+        }
+
         val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
@@ -30,11 +57,6 @@ class activity_codigo : AppCompatActivity() {
             logoISSS.setImageResource(R.drawable.id_logo_isss)
         }
 
-        val btnConfirmarCodigo = findViewById<TextView>(R.id.btnConfirmarCodigo)
 
-        btnConfirmarCodigo.setOnClickListener {
-            val PantallaCambioContrasena = Intent(this, activity_cambio_contrasena::class.java)
-            startActivity(PantallaCambioContrasena)
-        }
     }
 }
