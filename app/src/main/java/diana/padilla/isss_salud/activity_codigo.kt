@@ -33,17 +33,21 @@ class activity_codigo : AppCompatActivity() {
 
         val codigoQueEnvie = activity_correo_para_codigo.variablesGlobalesCorreoparacodigo.codigoRecuperacion
 
-        val codigoRecu = "${num1.text}${num2.text}${num3.text}${num4.text}${num5.text}${num6.text}"
-        println("Codigo correcto $codigoRecu $codigoQueEnvie")
+
+
         btnConfirmarCodigo.setOnClickListener {
+            val codigoRecu = "${num1.text.toString()}${num2.text.toString()}${num3.text.toString()}${num4.text.toString()}${num5.text.toString()}${num6.text.toString()}"
+            println("Codigo correcto $codigoRecu $codigoQueEnvie")
         if (codigoRecu == codigoQueEnvie){
             val PantallaCambioContrasena = Intent(this, activity_cambio_contrasena::class.java)
             startActivity(PantallaCambioContrasena)
+            finish()
         }
         else{
             Toast.makeText(this, "Codigo incorrecto", Toast.LENGTH_SHORT).show()
         }
         }
+
         val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
