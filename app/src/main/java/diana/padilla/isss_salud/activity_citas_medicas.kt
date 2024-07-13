@@ -183,16 +183,19 @@ class activity_citas_medicas : AppCompatActivity() {
         iconHome.setOnClickListener {
             val pantallaNoticias = Intent(this, activity_noticias::class.java)
             startActivity(pantallaNoticias)
+            overridePendingTransition(0, 0)
         }
 
         iconChats.setOnClickListener {
             val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
             startActivity(pantallaMensajeria)
+            overridePendingTransition(0, 0)
         }
 
         iconPerfil.setOnClickListener {
             val pantallaPerfil = Intent(this, activity_perfil::class.java)
             startActivity(pantallaPerfil)
+            overridePendingTransition(0, 0)
         }
 
         val btnCitasAgendadas = findViewById<Button>(R.id.btnCitasAgendadasA)
@@ -200,6 +203,7 @@ class activity_citas_medicas : AppCompatActivity() {
         btnCitasAgendadas.setOnClickListener {
             val pantallaCitasAgendadas = Intent(this, activity_citas_agendadas::class.java)
             startActivity(pantallaCitasAgendadas)
+            overridePendingTransition(0, 0)
         }
     }
 }

@@ -175,16 +175,19 @@ class activity_editar_perfil : AppCompatActivity() {
         iconHome.setOnClickListener{
             val pantallaNoticias = Intent(this, activity_noticias::class.java)
             startActivity(pantallaNoticias)
+            overridePendingTransition(0, 0)
         }
 
         iconCitas.setOnClickListener {
             val pantallaCitas = Intent(this, activity_citas_medicas::class.java)
             startActivity(pantallaCitas)
+            overridePendingTransition(0, 0)
         }
 
         iconChats.setOnClickListener {
             val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
             startActivity(pantallaMensajeria)
+            overridePendingTransition(0, 0)
         }
 
     }

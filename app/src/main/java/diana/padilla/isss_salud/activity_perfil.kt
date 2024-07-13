@@ -132,16 +132,19 @@ class activity_perfil : AppCompatActivity() {
         iconHome.setOnClickListener{
             val pantallaNoticias = Intent(this, activity_noticias::class.java)
             startActivity(pantallaNoticias)
+            overridePendingTransition(0, 0)
         }
 
         iconCitas.setOnClickListener {
             val pantallaCitas = Intent(this, activity_citas_medicas::class.java)
             startActivity(pantallaCitas)
+            overridePendingTransition(0, 0)
         }
 
         iconChats.setOnClickListener {
             val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
             startActivity(pantallaMensajeria)
+            overridePendingTransition(0, 0)
         }
 
         val btnCerrarSesion = findViewById<Button>(R.id.btnCerrarSesion)
@@ -149,6 +152,7 @@ class activity_perfil : AppCompatActivity() {
         btnCerrarSesion.setOnClickListener {
             val pantallaIngreso = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaIngreso)
+            overridePendingTransition(0, 0)
         }
 
         val btnEditarPerfil = findViewById<Button>(R.id.btnCargarImagen)
