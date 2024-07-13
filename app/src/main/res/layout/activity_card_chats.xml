@@ -44,16 +44,12 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.35"
-                app:layout_constraintStart_toEndOf="@+id/ImgDoctorChats"
+                app:layout_constraintStart_toEndOf="@+id/ivDoctorFoto"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.296" />
 
             <com.google.android.material.imageview.ShapeableImageView
-<<<<<<< HEAD
-                android:id="@+id/ImgDoctorChats"
-=======
                 android:id="@+id/ivDoctorFoto"
->>>>>>> master
                 android:layout_width="67dp"
                 android:layout_height="65dp"
                 android:layout_marginStart="7dp"
