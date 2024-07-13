@@ -13,10 +13,13 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import java.security.MessageDigest
+import java.sql.PreparedStatement
+import java.sql.ResultSet
 
 class activity_cambio_contrasena : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,35 +36,67 @@ class activity_cambio_contrasena : AppCompatActivity() {
         val confirmarContrasena = findViewById<EditText>(R.id.txtConfirmarContraseña)
         val cambiarContrasena = findViewById<Button>(R.id.btnCambiarContraseña)
 
-        val correoRecu = activity_correo_para_codigo.variablesGlobalesCorreoparacodigo.correoRecu
 
+        fun hashSHA256(contrasenaEncriptada: String): String {
+            val bytes =
+                MessageDigest.getInstance("SHA-256").digest(contrasenaEncriptada.toByteArray())
+            return bytes.joinToString("") { "%02x".format(it) }
+        }
 
-        fun hashSHA256(contrasenaEncriptada: String): String{
-            val bytes = MessageDigest.getInstance("SHA-256").digest(contrasenaEncriptada.toByteArray())
-            return bytes.joinToString(""){ "%02x".format(it) }
+        fun actualizarContrasena(nuevaContrasena: String) {
+            CoroutineScope(Dispatchers.IO).launch {
+                val objConexion = ClaseConexion().cadenaConexion()
+                val correoRecu =
+                    activity_correo_para_codigo.variablesGlobalesCorreoparacodigo.correoRecu
+                val contrasenaEncriptacion = hashSHA256(nuevaContrasena)
+
+                var verificarCorreo: PreparedStatement? = null
+                var actualizarContrasena: PreparedStatement? = null
+                var resultSet: ResultSet? = null
+
+                try {
+                    // Verifica si el correo existe
+                    verificarCorreo = objConexion?.prepareStatement("SELECT * FROM Usuarios WHERE correo_electronico = ?")
+                    verificarCorreo?.setString(1, correoRecu)
+                    resultSet = verificarCorreo?.executeQuery()
+
+                    if (resultSet != null && resultSet.next() && resultSet.getInt(1) > 0) {
+                        actualizarContrasena = objConexion?.prepareStatement("UPDATE Usuarios SET contrasena = ? WHERE correo_electronico = ?")!!
+                        actualizarContrasena?.setString(1, contrasenaEncriptacion)
+                        actualizarContrasena?.setString(2, correoRecu)
+                        val rowsUpdated = actualizarContrasena.executeUpdate()
+                        if (rowsUpdated > 0) {
+                            runOnUiThread {
+                                Toast.makeText(this@activity_cambio_contrasena, "Contraseña actualizada exitosamente.", Toast.LENGTH_SHORT).show()
+                            }
+                        }
+                    } else {
+                        runOnUiThread {
+                            Toast.makeText(this@activity_cambio_contrasena, "Error, el correo no existe.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    runOnUiThread {
+                        println("este es el error: $e")
+                        Toast.makeText(this@activity_cambio_contrasena, "Error al actualizar la contraseña.", Toast.LENGTH_SHORT).show()
+                    }
+
+                }
+            }
         }
 
         cambiarContrasena.setOnClickListener {
-        if (nuevaContrasena == confirmarContrasena){
-            fun actualizarContrasena(nuevaContrasena: String){
-                GlobalScope.launch(Dispatchers.IO){
-                    val objConexion = ClaseConexion().cadenaConexion()
-                    val contrasenaEncriptacion = hashSHA256(nuevaContrasena.toString())
-
-                    val actualizarContrasena =objConexion?.prepareStatement("UPDATE Usuarios SET contrasena = ? WHERE correo_electronico = ?")!!
-                    actualizarContrasena.setString(1, contrasenaEncriptacion)
-                    actualizarContrasena.setString(2, correoRecu)
-                    actualizarContrasena.executeUpdate()
-                }
+            if (nuevaContrasena.text.toString() == confirmarContrasena.text.toString()) {
+                actualizarContrasena(nuevaContrasena.text.toString())
+            } else {
+                Toast.makeText(
+                    this@activity_cambio_contrasena,
+                    "Error, las contraseñas no coinciden.",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
-        } else{
-            Toast.makeText(
-                this@activity_cambio_contrasena,
-                "Error, las contraseñas no coinciden.",
-                Toast.LENGTH_SHORT
-            ).show()
         }
-            }
 
 
         val logoISSS = findViewById<ImageView>(R.id.IvLogoIsss)
@@ -89,13 +124,6 @@ class activity_cambio_contrasena : AppCompatActivity() {
             fondoIcon.setBackgroundResource(R.drawable.ic_dark_lock)
         }else{
             fondoIcon.setBackgroundResource(R.drawable.ic_lock)
-        }
-
-        val btnCambiarPassword = findViewById<Button>(R.id.btnCambiarContraseña)
-
-        btnCambiarPassword.setOnClickListener {
-            val pantallaMensajeContrasena = Intent(this, activity_nueva_contrasena::class.java)
-            startActivity(pantallaMensajeContrasena)
         }
 
     }

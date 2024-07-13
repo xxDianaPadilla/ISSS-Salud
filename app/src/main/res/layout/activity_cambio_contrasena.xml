@@ -117,7 +117,7 @@
 
         <Button
             android:id="@+id/btnCambiarContraseña"
-            style="@style/buttonStyle4"
+            style="@style/buttonStyle2"
             android:layout_width="306dp"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
