@@ -1,6 +1,6 @@
 package diana.padilla.isss_salud
 
-import android.widget.Toast
+
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.util.Properties
@@ -12,17 +12,16 @@ import javax.mail.Transport
 import javax.mail.internet.InternetAddress
 import javax.mail.internet.MimeMessage
 
-class enviarCorreo {
-
     suspend fun enviarCorreo(receptor: String, asunto: String, mensaje: String) = withContext(Dispatchers.IO) {
 
         val props = Properties().apply {
-            put("mail.smtp.host", "smtp.gmali.com")
+            put("mail.smtp.host", "smtp.gmail.com")
             put("mail.smtp.socketFactory.port", "465")
-            put("mail.smtp.socketFactory.class", "java.net.ssl.SSLSocketFactory")
+            put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory")
             put("mail.smtp.auth", "true")
             put("mail.smtp.port", "465")
         }
+
 
         //Incio de sesión
         val session = Session.getInstance(props, object : javax.mail.Authenticator() {
@@ -46,4 +45,3 @@ class enviarCorreo {
             println("Correo no enviado, error: ${e.message}")
         }
     }
-}
