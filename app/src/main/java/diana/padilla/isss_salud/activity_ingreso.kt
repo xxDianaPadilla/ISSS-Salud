@@ -107,6 +107,9 @@ companion object variablesGlobales{
                         pantallaNoticias.putExtra("correoIng", correoIng)
 
                         miMorreo = txtCorreo.text.toString()
+                        runOnUiThread{
+                            Toast.makeText(this@activity_ingreso, "Bienvenid@!", Toast.LENGTH_LONG).show()
+                        }
                         startActivity(pantallaNoticias)
                     } else {
                         runOnUiThread{

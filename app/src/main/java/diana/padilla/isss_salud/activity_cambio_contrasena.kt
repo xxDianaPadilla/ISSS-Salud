@@ -66,9 +66,8 @@ class activity_cambio_contrasena : AppCompatActivity() {
                         actualizarContrasena?.setString(2, correoRecu)
                         val rowsUpdated = actualizarContrasena.executeUpdate()
                         if (rowsUpdated > 0) {
-                            runOnUiThread {
-                                Toast.makeText(this@activity_cambio_contrasena, "Contraseña actualizada exitosamente.", Toast.LENGTH_SHORT).show()
-                            }
+                            val pantallaNuevaContrasena = Intent(this@activity_cambio_contrasena, activity_nueva_contrasena::class.java)
+                            startActivity(pantallaNuevaContrasena)
                         }
                     } else {
                         runOnUiThread {
