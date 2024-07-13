@@ -16,8 +16,16 @@ import androidx.core.view.WindowInsetsCompat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import android.util.Patterns
+
 
 class activity_correo_para_codigo : AppCompatActivity() {
+
+    companion object variablesGlobalesCorreoparacodigo{
+        lateinit var codigoRecuperacion: String
+        lateinit var correoRecu: String
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -32,19 +40,43 @@ class activity_correo_para_codigo : AppCompatActivity() {
         val txtCorreoRecuperacion = findViewById<EditText>(R.id.txtCorreoRecuperacion)
 
         btnCorreoRecuperacion.setOnClickListener {
-            try {
-                CoroutineScope(Dispatchers.Main).launch {
-                    val codigoRecuperacion = (100000..999999).random()
-                    println("correo $txtCorreoRecuperacion")
-                    Toast.makeText(this@activity_correo_para_codigo, "Código de recuperación enviado a ${txtCorreoRecuperacion.text.toString()}", Toast.LENGTH_SHORT).show()
-                    enviarCorreo(
-                        txtCorreoRecuperacion.text.toString(),
-                        "Recuperación de contraseña",
-                        "Su código de recuperación es: $codigoRecuperacion"
-                    )
+            correoRecu = txtCorreoRecuperacion.text.toString()
+
+            if (correoRecu.isEmpty()) {
+                Toast.makeText(
+                    this@activity_correo_para_codigo,
+                    "Por favor, ingrese un correo",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (!Patterns.EMAIL_ADDRESS.matcher(correoRecu)
+                    .matches() || !correoRecu.endsWith("@gmail.com")
+            ) {
+                Toast.makeText(
+                    this@activity_correo_para_codigo,
+                    "Por favor, ingrese un correo válido (@gmail.com)",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else {
+                try {
+                    CoroutineScope(Dispatchers.Main).launch {
+                        codigoRecuperacion = (100000..999999).random().toString()
+                        println("correo $correoRecu")
+                        Toast.makeText(
+                            this@activity_correo_para_codigo,
+                            "Código de recuperación enviado a $correoRecu",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        enviarCorreo(
+                            correoRecu,
+                            "Recuperación de contraseña",
+                            "Su código de recuperación es: $codigoRecuperacion"
+                        )
+                    }
+                    val pantallaCodigo = Intent(this, activity_codigo::class.java)
+                    startActivity(pantallaCodigo)
+                } catch (e: Exception) {
+                    println("eeeeeeeeeerro $e")
                 }
-            }catch (e: Exception){
-                println("eeeeeeeeeerro $e")
             }
         }
 
@@ -83,10 +115,6 @@ class activity_correo_para_codigo : AppCompatActivity() {
         }else{
             orLines.setImageResource(R.drawable.or_lines)
         }
-
-
-
-
 
         val btnVolverInicioSesion = findViewById<ConstraintLayout>(R.id.btnVolverInicioSesion)
         val txtVolverInicioSesion = findViewById<TextView>(R.id.txtVolverInicioSesion)

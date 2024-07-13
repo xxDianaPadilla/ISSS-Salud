@@ -99,7 +99,6 @@
 
         <Button
             android:id="@+id/btnEnvioCorreoRecuperacion"
-            style="@style/buttonStyle4"
             android:layout_width="306dp"
             android:layout_height="40dp"
             android:layout_marginTop="15dp"
@@ -107,6 +106,7 @@
             android:text="Enviar código de verificación"
             android:textColor="#d4e2f6"
             android:textSize="14sp"
+            style="@style/buttonStyle2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtCorreoRecuperacion" />

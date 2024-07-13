@@ -145,16 +145,19 @@ class activity_citas_agendadas : AppCompatActivity() {
         iconHome.setOnClickListener{
             val pantallaNoticias = Intent(this, activity_noticias::class.java)
             startActivity(pantallaNoticias)
+            overridePendingTransition(0, 0)
         }
 
         iconChats.setOnClickListener {
             val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
             startActivity(pantallaMensajeria)
+            overridePendingTransition(0, 0)
         }
 
         iconPerfil.setOnClickListener {
             val pantallaPerfil = Intent(this, activity_perfil::class.java)
             startActivity(pantallaPerfil)
+            overridePendingTransition(0, 0)
         }
 
         val btnFormulario = findViewById<Button>(R.id.btnFormularioCitas)
@@ -162,6 +165,7 @@ class activity_citas_agendadas : AppCompatActivity() {
         btnFormulario.setOnClickListener {
             val pantallaFormulario = Intent(this, activity_citas_medicas::class.java)
             startActivity(pantallaFormulario)
+            overridePendingTransition(0, 0)
         }
     }
 }

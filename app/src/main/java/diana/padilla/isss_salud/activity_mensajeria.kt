@@ -123,16 +123,19 @@ class activity_mensajeria : AppCompatActivity() {
         iconHome.setOnClickListener{
             val pantallaNoticias = Intent(this, activity_noticias::class.java)
             startActivity(pantallaNoticias)
+            overridePendingTransition(0, 0)
         }
 
         iconCitas.setOnClickListener {
             val pantallaCitas = Intent(this, activity_citas_medicas::class.java)
             startActivity(pantallaCitas)
+            overridePendingTransition(0, 0)
         }
 
         iconPerfil.setOnClickListener {
             val pantallaPerfil = Intent(this, activity_perfil::class.java)
             startActivity(pantallaPerfil)
+            overridePendingTransition(0, 0)
         }
     }
 }
