@@ -35,6 +35,7 @@ class activity_nueva_contrasena : AppCompatActivity() {
         txtReturnInicio.setOnClickListener {
             val pantallaInicioSesion = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaInicioSesion)
+            finish()
         }
     }
 }

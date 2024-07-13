@@ -122,11 +122,13 @@ class activity_correo_para_codigo : AppCompatActivity() {
         btnVolverInicioSesion.setOnClickListener {
             val pantallaInicioSesion = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaInicioSesion)
+            finish()
         }
 
         txtVolverInicioSesion.setOnClickListener {
             val pantallaInicioSesion2 = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaInicioSesion2)
+            finish()
         }
 
         val txtCrearCuenta = findViewById<TextView>(R.id.txtCrearCuentaNueva)
@@ -134,6 +136,7 @@ class activity_correo_para_codigo : AppCompatActivity() {
         txtCrearCuenta.setOnClickListener {
             val pantallaRegistrarse = Intent(this, activity_registrarse::class.java)
             startActivity(pantallaRegistrarse)
+            finish()
         }
     }
 }

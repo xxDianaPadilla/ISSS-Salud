@@ -36,6 +36,7 @@ class MainActivity : AppCompatActivity() {
         btnPantallaLogin.setOnClickListener {
             val pantallaLogin = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaLogin)
+            finish()
         }
 
         val txtPantallaRegistro = findViewById<TextView>(R.id.btnRegistrarPantalla)

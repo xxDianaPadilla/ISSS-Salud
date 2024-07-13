@@ -152,7 +152,7 @@ class activity_perfil : AppCompatActivity() {
         btnCerrarSesion.setOnClickListener {
             val pantallaIngreso = Intent(this, activity_ingreso::class.java)
             startActivity(pantallaIngreso)
-            overridePendingTransition(0, 0)
+            finish()
         }
 
         val btnEditarPerfil = findViewById<Button>(R.id.btnCargarImagen)

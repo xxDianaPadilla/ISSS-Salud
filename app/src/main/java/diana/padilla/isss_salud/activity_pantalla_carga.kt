@@ -35,8 +35,6 @@ class activity_pantalla_carga : AppCompatActivity() {
             logoISSS.setImageResource(R.drawable.id_logo_isss)
         }
 
-        val pantallaCarga = 3000
-
         GlobalScope.launch(Dispatchers.Main) {
             delay(3000)
 

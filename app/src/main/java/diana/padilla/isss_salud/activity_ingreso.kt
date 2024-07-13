@@ -2,6 +2,7 @@ package diana.padilla.isss_salud
 
 import Modelo.ClaseConexion
 import android.annotation.SuppressLint
+import android.app.Application
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -50,6 +51,7 @@ companion object variablesGlobales{
         txtOlvidoContrasena.setOnClickListener {
             val pantallaOlvidoContrasena = Intent(this, activity_correo_para_codigo::class.java)
             startActivity(pantallaOlvidoContrasena)
+            finish()
         }
 
         val btnRegistrarse = findViewById<Button>(R.id.btnRegistrarseIngresoInterfaz)
@@ -108,9 +110,10 @@ companion object variablesGlobales{
 
                         miMorreo = txtCorreo.text.toString()
                         runOnUiThread{
-                            Toast.makeText(this@activity_ingreso, "Bienvenid@!", Toast.LENGTH_LONG).show()
+                            Toast.makeText(this@activity_ingreso, "Bienvenid@!", Toast.LENGTH_SHORT).show()
                         }
                         startActivity(pantallaNoticias)
+                        finish()
                     } else {
                         runOnUiThread{
                             Toast.makeText(this@activity_ingreso, "Usuario no encontrado, verifique las credenciales", Toast.LENGTH_LONG).show()
@@ -119,5 +122,11 @@ companion object variablesGlobales{
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        Toast.makeText(this@activity_ingreso, "Has salido de la aplicación", Toast.LENGTH_SHORT).show()
+        finishAffinity()
     }
 }

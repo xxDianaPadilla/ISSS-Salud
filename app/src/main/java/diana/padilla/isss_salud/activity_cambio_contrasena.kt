@@ -35,6 +35,7 @@ class activity_cambio_contrasena : AppCompatActivity() {
         val nuevaContrasena = findViewById<EditText>(R.id.txtNuevaContraseña)
         val confirmarContrasena = findViewById<EditText>(R.id.txtConfirmarContraseña)
         val cambiarContrasena = findViewById<Button>(R.id.btnCambiarContraseña)
+        val contrasenaRegex = Regex("^(?=.*[0-9!@#\$%^&*()-_=+\\|\\[{\\]};:'\",<.>/?]).{6,}\$")
 
 
         fun hashSHA256(contrasenaEncriptada: String): String {
@@ -68,6 +69,7 @@ class activity_cambio_contrasena : AppCompatActivity() {
                         if (rowsUpdated > 0) {
                             val pantallaNuevaContrasena = Intent(this@activity_cambio_contrasena, activity_nueva_contrasena::class.java)
                             startActivity(pantallaNuevaContrasena)
+                            finish()
                         }
                     } else {
                         runOnUiThread {
@@ -86,9 +88,25 @@ class activity_cambio_contrasena : AppCompatActivity() {
         }
 
         cambiarContrasena.setOnClickListener {
-            if (nuevaContrasena.text.toString() == confirmarContrasena.text.toString()) {
+
+            val password = nuevaContrasena.text.toString()
+            val confirmPassword = confirmarContrasena.text.toString()
+
+            if (password.isEmpty() || confirmPassword.isEmpty()){
+                Toast.makeText(
+                    this@activity_cambio_contrasena,
+                    "Error, para cambiar la contraseña debes llenar todas las casillas.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if(!contrasenaRegex.matches(password)){
+                Toast.makeText(
+                    this@activity_cambio_contrasena,
+                    "Error, la contraseña debe contener al menos un caracter especial y tener más de 6 caracteres.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if (nuevaContrasena.text.toString() == confirmarContrasena.text.toString()) {
                 actualizarContrasena(nuevaContrasena.text.toString())
-            } else {
+            }else {
                 Toast.makeText(
                     this@activity_cambio_contrasena,
                     "Error, las contraseñas no coinciden.",

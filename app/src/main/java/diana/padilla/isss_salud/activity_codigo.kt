@@ -4,6 +4,8 @@ import android.widget.Toast
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -33,12 +35,42 @@ class activity_codigo : AppCompatActivity() {
 
         val codigoQueEnvie = activity_correo_para_codigo.variablesGlobalesCorreoparacodigo.codigoRecuperacion
 
+        fun esSoloUnDigito(input: String): Boolean{
+            return input.length == 1 && input[0].isDigit()
+        }
 
+        val textWatchers = listOf(num1, num2, num3, num4, num5, num6).map { editText ->
+            editText.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    if (!esSoloUnDigito(s.toString())) {
+                        editText.error = "Debe ingresar solo un número"
+                    }
+                }
+                override fun afterTextChanged(s: Editable?) {}
+            })
+        }
 
         btnConfirmarCodigo.setOnClickListener {
+
+            val numero1 = num1.text.toString()
+            val numero2 = num2.text.toString()
+            val numero3 = num3.text.toString()
+            val numero4 = num4.text.toString()
+            val numero5 = num5.text.toString()
+            val numero6 = num6.text.toString()
+
             val codigoRecu = "${num1.text.toString()}${num2.text.toString()}${num3.text.toString()}${num4.text.toString()}${num5.text.toString()}${num6.text.toString()}"
             println("Codigo correcto $codigoRecu $codigoQueEnvie")
-        if (codigoRecu == codigoQueEnvie){
+            if (numero1.isEmpty() || numero2.isEmpty() || numero3.isEmpty() || numero4.isEmpty() || numero5.isEmpty() || numero6.isEmpty()){
+                Toast.makeText(
+                    this@activity_codigo,
+                    "Error, para cambiar la contraseña debe llenar todas las casillas.",
+                    Toast.LENGTH_SHORT
+                ).show()
+            } else if(!esSoloUnDigito(numero1) || !esSoloUnDigito(numero2) || !esSoloUnDigito(numero3) || !esSoloUnDigito(numero4) || !esSoloUnDigito(numero5) || !esSoloUnDigito(numero6)){
+                Toast.makeText(this@activity_codigo, "Debe ingresar solo un número en cada casilla", Toast.LENGTH_SHORT).show()
+            }else if (codigoRecu == codigoQueEnvie){
             val PantallaCambioContrasena = Intent(this, activity_cambio_contrasena::class.java)
             startActivity(PantallaCambioContrasena)
             finish()
