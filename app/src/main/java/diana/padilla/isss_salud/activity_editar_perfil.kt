@@ -100,9 +100,8 @@ class activity_editar_perfil : AppCompatActivity() {
 
                     val perfilCompleto2 =
                         Perfil(foto_usuario2, correo_electronico2, telefono2, dui2, tipo_sangre2)
-                    perfil2.add(perfilCompleto2)
-
                     println(perfilCompleto2)
+                    perfil2.add(perfilCompleto2)
                 }
             }
 
@@ -260,6 +259,8 @@ class activity_editar_perfil : AppCompatActivity() {
             updateProfileImage?.setString(1, imageUrl)
             updateProfileImage?.setString(2, correo)
             updateProfileImage?.executeUpdate()
+
+            Toast.makeText(this@activity_editar_perfil, "Foto de perfil actualizado exitosamente!", Toast.LENGTH_SHORT).show()
         }
     }
 }

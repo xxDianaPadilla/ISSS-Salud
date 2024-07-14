@@ -113,29 +113,41 @@ class activity_registrarse : AppCompatActivity() {
             } else {
                 CoroutineScope(Dispatchers.IO).launch {
 
-                    val objConexion = ClaseConexion().cadenaConexion()
+                    try {
 
-                    val contrasenaEncriptacion = hashSHA256(txtContrasena1.text.toString())
+                        val objConexion = ClaseConexion().cadenaConexion()
 
-                    val addUsuarios = objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?)")!!
-                    addUsuarios.setString(1, txtDUI.text.toString())
-                    addUsuarios.setString(2, spTipoSangre.selectedItem.toString())
-                    addUsuarios.setString(3, txtTelefono.text.toString())
-                    addUsuarios.setString(4, txtCorreo1.text.toString())
-                    addUsuarios.setString(5, contrasenaEncriptacion)
+                        val contrasenaEncriptacion = hashSHA256(txtContrasena1.text.toString())
 
-                    addUsuarios.executeUpdate()
+                        val addUsuarios =
+                            objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?)")!!
+                        addUsuarios.setString(1, txtDUI.text.toString())
+                        addUsuarios.setString(2, spTipoSangre.selectedItem.toString())
+                        addUsuarios.setString(3, txtTelefono.text.toString())
+                        addUsuarios.setString(4, txtCorreo1.text.toString())
+                        addUsuarios.setString(5, contrasenaEncriptacion)
 
-                    withContext(Dispatchers.Main) {
-                        AlertDialog.Builder(this@activity_registrarse)
-                            .setTitle("Registro exitoso")
-                            .setMessage("La cuenta se ha creado exitosamente.")
-                            .setPositiveButton("Aceptar", null)
-                            .show()
-                        txtDUI.setText("")
-                        txtTelefono.setText("")
-                        txtCorreo1.setText("")
-                        txtContrasena1.setText("")
+                        addUsuarios.executeUpdate()
+
+                        withContext(Dispatchers.Main) {
+                            AlertDialog.Builder(this@activity_registrarse)
+                                .setTitle("Registro exitoso")
+                                .setMessage("La cuenta se ha creado exitosamente.")
+                                .setPositiveButton("Aceptar", null)
+                                .show()
+                            txtDUI.setText("")
+                            txtTelefono.setText("")
+                            txtCorreo1.setText("")
+                            txtContrasena1.setText("")
+                        }
+                    }catch (e: java.sql.SQLIntegrityConstraintViolationException){
+                        withContext(Dispatchers.Main) {
+                            AlertDialog.Builder(this@activity_registrarse)
+                                .setTitle("Error de registro")
+                                .setMessage("La contraseña ya ha sido empleada. Por favor, elige otra.")
+                                .setPositiveButton("Aceptar", null)
+                                .show()
+                        }
                     }
                 }
             }

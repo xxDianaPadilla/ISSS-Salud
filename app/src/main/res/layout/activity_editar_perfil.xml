@@ -140,7 +140,7 @@
                 android:layout_marginTop="24dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
-                android:inputType="text"
+                android:inputType="phone"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

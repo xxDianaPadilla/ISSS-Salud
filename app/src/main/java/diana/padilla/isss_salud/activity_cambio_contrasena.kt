@@ -80,7 +80,7 @@ class activity_cambio_contrasena : AppCompatActivity() {
                     e.printStackTrace()
                     runOnUiThread {
                         println("este es el error: $e")
-                        Toast.makeText(this@activity_cambio_contrasena, "Error al actualizar la contraseña.", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this@activity_cambio_contrasena, "Error al actualizar la contraseña, prueba con otra contraseña", Toast.LENGTH_SHORT).show()
                     }
 
                 }

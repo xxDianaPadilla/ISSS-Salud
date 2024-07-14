@@ -59,6 +59,7 @@ class activity_perfil : AppCompatActivity() {
                     var tipo_sangre: String = resultSet.getString("tipo_sangre")
 
                     val perfilCompleto = Perfil(foto_usuario, correo_electronico, telefono, dui, tipo_sangre)
+                    println(perfilCompleto)
                     perfil.add(perfilCompleto)
                 }
             }

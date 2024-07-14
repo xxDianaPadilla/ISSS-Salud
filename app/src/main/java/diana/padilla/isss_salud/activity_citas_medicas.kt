@@ -41,15 +41,30 @@ class activity_citas_medicas : AppCompatActivity() {
             val anio = calendario.get(Calendar.YEAR)
             val mes = calendario.get(Calendar.MONTH)
             val dia = calendario.get(Calendar.DAY_OF_MONTH)
+
             val datePickerDialog = DatePickerDialog(
                 this,
                 { view, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
-                    val fechaSeleccionada =
-                        "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
-                    txtFechaSolicitud.setText(fechaSeleccionada)
+                    val calendarioSeleccionado = Calendar.getInstance()
+                    calendarioSeleccionado.set(anioSeleccionado, mesSeleccionado, diaSeleccionado)
+
+                    if (calendarioSeleccionado.before(calendario)) {
+                        AlertDialog.Builder(this)
+                            .setTitle("Fecha inválida")
+                            .setMessage("Debe seleccionar una fecha válida.")
+                            .setPositiveButton("OK") { dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .show()
+                    } else {
+                        val fechaSeleccionada = "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
+                        txtFechaSolicitud.setText(fechaSeleccionada)
+                    }
                 },
                 anio, mes, dia
             )
+            datePickerDialog.datePicker.minDate = calendario.timeInMillis
+
             datePickerDialog.show()
         }
 
@@ -79,6 +94,7 @@ class activity_citas_medicas : AppCompatActivity() {
                     var tipo_sangre: String = resultSet.getString("tipo_sangre")
 
                     val usuarioCompleto = Usuarios(dui, correo_electronico, telefono, tipo_sangre)
+                    println("Esto son los datos del usuario $usuarioCompleto")
                     usuario.add(usuarioCompleto)
                 }
             }
