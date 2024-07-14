@@ -30,6 +30,7 @@ class AdaptadorChats(var Datos: List<ChatsDoctores>): RecyclerView.Adapter<ViewH
 
         holder.ivDoctorFoto.setOnClickListener {
             val pantallaPerfilDoctor = Intent(context, activity_perfil_doctor::class.java).apply {
+                putExtra("foto_doctor", item.foto_doctor_url)
             }
             context.startActivity(pantallaPerfilDoctor)
         }

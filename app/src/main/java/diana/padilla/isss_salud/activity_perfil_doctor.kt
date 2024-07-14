@@ -37,14 +37,17 @@ class activity_perfil_doctor : AppCompatActivity() {
         val txtViewEspecialidadDoctor = findViewById<TextView>(R.id.txtViewEspecialidadDoctor)
         val txtViewUnidadMedicaDoctor = findViewById<TextView>(R.id.txtViewUnidadMedicaDoctor)
 
-        fun obtenerDoctor(): List<PerfilDoctor>{
-            val doctor = mutableListOf<PerfilDoctor>()
+        val fotoDoctor = intent.getStringExtra("foto_doctor")
+
+        fun obtenerDoctorPorFoto(foto: String): PerfilDoctor? {
+            var doctor: PerfilDoctor? = null
 
             CoroutineScope(Dispatchers.IO).launch {
                 val objConexion = ClaseConexion().cadenaConexion()
                 val obtenerDoctor =
                     objConexion?.prepareStatement("""
         SELECT 
+            d.id_doctor,
             d.foto_doctor,
             d.correo_doctor,
             d.nombre_doctor,
@@ -57,20 +60,21 @@ class activity_perfil_doctor : AppCompatActivity() {
         INNER JOIN 
             UnidadesMedicas um ON d.id_unidad = um.id_unidad
         WHERE 
-            d.foto_doctor = 'https://familydoctor.org/wp-content/uploads/2018/02/41808433_l.jpg'
+            d.foto_doctor = ?
     """)!!
+                obtenerDoctor.setString(1, foto)
                 val resultSet = obtenerDoctor.executeQuery()
 
                 while (resultSet.next()){
+                    var id_doctor = resultSet.getInt("id_doctor")
                     var foto_doctor: String = resultSet.getString("foto_doctor")
                     var correo_doctor: String = resultSet.getString("correo_doctor")
                     var nombre_doctor: String = resultSet.getString("nombre_doctor")
                     var Especialidad_Medica: String = resultSet.getString("Especialidad_Medica")
                     var Unidad_Medica: String = resultSet.getString("Unidad_Medica")
 
-                    val doctorCompleto = PerfilDoctor(foto_doctor, correo_doctor, nombre_doctor, Especialidad_Medica, Unidad_Medica)
-                    println(doctorCompleto)
-                    doctor.add(doctorCompleto)
+                    doctor = PerfilDoctor(id_doctor, foto_doctor, correo_doctor, nombre_doctor, Especialidad_Medica, Unidad_Medica)
+                    println(doctor)
                 }
             }
 
@@ -78,20 +82,15 @@ class activity_perfil_doctor : AppCompatActivity() {
         }
 
         CoroutineScope(Dispatchers.Main).launch {
-            val doctores = withContext(Dispatchers.IO) {obtenerDoctor()}
-            if (doctores.isNotEmpty()){
-                val fotoDoctor = doctores[0].foto_doctor_url
+            val doctor = withContext(Dispatchers.IO) {obtenerDoctorPorFoto(fotoDoctor?: "")}
+            if (doctor != null){
                 Glide.with(this@activity_perfil_doctor)
-                    .load(fotoDoctor)
+                    .load(doctor.foto_doctor_url)
                     .into(ImgDoctorPerfil2)
-                val correoDoctor = doctores[0].correo_doctor
-                txtViewCorreo.text = correoDoctor
-                val nombreDoctor = doctores[0].nombre_doctor
-                txtViewNombreDoctorP.text = nombreDoctor
-                val EspecialidadMedica = doctores[0].especialidad
-                txtViewEspecialidadDoctor.text = EspecialidadMedica
-                val UnidadMedica = doctores[0].unidad_medica
-                txtViewUnidadMedicaDoctor.text = UnidadMedica
+                txtViewCorreo.text = doctor.correo_doctor
+                txtViewNombreDoctorP.text = doctor.nombre_doctor
+                txtViewEspecialidadDoctor.text = doctor.especialidad
+                txtViewUnidadMedicaDoctor.text = doctor.unidad_medica
             }
         }
 
