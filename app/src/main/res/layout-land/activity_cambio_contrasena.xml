@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/background"
+    tools:context=".activity_cambio_contrasena">
+
+    <ScrollView
+        android:layout_width="333dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/IvLogoIsss"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/backgroundBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/clFondoCirculo"
+                android:layout_width="82dp"
+                android:layout_height="78dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_circulo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/clLock"
+                    android:layout_width="70dp"
+                    android:layout_height="60dp"
+                    android:background="@drawable/ic_lock"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/TextColor2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/raleway_extrabold_italic"
+                android:text="Cambiar contraseña"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clFondoCirculo" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="227dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/raleway_italic"
+                android:text="La contraseña debe tener al menos 6 caracteres e inlcuir una combinación de números, letras y caracteres especiales (!$@%)."
+                android:textAlignment="center"
+                android:textColor="#999999"
+                android:textSize="13dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+            <EditText
+                android:id="@+id/txtNuevaContraseña"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_edittext_background"
+                android:ems="10"
+                android:fontFamily="@font/raleway_semibold"
+                android:hint="Contraseña nueva"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textColorHint="#c8c8c8"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.507"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+            <EditText
+                android:id="@+id/txtConfirmarContraseña"
+                android:layout_width="307dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/ic_edittext_background"
+                android:ems="10"
+                android:fontFamily="@font/raleway_semibold"
+                android:hint="Repetir contraseña"
+                android:inputType="textPassword"
+                android:textColor="#000000"
+                android:textColorHint="#c8c8c8"
+                android:textSize="13sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNuevaContraseña" />
+
+            <Button
+                android:id="@+id/btnCambiarContraseña"
+                style="@style/buttonStyle2"
+                android:layout_width="306dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:text="Cambiar contraseña"
+                android:textColor="#d4e2f6"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtConfirmarContraseña" />
+
+            <TextView
+                android:id="@+id/textView14"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="400dp"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="20dp" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/IvLogoIsss"
+        android:layout_width="255dp"
+        android:layout_height="272dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="35dp"
+        android:src="@drawable/id_logo_isss"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
