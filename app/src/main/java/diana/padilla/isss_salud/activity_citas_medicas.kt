@@ -24,6 +24,12 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class activity_citas_medicas : AppCompatActivity() {
+
+lateinit var dui: EditText
+lateinit var correo: EditText
+lateinit var telefono: EditText
+lateinit var tipoSangre: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -33,6 +39,8 @@ class activity_citas_medicas : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        cargarDatosDeUsuarioEnPantalla()
 
         val txtFechaSolicitud = findViewById<EditText>(R.id.txtFechaSolicitud)
 
@@ -68,52 +76,13 @@ class activity_citas_medicas : AppCompatActivity() {
             datePickerDialog.show()
         }
 
-        val dui = findViewById<EditText>(R.id.txtDuiSolicitud)
-        val correo = findViewById<EditText>(R.id.txtCorreoSolicitud)
-        val telefono = findViewById<EditText>(R.id.txtTelefonoCitas)
-        val tipoSangre = findViewById<EditText>(R.id.txtTipoSangreSolicitud)
+        dui = findViewById<EditText>(R.id.txtDuiSolicitud)
+        correo = findViewById<EditText>(R.id.txtCorreoSolicitud)
+        telefono = findViewById<EditText>(R.id.txtTelefonoCitas)
+        tipoSangre = findViewById<EditText>(R.id.txtTipoSangreSolicitud)
         val txtNombreCitas = findViewById<EditText>(R.id.txtNombreCitas)
         val txtMotivoCitas = findViewById<EditText>(R.id.txtMotivoCitas)
         val btnEnviarFormulario = findViewById<Button>(R.id.btnEnviarFormulario)
-
-        fun obtenerCosas(): List<Usuarios> {
-            val usuario = mutableListOf<Usuarios>()
-
-            CoroutineScope(Dispatchers.IO).launch {
-                val objConexion = ClaseConexion().cadenaConexion()
-                val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
-                val obtenerUsuario =
-                    objConexion?.prepareStatement("SELECT dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
-                obtenerUsuario.setString(1, correoDeLaVariableGlobal)
-                val resultSet = obtenerUsuario.executeQuery()
-
-                while (resultSet.next()) {
-                    var dui: String = resultSet.getString("dui")
-                    var correo_electronico: String = resultSet.getString("correo_electronico")
-                    var telefono: String = resultSet.getString("telefono")
-                    var tipo_sangre: String = resultSet.getString("tipo_sangre")
-
-                    val usuarioCompleto = Usuarios(dui, correo_electronico, telefono, tipo_sangre)
-                    println("Esto son los datos del usuario $usuarioCompleto")
-                    usuario.add(usuarioCompleto)
-                }
-            }
-            return usuario
-        }
-
-        CoroutineScope(Dispatchers.Main).launch {
-            val usuarios = withContext(Dispatchers.IO) { obtenerCosas() }
-            if (usuarios.isNotEmpty()) {
-                val miDui = usuarios[0].dui
-                dui.hint = miDui
-                val miCorreo = usuarios[0].correo_electronico
-                correo.hint = miCorreo
-                val miTelefono = usuarios[0].telefono
-                telefono.hint = miTelefono
-                val miTipoSangre = usuarios[0].tipo_sangre
-                tipoSangre.hint = miTipoSangre
-            }
-        }
 
         btnEnviarFormulario.setOnClickListener {
             val nombreSolicitante = txtNombreCitas.text.toString()
@@ -220,6 +189,47 @@ class activity_citas_medicas : AppCompatActivity() {
             val pantallaCitasAgendadas = Intent(this, activity_citas_agendadas::class.java)
             startActivity(pantallaCitasAgendadas)
             overridePendingTransition(0, 0)
+        }
+    }
+
+    suspend fun obtenerCosas(correoDeLaVariableGlobal: String): List<Usuarios> {
+        val usuario = mutableListOf<Usuarios>()
+
+        withContext(Dispatchers.IO){
+            val objConexion = ClaseConexion().cadenaConexion()
+            val obtenerUsuario =
+                objConexion?.prepareStatement("SELECT dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
+            obtenerUsuario.setString(1, correoDeLaVariableGlobal)
+            val resultSet = obtenerUsuario.executeQuery()
+
+            while (resultSet.next()) {
+                var dui: String = resultSet.getString("dui")
+                var correo_electronico: String = resultSet.getString("correo_electronico")
+                var telefono: String = resultSet.getString("telefono")
+                var tipo_sangre: String = resultSet.getString("tipo_sangre")
+
+                val usuarioCompleto = Usuarios(dui, correo_electronico, telefono, tipo_sangre)
+                println("Esto son los datos del usuario $usuarioCompleto")
+                usuario.add(usuarioCompleto)
+            }
+        }
+        return usuario
+    }
+
+    fun cargarDatosDeUsuarioEnPantalla() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
+            val usuarios = obtenerCosas(correoDeLaVariableGlobal)
+            if (usuarios.isNotEmpty()) {
+                val miDui = usuarios[0].dui
+                dui.hint = miDui
+                val miCorreo = usuarios[0].correo_electronico
+                correo.hint = miCorreo
+                val miTelefono = usuarios[0].telefono
+                telefono.hint = miTelefono
+                val miTipoSangre = usuarios[0].tipo_sangre
+                tipoSangre.hint = miTipoSangre
+            }
         }
     }
 }
