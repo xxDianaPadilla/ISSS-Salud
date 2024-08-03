@@ -21,6 +21,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class activity_perfil_doctor : AppCompatActivity() {
+
+    lateinit var ImgDoctorPerfil2: ImageView
+    lateinit var txtViewCorreo: TextView
+    lateinit var txtViewNombreDoctorP: TextView
+    lateinit var txtViewEspecialidadDoctor: TextView
+    lateinit var txtViewUnidadMedicaDoctor: TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -31,68 +38,13 @@ class activity_perfil_doctor : AppCompatActivity() {
             insets
         }
 
-        val ImgDoctorPerfil2 = findViewById<ImageView>(R.id.ImgDoctorPerfil2)
-        val txtViewCorreo = findViewById<TextView>(R.id.txtViewCorreo)
-        val txtViewNombreDoctorP = findViewById<TextView>(R.id.txtViewNombreDoctorP)
-        val txtViewEspecialidadDoctor = findViewById<TextView>(R.id.txtViewEspecialidadDoctor)
-        val txtViewUnidadMedicaDoctor = findViewById<TextView>(R.id.txtViewUnidadMedicaDoctor)
+        cargarDatosDoctorEnPantalla()
 
-        val fotoDoctor = intent.getStringExtra("foto_doctor")
-
-        fun obtenerDoctorPorFoto(foto: String): PerfilDoctor? {
-            var doctor: PerfilDoctor? = null
-
-            CoroutineScope(Dispatchers.IO).launch {
-                val objConexion = ClaseConexion().cadenaConexion()
-                val obtenerDoctor =
-                    objConexion?.prepareStatement("""
-        SELECT 
-            d.id_doctor,
-            d.foto_doctor,
-            d.correo_doctor,
-            d.nombre_doctor,
-            ed.especialidad_doctor AS Especialidad_Medica,
-            um.nombre_unidad AS Unidad_Medica
-        FROM 
-            Doctores d
-        INNER JOIN 
-            EspecialidadDoctores ed ON d.id_especialidad = ed.id_especialidad
-        INNER JOIN 
-            UnidadesMedicas um ON d.id_unidad = um.id_unidad
-        WHERE 
-            d.foto_doctor = ?
-    """)!!
-                obtenerDoctor.setString(1, foto)
-                val resultSet = obtenerDoctor.executeQuery()
-
-                while (resultSet.next()){
-                    var id_doctor = resultSet.getInt("id_doctor")
-                    var foto_doctor: String = resultSet.getString("foto_doctor")
-                    var correo_doctor: String = resultSet.getString("correo_doctor")
-                    var nombre_doctor: String = resultSet.getString("nombre_doctor")
-                    var Especialidad_Medica: String = resultSet.getString("Especialidad_Medica")
-                    var Unidad_Medica: String = resultSet.getString("Unidad_Medica")
-
-                    doctor = PerfilDoctor(id_doctor, foto_doctor, correo_doctor, nombre_doctor, Especialidad_Medica, Unidad_Medica)
-                    println(doctor)
-                }
-            }
-
-            return doctor
-        }
-
-        CoroutineScope(Dispatchers.Main).launch {
-            val doctor = withContext(Dispatchers.IO) {obtenerDoctorPorFoto(fotoDoctor?: "")}
-            if (doctor != null){
-                Glide.with(this@activity_perfil_doctor)
-                    .load(doctor.foto_doctor_url)
-                    .into(ImgDoctorPerfil2)
-                txtViewCorreo.text = doctor.correo_doctor
-                txtViewNombreDoctorP.text = doctor.nombre_doctor
-                txtViewEspecialidadDoctor.text = doctor.especialidad
-                txtViewUnidadMedicaDoctor.text = doctor.unidad_medica
-            }
-        }
+        ImgDoctorPerfil2 = findViewById<ImageView>(R.id.ImgDoctorPerfil2)
+        txtViewCorreo = findViewById<TextView>(R.id.txtViewCorreo)
+        txtViewNombreDoctorP = findViewById<TextView>(R.id.txtViewNombreDoctorP)
+        txtViewEspecialidadDoctor = findViewById<TextView>(R.id.txtViewEspecialidadDoctor)
+        txtViewUnidadMedicaDoctor = findViewById<TextView>(R.id.txtViewUnidadMedicaDoctor)
 
         val btnRegresar = findViewById<ImageView>(R.id.btnRegresar)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
@@ -183,6 +135,64 @@ class activity_perfil_doctor : AppCompatActivity() {
             val pantallaPerfil = Intent(this, activity_perfil::class.java)
             startActivity(pantallaPerfil)
             overridePendingTransition(0, 0)
+        }
+    }
+
+    suspend fun obtenerDoctorPorFoto(foto: String): PerfilDoctor? {
+        var doctor: PerfilDoctor? = null
+
+        withContext(Dispatchers.IO){
+            val objConexion = ClaseConexion().cadenaConexion()
+            val obtenerDoctor =
+                objConexion?.prepareStatement("""
+        SELECT 
+            d.id_doctor,
+            d.foto_doctor,
+            d.correo_doctor,
+            d.nombre_doctor,
+            ed.especialidad_doctor AS Especialidad_Medica,
+            um.nombre_unidad AS Unidad_Medica
+        FROM 
+            Doctores d
+        INNER JOIN 
+            EspecialidadDoctores ed ON d.id_especialidad = ed.id_especialidad
+        INNER JOIN 
+            UnidadesMedicas um ON d.id_unidad = um.id_unidad
+        WHERE 
+            d.foto_doctor = ?
+    """)!!
+            obtenerDoctor.setString(1, foto)
+            val resultSet = obtenerDoctor.executeQuery()
+
+            while (resultSet.next()){
+                var id_doctor = resultSet.getInt("id_doctor")
+                var foto_doctor: String = resultSet.getString("foto_doctor")
+                var correo_doctor: String = resultSet.getString("correo_doctor")
+                var nombre_doctor: String = resultSet.getString("nombre_doctor")
+                var Especialidad_Medica: String = resultSet.getString("Especialidad_Medica")
+                var Unidad_Medica: String = resultSet.getString("Unidad_Medica")
+
+                doctor = PerfilDoctor(id_doctor, foto_doctor, correo_doctor, nombre_doctor, Especialidad_Medica, Unidad_Medica)
+                println(doctor)
+            }
+        }
+
+        return doctor
+    }
+
+    fun cargarDatosDoctorEnPantalla() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val fotoDoctor = intent.getStringExtra("foto_doctor")
+            val doctor = withContext(Dispatchers.IO) { obtenerDoctorPorFoto(fotoDoctor ?: "") }
+            if (doctor != null) {
+                Glide.with(this@activity_perfil_doctor)
+                    .load(doctor.foto_doctor_url)
+                    .into(ImgDoctorPerfil2)
+                txtViewCorreo.text = doctor.correo_doctor
+                txtViewNombreDoctorP.text = doctor.nombre_doctor
+                txtViewEspecialidadDoctor.text = doctor.especialidad
+                txtViewUnidadMedicaDoctor.text = doctor.unidad_medica
+            }
         }
     }
 }
