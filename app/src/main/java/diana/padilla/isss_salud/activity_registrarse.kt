@@ -72,9 +72,8 @@ class activity_registrarse : AppCompatActivity() {
         btnCrearRegistro.setOnClickListener {
 
             val dui = txtDUI.text.toString()
-            val tipoDeSangre = spTipoSangre.selectedItem.toString()
             val tel = txtTelefono.text.toString()
-            val correo = txtCorreo1.text.toString()
+            val correo = txtCorreo1.text.toString().trim()
             val contrasena = txtContrasena1.text.toString()
             val duiRegex = Regex("^\\d{8}-\\d\$")
             val telefonoRegex = Regex("^\\d{4}-\\d{4}\$")
