@@ -25,7 +25,7 @@ class activity_Noticias_completas : AppCompatActivity() {
         val titleView: TextView = findViewById(R.id.detail_news_title)
         val descriptionView: TextView = findViewById(R.id.detail_news_description)
         val dateView: TextView = findViewById(R.id.detail_news_date)
-        val backButton: Button = findViewById(R.id.button_back)
+        /*val backButton: Button = findViewById(R.id.button_back)*/
         val imageView: ImageView = findViewById(R.id.detail_news_image)
 
         titleView.text = title
@@ -37,8 +37,8 @@ class activity_Noticias_completas : AppCompatActivity() {
                 .into(imageView)
         }
 
-        backButton.setOnClickListener {
+        /*backButton.setOnClickListener {
             finish()
-        }
+        }*/
     }
 }

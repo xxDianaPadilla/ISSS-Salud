@@ -144,7 +144,7 @@ class activity_registrarse : AppCompatActivity() {
                         withContext(Dispatchers.Main) {
                             AlertDialog.Builder(this@activity_registrarse)
                                 .setTitle("Error de registro")
-                                .setMessage("La contraseña ya ha sido empleada. Por favor, elige otra.")
+                                .setMessage("El correo electronico ya ha sido empleada. Por favor, elige otro.")
                                 .setPositiveButton("Aceptar", null)
                                 .show()
                         }

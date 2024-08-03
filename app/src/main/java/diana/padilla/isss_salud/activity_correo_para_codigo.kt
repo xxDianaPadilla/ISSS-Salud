@@ -1,5 +1,6 @@
 package diana.padilla.isss_salud
 
+import Modelo.ClaseConexion
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -17,6 +18,10 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import android.util.Patterns
+import kotlinx.coroutines.withContext
+import java.sql.PreparedStatement
+import java.sql.ResultSet
+import java.sql.SQLException
 
 
 class activity_correo_para_codigo : AppCompatActivity() {
@@ -59,21 +64,27 @@ class activity_correo_para_codigo : AppCompatActivity() {
             } else {
                 try {
                     CoroutineScope(Dispatchers.Main).launch {
-                        codigoRecuperacion = (100000..999999).random().toString()
-                        println("correo $correoRecu")
-                        Toast.makeText(
-                            this@activity_correo_para_codigo,
-                            "Código de recuperación enviado a $correoRecu",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        enviarCorreo(
-                            correoRecu,
-                            "Recuperación de contraseña",
-                            "Su código de recuperación es: $codigoRecuperacion"
-                        )
+                        val correoExiste = verificarCorreo(correoRecu)
+                        if (correoExiste) {
+                            codigoRecuperacion = (100000..999999).random().toString()
+                            println("correo $correoRecu")
+                            Toast.makeText(
+                                this@activity_correo_para_codigo,
+                                "Código de recuperación enviado!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            txtCorreoRecuperacion.setText("")
+                            val pantallaCodigo = Intent(this@activity_correo_para_codigo, activity_codigo::class.java)
+                            startActivity(pantallaCodigo)
+                        } else {
+                            Toast.makeText(
+                                this@activity_correo_para_codigo,
+                                "Correo ingresado no existe en la base de datos",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            txtCorreoRecuperacion.setText("")
+                        }
                     }
-                    val pantallaCodigo = Intent(this, activity_codigo::class.java)
-                    startActivity(pantallaCodigo)
                 } catch (e: Exception) {
                     println("eeeeeeeeeerro $e")
                 }
@@ -137,6 +148,29 @@ class activity_correo_para_codigo : AppCompatActivity() {
             val pantallaRegistrarse = Intent(this, activity_registrarse::class.java)
             startActivity(pantallaRegistrarse)
             finish()
+        }
+    }
+
+    private suspend fun verificarCorreo(correo: String): Boolean{
+        return withContext(Dispatchers.IO){
+            var existe = false
+            val objConexion = ClaseConexion().cadenaConexion()!!
+            val statement: PreparedStatement?
+            val resultSet: ResultSet?
+
+            try{
+                val query = "SELECT COUNT(*) FROM Usuarios WHERE correo_electronico = ?"
+                statement = objConexion.prepareStatement(query)
+                statement.setString(1, correo)
+
+                resultSet = statement.executeQuery()
+                if(resultSet.next()){
+                    existe = resultSet.getInt(1) > 0
+                }
+            }catch (e: SQLException){
+                e.printStackTrace()
+            }
+            existe
         }
     }
 }
