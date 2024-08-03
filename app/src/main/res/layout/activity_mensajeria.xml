@@ -34,64 +34,14 @@
             android:id="@+id/textView11"
             android:layout_width="130dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
             android:fontFamily="@font/raleway_bold_italic"
             android:text="Mensajería"
             android:textAlignment="center"
             android:textSize="25dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnNotificaciones"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/ivSmallLogo"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/btnNotificaciones"
-            style="@style/backgroundNotifications"
-            android:layout_width="43dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="25dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.533">
-
-            <ImageView
-                android:id="@+id/ivNotificaciones"
-                android:layout_width="25dp"
-                android:layout_height="24dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/ic_notificaciones" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <ImageView
-            android:id="@+id/imageView4"
-            style="@style/backgroundNotifications2"
-            android:layout_width="23dp"
-            android:layout_height="23dp"
-            android:layout_marginTop="7dp"
-            android:layout_marginEnd="18dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.228" />
-
-        <TextView
-            android:id="@+id/txtViewNumNotis"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:fontFamily="@font/pacifico"
-            android:text="2"
-            android:textColor="#ffffff"
-            android:textSize="16sp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-            app:layout_constraintEnd_toEndOf="@+id/imageView4"
-            app:layout_constraintStart_toStartOf="@+id/imageView4"
+            app:layout_constraintHorizontal_bias="0.58"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -192,8 +142,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvDoctores"
-        android:layout_width="407dp"
-        android:layout_height="458dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

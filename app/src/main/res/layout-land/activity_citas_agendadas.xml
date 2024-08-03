@@ -35,15 +35,15 @@
         android:text="Formulario"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/btnCitasAgendadasA"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout5"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         style="@style/backgroundBox2"
-        android:layout_width="373dp"
+        android:layout_width="0dp"
         android:layout_height="96dp"
-        android:layout_marginTop="16dp"
+        android:background="@drawable/fondo_gris2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -69,7 +69,7 @@
             android:textSize="32dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.72"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.5" />
@@ -78,13 +78,13 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rcvPacientes"
-        android:layout_width="373dp"
+        android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="4dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+        android:layout_marginTop="15dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCitasAgendadasA" />
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/btnFormularioCitas" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -97,63 +97,59 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
         style="@style/backgroundBox3"
-        android:layout_width="412dp"
-        android:layout_height="86dp"
+        android:layout_width="86dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fondo_gris2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <ImageView
             android:id="@+id/ivMenuCircle"
             style="@style/backgroundMenu2"
             android:layout_width="41dp"
             android:layout_height="43dp"
-            android:layout_marginStart="102dp"
-            android:layout_marginBottom="13dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnCitas"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="37dp"
+            app:layout_constraintStart_toEndOf="@+id/btnCitas"
+            app:layout_constraintTop_toBottomOf="@+id/btnNoticias" />
 
         <ImageView
             android:id="@+id/btnCitas"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginEnd="65dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/BtnChats"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnNoticias"
             app:srcCompat="@drawable/ic_active_file" />
 
         <ImageView
             android:id="@+id/BtnChats"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="72dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnPerfil"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginTop="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCitas"
             app:srcCompat="@drawable/ic_chat" />
 
         <ImageView
             android:id="@+id/btnPerfil"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BtnChats"
             app:srcCompat="@drawable/ic_perfil" />
 
         <ImageView
             android:id="@+id/btnNoticias"
             android:layout_width="35dp"
             android:layout_height="34dp"
-            android:layout_marginStart="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_home" />
