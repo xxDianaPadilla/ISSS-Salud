@@ -37,7 +37,7 @@ class activity_noticias : AppCompatActivity() {
             }
         }*/
 
-        val recyclerView: RecyclerView = findViewById(R.id.recycler_view)
+        val recyclerView: RecyclerView = findViewById(R.id.rcvNoticias)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         fun obtenerNoticias(): List<NoticiasNuevas>{

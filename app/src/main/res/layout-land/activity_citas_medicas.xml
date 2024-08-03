@@ -8,14 +8,52 @@
     android:layout_height="match_parent"
     tools:context=".activity_citas_medicas">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        style="@style/backgroundBox2"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+        android:background="@drawable/fondo_gris2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivSmallLogo"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginStart="-14dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logo_isss_small" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold_italic"
+            android:text="Citas médicas"
+            android:textAlignment="center"
+            android:textSize="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.500" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -23,30 +61,29 @@
 
             <EditText
                 android:id="@+id/txtNombreCitas"
-                android:layout_width="360dp"
+                android:layout_width="660dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
+                android:fontFamily="@font/raleway_semibold"
                 android:inputType="text"
                 android:textColor="#000000"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView15" />
+                app:layout_constraintTop_toBottomOf="@+id/btnCitasAgendadasA" />
 
             <TextView
                 android:id="@+id/textView15"
                 style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="3dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="27dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Nombre"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtNombreCitas"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/btnFormularioCitas" />
 
@@ -56,29 +93,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
 
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="3dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Tipo de sangre"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtTipoSangreSolicitud"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtFechaSolicitud" />
+                app:layout_constraintStart_toEndOf="@+id/txtFechaSolicitud"
+                app:layout_constraintTop_toBottomOf="@+id/txtCorreoSolicitud" />
 
             <EditText
                 android:id="@+id/txtTipoSangreSolicitud"
-                android:layout_width="360dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/ic_edittext_background"
-                android:ems="10"
-                android:textColorHint="@color/black"
-                android:inputType="none"
-                android:focusable="false"
                 android:clickable="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
+                android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/raleway_semibold"
+                android:inputType="none"
+                android:textColorHint="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/txtFechaSolicitud"
                 app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
             <TextView
@@ -86,60 +123,59 @@
                 style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="3dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="27dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="DUI"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtDuiSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtNombreCitas" />
 
             <EditText
                 android:id="@+id/txtDuiSolicitud"
-                android:layout_width="360dp"
+                android:layout_width="660dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
                 android:background="@drawable/ic_edittext_background"
+                android:clickable="false"
                 android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/raleway_semibold"
+                android:inputType="none"
                 android:textColorHint="@color/black"
                 android:textSize="16sp"
-                android:inputType="none"
-                android:focusable="false"
-                android:clickable="false"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView27" />
+                app:layout_constraintTop_toBottomOf="@+id/txtNombreCitas" />
 
             <TextView
                 android:id="@+id/textView18"
                 style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="3dp"
+                android:layout_marginStart="90dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Teléfono"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtTelefonoCitas"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtCorreoSolicitud" />
 
             <EditText
                 android:id="@+id/txtTelefonoCitas"
-                android:layout_width="360dp"
+                android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/ic_edittext_background"
+                android:clickable="false"
                 android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/raleway_semibold"
+                android:inputType="phone"
+                android:textAlignment="center"
                 android:textColorHint="@color/black"
                 android:textSize="16sp"
-                android:inputType="phone"
-                android:focusable="false"
-                android:clickable="false"
-                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView18" />
 
@@ -148,13 +184,11 @@
                 style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="3dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="27dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Correo"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtCorreoSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtDuiSolicitud" />
 
@@ -163,139 +197,90 @@
                 style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="3dp"
+                android:layout_marginStart="129dp"
+                android:layout_marginTop="30dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Fecha solicitud"
-                android:textSize="19sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtFechaSolicitud"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtTelefonoCitas" />
+                android:textSize="20sp"
+                app:layout_constraintStart_toEndOf="@+id/txtTelefonoCitas"
+                app:layout_constraintTop_toBottomOf="@+id/txtCorreoSolicitud" />
 
             <EditText
                 android:id="@+id/txtCorreoSolicitud"
-                android:layout_width="360dp"
+                android:layout_width="660dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="40dp"
                 android:background="@drawable/ic_edittext_background"
+                android:clickable="false"
                 android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/raleway_semibold"
+                android:inputType="textEmailAddress"
                 android:textColorHint="@color/black"
                 android:textSize="16sp"
-                android:inputType="textEmailAddress"
-                android:focusable="false"
-                android:clickable="false"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView19" />
+                app:layout_constraintTop_toBottomOf="@+id/txtDuiSolicitud" />
 
             <EditText
                 android:id="@+id/txtFechaSolicitud"
-                android:layout_width="360dp"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginStart="100dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/ic_edittext_background"
-                android:ems="10"
-                android:textColor="#000000"
-                android:inputType="date"
-                android:focusable="false"
                 android:clickable="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView20"  />
+                android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/raleway_semibold"
+                android:inputType="date"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:layout_constraintStart_toEndOf="@+id/txtTelefonoCitas"
+                app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
             <TextView
                 android:id="@+id/textView21"
                 style="@style/TextColor2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginBottom="3dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="33dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Motivo"
                 android:textSize="20sp"
-                app:layout_constraintBottom_toTopOf="@+id/txtMotivoCitas"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txtTipoSangreSolicitud" />
+                app:layout_constraintTop_toBottomOf="@+id/txtTelefonoCitas" />
 
             <EditText
                 android:id="@+id/txtMotivoCitas"
-                android:layout_width="360dp"
+                android:layout_width="660dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="7dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="40dp"
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
-                android:textColor="#000000"
+                android:fontFamily="@font/raleway_semibold"
                 android:gravity="start|top"
                 android:inputType="textMultiLine"
+                android:textColor="#000000"
                 android:textSize="16sp"
-                app:layout_constraintBottom_toTopOf="@+id/btnEnviarFormulario"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView21" />
+                app:layout_constraintTop_toBottomOf="@+id/txtFechaSolicitud" />
 
             <Button
                 android:id="@+id/btnEnviarFormulario"
                 style="@style/buttonStyle2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginTop="25dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Enviar"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtMotivoCitas" />
-
-            <TextView
-                android:id="@+id/textView28"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="80dp"
-                android:text="TextView"
-                app:layout_constraintTop_toBottomOf="@+id/btnEnviarFormulario"
-                tools:layout_editor_absoluteX="37dp" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
-                style="@style/backgroundBox2"
-                android:layout_width="373dp"
-                android:layout_height="96dp"
-                android:layout_marginTop="17dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/ivSmallLogo"
-                    android:layout_width="115dp"
-                    android:layout_height="115dp"
-                    android:layout_marginStart="-10dp"
-                    android:scaleType="centerCrop"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_logo_isss_small" />
-
-                <TextView
-                    android:id="@+id/textView11"
-                    android:layout_width="130dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="30dp"
-                    android:fontFamily="@font/raleway_bold_italic"
-                    android:text="Citas médicas"
-                    android:textAlignment="center"
-                    android:textSize="32dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toEndOf="@+id/ivSmallLogo"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.500" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <Button
                 android:id="@+id/btnCitasAgendadasA"
@@ -311,7 +296,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/btnFormularioCitas"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <Button
                 android:id="@+id/btnFormularioCitas"
@@ -326,7 +311,7 @@
                 android:textSize="18sp"
                 app:layout_constraintEnd_toStartOf="@+id/btnCitasAgendadasA"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -334,63 +319,59 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
         style="@style/backgroundBox3"
-        android:layout_width="412dp"
-        android:layout_height="86dp"
+        android:layout_width="85dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fondo_gris2"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <ImageView
             android:id="@+id/ivMenuCircle"
             style="@style/backgroundMenu2"
-            android:layout_width="41dp"
-            android:layout_height="43dp"
-            android:layout_marginStart="102dp"
-            android:layout_marginBottom="13dp"
-            app:layout_constraintBottom_toTopOf="@+id/btnCitas"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_width="43dp"
+            android:layout_height="41dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="37dp"
+            app:layout_constraintStart_toEndOf="@+id/btnCitas"
+            app:layout_constraintTop_toBottomOf="@+id/btnNoticias" />
 
         <ImageView
             android:id="@+id/btnCitas"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_marginEnd="65dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/BtnChats"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnNoticias"
             app:srcCompat="@drawable/ic_active_file" />
 
         <ImageView
             android:id="@+id/BtnChats"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="72dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnPerfil"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginTop="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCitas"
             app:srcCompat="@drawable/ic_chat" />
 
         <ImageView
             android:id="@+id/btnPerfil"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="40dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BtnChats"
             app:srcCompat="@drawable/ic_perfil" />
 
         <ImageView
             android:id="@+id/btnNoticias"
             android:layout_width="35dp"
             android:layout_height="34dp"
-            android:layout_marginStart="48dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/ic_home" />
