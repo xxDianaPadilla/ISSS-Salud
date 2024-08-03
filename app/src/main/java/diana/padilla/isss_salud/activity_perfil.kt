@@ -20,6 +20,13 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class activity_perfil : AppCompatActivity() {
+
+    lateinit var imagenPerfil: ImageView
+    lateinit var correoPerfilE: EditText
+    lateinit var telefonoPerfilE: EditText
+    lateinit var duiPerfilE: EditText
+    lateinit var tipoSangreE: EditText
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,60 +37,15 @@ class activity_perfil : AppCompatActivity() {
             insets
         }
 
-        val imagenPerfil = findViewById<ImageView>(R.id.ImgPerfilSinCargar)
-        val correoPerfilE = findViewById<EditText>(R.id.txtViewCorreoPerfilE)
-        val telefonoPerfilE = findViewById<EditText>(R.id.txtViewTelefonoPerfilE)
-        val duiPerfilE = findViewById<EditText>(R.id.txtViewDuiPerfilE)
-        val tipoSangreE = findViewById<EditText>(R.id.txtViewTipoSangreE)
-
-        fun obtenerDatosPerfil(): List<Perfil>{
-            val perfil = mutableListOf<Perfil>()
-
-            CoroutineScope(Dispatchers.IO).launch {
-                val objConexion = ClaseConexion().cadenaConexion()
-                val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
-
-                println("este $correoDeLaVariableGlobal")
+        cargarDatosPerfilEnPantalla()
 
 
-                val obtenerPerfil =
-                    objConexion?.prepareStatement("SELECT foto_usuario, dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
-                obtenerPerfil.setString(1, correoDeLaVariableGlobal)
-                val resultSet = obtenerPerfil.executeQuery()
+        imagenPerfil = findViewById<ImageView>(R.id.ImgPerfilSinCargar)
+        correoPerfilE = findViewById<EditText>(R.id.txtViewCorreoPerfilE)
+        telefonoPerfilE = findViewById<EditText>(R.id.txtViewTelefonoPerfilE)
+        duiPerfilE = findViewById<EditText>(R.id.txtViewDuiPerfilE)
+        tipoSangreE = findViewById<EditText>(R.id.txtViewTipoSangreE)
 
-                while (resultSet.next()){
-                    var foto_usuario: String = resultSet.getString("foto_usuario")
-                    var correo_electronico: String = resultSet.getString("correo_electronico")
-                    var telefono: String = resultSet.getString("telefono")
-                    var dui: String = resultSet.getString("dui")
-                    var tipo_sangre: String = resultSet.getString("tipo_sangre")
-
-                    val perfilCompleto = Perfil(foto_usuario, correo_electronico, telefono, dui, tipo_sangre)
-                    println(perfilCompleto)
-                    perfil.add(perfilCompleto)
-                }
-            }
-
-            return perfil
-        }
-
-        CoroutineScope(Dispatchers.Main).launch {
-            val perfiles = withContext(Dispatchers.IO) { obtenerDatosPerfil() }
-            if (perfiles.isNotEmpty()){
-                val miFoto = perfiles[0].foto_usuario
-                Glide.with(this@activity_perfil)
-                    .load(miFoto)
-                    .into(imagenPerfil)
-                val miDui = perfiles[0].dui
-                duiPerfilE.hint = miDui
-                val miCorreo = perfiles[0].correo_electronico
-                correoPerfilE.hint = miCorreo
-                val miTelefono = perfiles[0].telefono
-                telefonoPerfilE.hint = miTelefono
-                val miTipoSangre = perfiles[0].tipo_sangre
-                tipoSangreE.hint = miTipoSangre
-            }
-        }
 
         val logoIsssSmall = findViewById<ImageView>(R.id.ivSmallLogo)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
@@ -162,6 +124,54 @@ class activity_perfil : AppCompatActivity() {
             val pantallaEditarPerfil = Intent(this, activity_editar_perfil::class.java)
             startActivity(pantallaEditarPerfil)
             overridePendingTransition(0,0)
+        }
+    }
+
+    suspend fun obtenerDatosPerfil(correoDeLaVariableGlobal: String): List<Perfil>{
+        val perfil = mutableListOf<Perfil>()
+
+        withContext(Dispatchers.IO){
+            val objConexion = ClaseConexion().cadenaConexion()
+            val obtenerPerfil =
+                objConexion?.prepareStatement("SELECT foto_usuario, dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
+            obtenerPerfil.setString(1, correoDeLaVariableGlobal)
+            val resultSet = obtenerPerfil.executeQuery()
+
+            while (resultSet.next()){
+                val foto_usuario: String = resultSet.getString("foto_usuario")
+                val correo_electronico: String = resultSet.getString("correo_electronico")
+                val telefono: String = resultSet.getString("telefono")
+                val dui: String = resultSet.getString("dui")
+                val tipo_sangre: String = resultSet.getString("tipo_sangre")
+
+                val perfilCompleto = Perfil(foto_usuario, correo_electronico, telefono, dui, tipo_sangre)
+                println(perfilCompleto)
+                perfil.add(perfilCompleto)
+            }
+        }
+
+        return perfil
+    }
+
+    fun cargarDatosPerfilEnPantalla() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
+            val perfiles = obtenerDatosPerfil(correoDeLaVariableGlobal)
+
+            if (perfiles.isNotEmpty()) {
+                val miFoto = perfiles[0].foto_usuario
+                Glide.with(this@activity_perfil)
+                    .load(miFoto)
+                    .into(imagenPerfil)
+                val miDui = perfiles[0].dui
+                duiPerfilE.hint = miDui
+                val miCorreo = perfiles[0].correo_electronico
+                correoPerfilE.hint = miCorreo
+                val miTelefono = perfiles[0].telefono
+                telefonoPerfilE.hint = miTelefono
+                val miTipoSangre = perfiles[0].tipo_sangre
+                tipoSangreE.hint = miTipoSangre
+            }
         }
     }
 }
