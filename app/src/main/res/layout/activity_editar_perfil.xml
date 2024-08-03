@@ -141,6 +141,7 @@
                 android:background="@drawable/ic_edittext_background"
                 android:ems="10"
                 android:inputType="phone"
+                android:textColorHint="@color/black"
                 android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

@@ -27,6 +27,12 @@ import kotlinx.coroutines.withContext
 
 class activity_editar_perfil : AppCompatActivity() {
 
+    lateinit var imagenPerfil2: ImageView
+    lateinit var txtCorrePerfil: EditText
+    lateinit var txtViewTelefonoPerfil: EditText
+    lateinit var txtViewDuiPerfil: EditText
+    lateinit var txtViewTipoSangre: EditText
+
     val codigo_opcion_galeria = 102
     val STORAGE_REQUEST_CODE = 1
 
@@ -40,11 +46,13 @@ class activity_editar_perfil : AppCompatActivity() {
             insets
         }
 
-        val imagenPerfil2 = findViewById<ImageView>(R.id.ImgPerfilSinCargar2)
-        val txtCorrePerfil = findViewById<EditText>(R.id.txtCorrePerfil)
-        val txtViewTelefonoPerfil = findViewById<EditText>(R.id.txtViewTelefonoPerfil)
-        val txtViewDuiPerfil = findViewById<EditText>(R.id.txtViewDuiPerfil)
-        val txtViewTipoSangre = findViewById<EditText>(R.id.txtViewTipoSangre)
+        cargarDatosPerfil2EnPantalla()
+
+        imagenPerfil2 = findViewById<ImageView>(R.id.ImgPerfilSinCargar2)
+        txtCorrePerfil = findViewById<EditText>(R.id.txtCorrePerfil)
+        txtViewTelefonoPerfil = findViewById<EditText>(R.id.txtViewTelefonoPerfil)
+        txtViewDuiPerfil = findViewById<EditText>(R.id.txtViewDuiPerfil)
+        txtViewTipoSangre = findViewById<EditText>(R.id.txtViewTipoSangre)
         val btnCargarImagen = findViewById<Button>(R.id.btnCargarImagen)
         val btnActualizar = findViewById<Button>(R.id.btnActualizar)
 
@@ -76,53 +84,6 @@ class activity_editar_perfil : AppCompatActivity() {
                 ).show()
 
                 txtViewTelefonoPerfil.setText("")
-            }
-        }
-
-        fun datosPerfil(): List<Perfil> {
-            val perfil2 = mutableListOf<Perfil>()
-
-            CoroutineScope(Dispatchers.IO).launch {
-                val objConexion = ClaseConexion().cadenaConexion()
-                val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
-
-                val obtenerPerfil2 =
-                    objConexion?.prepareStatement("SELECT foto_usuario, dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
-                obtenerPerfil2.setString(1, correoDeLaVariableGlobal)
-                val resultSet = obtenerPerfil2.executeQuery()
-
-                while (resultSet.next()) {
-                    var foto_usuario2: String = resultSet.getString("foto_usuario")
-                    var correo_electronico2: String = resultSet.getString("correo_electronico")
-                    var telefono2: String = resultSet.getString("telefono")
-                    var dui2: String = resultSet.getString("dui")
-                    var tipo_sangre2: String = resultSet.getString("tipo_sangre")
-
-                    val perfilCompleto2 =
-                        Perfil(foto_usuario2, correo_electronico2, telefono2, dui2, tipo_sangre2)
-                    println(perfilCompleto2)
-                    perfil2.add(perfilCompleto2)
-                }
-            }
-
-            return perfil2
-        }
-
-        CoroutineScope(Dispatchers.Main).launch {
-            val perfiles2 = withContext(Dispatchers.IO) { datosPerfil() }
-            if (perfiles2.isNotEmpty()){
-                val miFoto2 = perfiles2[0].foto_usuario
-                Glide.with(this@activity_editar_perfil)
-                    .load(miFoto2)
-                    .into(imagenPerfil2)
-                val miDui2 = perfiles2[0].dui
-                txtViewDuiPerfil.hint = miDui2
-                val miCorreo2 = perfiles2[0].correo_electronico
-                txtCorrePerfil.hint = miCorreo2
-                val miTelefono2 = perfiles2[0].telefono
-                txtViewTelefonoPerfil.hint = miTelefono2
-                val miTipoSangre2 = perfiles2[0].tipo_sangre
-                txtViewTipoSangre.hint = miTipoSangre2
             }
         }
 
@@ -261,6 +222,55 @@ class activity_editar_perfil : AppCompatActivity() {
             updateProfileImage?.executeUpdate()
 
             Toast.makeText(this@activity_editar_perfil, "Foto de perfil actualizado exitosamente!", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    suspend fun datosPerfil(correoDeLaVariableGlobal: String): List<Perfil> {
+        val perfil2 = mutableListOf<Perfil>()
+
+        withContext(Dispatchers.IO){
+            val objConexion = ClaseConexion().cadenaConexion()
+            val obtenerPerfil2 =
+                objConexion?.prepareStatement("SELECT foto_usuario, dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
+            obtenerPerfil2.setString(1, correoDeLaVariableGlobal)
+            val resultSet = obtenerPerfil2.executeQuery()
+
+            while (resultSet.next()) {
+                var foto_usuario2: String = resultSet.getString("foto_usuario")
+                var correo_electronico2: String = resultSet.getString("correo_electronico")
+                var telefono2: String = resultSet.getString("telefono")
+                var dui2: String = resultSet.getString("dui")
+                var tipo_sangre2: String = resultSet.getString("tipo_sangre")
+
+                val perfilCompleto2 =
+                    Perfil(foto_usuario2, correo_electronico2, telefono2, dui2, tipo_sangre2)
+                println(perfilCompleto2)
+                perfil2.add(perfilCompleto2)
+            }
+        }
+
+        return perfil2
+    }
+
+    fun cargarDatosPerfil2EnPantalla() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
+            val perfiles2 = datosPerfil(correoDeLaVariableGlobal)
+
+            if (perfiles2.isNotEmpty()) {
+                val miFoto2 = perfiles2[0].foto_usuario
+                Glide.with(this@activity_editar_perfil)
+                    .load(miFoto2)
+                    .into(imagenPerfil2)
+                val miDui2 = perfiles2[0].dui
+                txtViewDuiPerfil.hint = miDui2
+                val miCorreo2 = perfiles2[0].correo_electronico
+                txtCorrePerfil.hint = miCorreo2
+                val miTelefono2 = perfiles2[0].telefono
+                txtViewTelefonoPerfil.hint = miTelefono2
+                val miTipoSangre2 = perfiles2[0].tipo_sangre
+                txtViewTipoSangre.hint = miTipoSangre2
+            }
         }
     }
 }
