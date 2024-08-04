@@ -6,6 +6,7 @@ import RecyclerViewHelpers.AdaptadorChats
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.ImageView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -75,15 +76,6 @@ class activity_mensajeria : AppCompatActivity() {
             logoIsssSmall.setImageResource(R.drawable.ic_logo_isss_small)
         }
 
-        val iconNotificaciones = findViewById<ImageView>(R.id.ivNotificaciones)
-        val modoOscuro2 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-        if(modoOscuro2 == Configuration.UI_MODE_NIGHT_YES){
-            iconNotificaciones.setImageResource(R.drawable.ic_darkmode_notificaciones)
-        }else{
-            iconNotificaciones.setImageResource(R.drawable.ic_notificaciones)
-        }
-
         val iconHome = findViewById<ImageView>(R.id.btnNoticias)
         val modoOscuro3 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 
@@ -136,6 +128,14 @@ class activity_mensajeria : AppCompatActivity() {
             val pantallaPerfil = Intent(this, activity_perfil::class.java)
             startActivity(pantallaPerfil)
             overridePendingTransition(0, 0)
+        }
+
+        val txtBuscarDoctores = findViewById<EditText>(R.id.txtBuscarDoctores)
+
+        txtBuscarDoctores.setOnClickListener{
+            val pantallaHistorial = Intent(this, activity_historial_busqueda::class.java)
+            startActivity(pantallaHistorial)
+            overridePendingTransition(0,0)
         }
     }
 }
