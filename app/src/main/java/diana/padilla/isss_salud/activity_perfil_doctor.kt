@@ -119,6 +119,15 @@ class activity_perfil_doctor : AppCompatActivity() {
             iconPerfil.setImageResource(R.drawable.ic_perfil)
         }
 
+        val iconChats = findViewById<ImageView>(R.id.BtnChats)
+        val modoOscuro5 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+        if(modoOscuro5 == Configuration.UI_MODE_NIGHT_YES){
+            iconChats.setImageResource(R.drawable.ic_active_chat_dm)
+        }else{
+            iconChats.setImageResource(R.drawable.ic_active_chat)
+        }
+
         iconHome.setOnClickListener{
             val pantallaNoticias = Intent(this, activity_noticias::class.java)
             startActivity(pantallaNoticias)

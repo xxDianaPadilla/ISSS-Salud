@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:padding="0dp"
+    style="@style/background2"
     android:layout_width="160dp"
     android:layout_height="match_parent"
     tools:context=".activity_item_doctor">
