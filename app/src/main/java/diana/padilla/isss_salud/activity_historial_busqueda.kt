@@ -96,9 +96,19 @@ class activity_historial_busqueda : AppCompatActivity() {
 
         ivSearch.setOnClickListener {
             val searchText = etSearch.text.toString()
-            if(searchText.isNotEmpty()){
+            if (searchText.isNotEmpty()) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    val doctoresDB = obtenerDoctores2()
+                    val doctoresFiltrados = filtrarDoctores(searchText, doctoresDB)
+                    withContext(Dispatchers.Main) {
+                        val adapter = AdaptadorDocBusqueda(doctoresFiltrados)
+                        rcvHistorialDoctores.adapter = adapter
+                    }
+                }
+
                 addSearchHistory(searchText)
                 etSearch.text.clear()
+
             }
         }
 
@@ -165,6 +175,12 @@ class activity_historial_busqueda : AppCompatActivity() {
         btnBackArrow.setOnClickListener {
             val pantallaMensajeria = Intent(this, activity_mensajeria::class.java)
             startActivity(pantallaMensajeria)
+        }
+    }
+
+    private fun filtrarDoctores(nombre: String, listaDoctores: List<ChatsDoctores>): List<ChatsDoctores>{
+        return listaDoctores.filter {
+            it.nombre_doctor.contains(nombre, ignoreCase = true)
         }
     }
 
