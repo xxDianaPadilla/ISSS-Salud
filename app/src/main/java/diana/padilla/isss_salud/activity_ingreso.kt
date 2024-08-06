@@ -6,6 +6,8 @@ import android.app.Application
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -66,6 +68,24 @@ companion object variablesGlobales{
         val txtContrasena = findViewById<EditText>(R.id.txtContrasenaIngreso)
         val btnLogin = findViewById<Button>(R.id.btnIniciarSesionIngreso)
         val correoPattern = Regex ("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
+
+        var isPasswordVisible = false
+        val passwordview = txtContrasena
+        val togglePasswordVisibility = findViewById<ImageView>(R.id.togglePasswordVisibility)
+
+        togglePasswordVisibility.setOnClickListener {
+            if (isPasswordVisible) {
+                // Ocultar contraseña
+                passwordview.transformationMethod = PasswordTransformationMethod.getInstance()
+                togglePasswordVisibility.setImageResource(R.drawable.ic_visibility_off)
+            } else {
+                // Mostrar contraseña
+                passwordview.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                togglePasswordVisibility.setImageResource(R.drawable.ic_visibility)
+            }
+            isPasswordVisible = !isPasswordVisible
+            passwordview.setSelection(passwordview.text.length)
+        }
 
         fun hashSHA256(contrasenaEncriptada: String): String{
             val bytes = MessageDigest.getInstance("SHA-256").digest(contrasenaEncriptada.toByteArray())
