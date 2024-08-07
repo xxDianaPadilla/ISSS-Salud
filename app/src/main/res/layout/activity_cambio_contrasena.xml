@@ -130,6 +130,30 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtConfirmarContraseña" />
 
+        <ImageView
+            android:id="@+id/togglePasswordVisibility"
+            android:layout_width="28dp"
+            android:layout_height="27dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtNuevaContraseña"
+            app:layout_constraintEnd_toEndOf="@+id/txtNuevaContraseña"
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toStartOf="@+id/txtNuevaContraseña"
+            app:layout_constraintTop_toTopOf="@+id/txtNuevaContraseña"
+            app:layout_constraintVertical_bias="0.65"
+            app:srcCompat="@drawable/ic_visibility_off" />
+
+        <ImageView
+            android:id="@+id/togglePasswordVisibility2"
+            android:layout_width="28dp"
+            android:layout_height="27dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtConfirmarContraseña"
+            app:layout_constraintEnd_toEndOf="@+id/txtConfirmarContraseña"
+            app:layout_constraintHorizontal_bias="0.96"
+            app:layout_constraintStart_toStartOf="@+id/txtConfirmarContraseña"
+            app:layout_constraintTop_toTopOf="@+id/txtConfirmarContraseña"
+            app:layout_constraintVertical_bias="0.65"
+            app:srcCompat="@drawable/ic_visibility_off" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

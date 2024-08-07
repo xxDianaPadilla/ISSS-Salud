@@ -181,6 +181,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtDUI" />
 
+        <ImageView
+            android:id="@+id/togglePasswordVisibility"
+            android:layout_width="25dp"
+            android:layout_height="26dp"
+            app:layout_constraintBottom_toBottomOf="@+id/txtContrasena1"
+            app:layout_constraintEnd_toEndOf="@+id/txtContrasena1"
+            app:layout_constraintHorizontal_bias="0.958"
+            app:layout_constraintStart_toStartOf="@+id/txtContrasena1"
+            app:layout_constraintTop_toTopOf="@+id/txtContrasena1"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_visibility_off" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

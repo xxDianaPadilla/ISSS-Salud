@@ -4,6 +4,8 @@ import Modelo.ClaseConexion
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -37,6 +39,39 @@ class activity_cambio_contrasena : AppCompatActivity() {
         val cambiarContrasena = findViewById<Button>(R.id.btnCambiarContraseña)
         val contrasenaRegex = Regex("^(?=.*[0-9!@#\$%^&*()-_=+\\|\\[{\\]};:'\",<.>/?]).{6,}\$")
 
+        var isPasswordVisible = false
+        val passwordview = nuevaContrasena
+        val passwordview2 = confirmarContrasena
+        val togglePasswordVisibility2 = findViewById<ImageView>(R.id.togglePasswordVisibility2)
+        val togglePasswordVisibility = findViewById<ImageView>(R.id.togglePasswordVisibility)
+
+        togglePasswordVisibility2.setOnClickListener {
+            if (isPasswordVisible) {
+                // Ocultar contraseña
+                passwordview2.transformationMethod = PasswordTransformationMethod.getInstance()
+                togglePasswordVisibility.setImageResource(R.drawable.ic_visibility_off)
+            } else {
+                // Mostrar contraseña
+                passwordview2.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                togglePasswordVisibility.setImageResource(R.drawable.ic_visibility)
+            }
+            isPasswordVisible = !isPasswordVisible
+            passwordview.setSelection(passwordview.text.length)
+        }
+
+        togglePasswordVisibility.setOnClickListener {
+            if (isPasswordVisible) {
+                // Ocultar contraseña
+                passwordview.transformationMethod = PasswordTransformationMethod.getInstance()
+                togglePasswordVisibility.setImageResource(R.drawable.ic_visibility_off)
+            } else {
+                // Mostrar contraseña
+                passwordview.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                togglePasswordVisibility.setImageResource(R.drawable.ic_visibility)
+            }
+            isPasswordVisible = !isPasswordVisible
+            passwordview.setSelection(passwordview.text.length)
+        }
 
         fun hashSHA256(contrasenaEncriptada: String): String {
             val bytes =
