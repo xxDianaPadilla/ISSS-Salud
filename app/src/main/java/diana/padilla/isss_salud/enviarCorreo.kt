@@ -36,7 +36,7 @@ import javax.mail.internet.MimeMessage
                 setFrom(InternetAddress("issssalud@gmail.com"))
                 addRecipient(Message.RecipientType.TO, InternetAddress(receptor))
                 subject = asunto
-                setText(mensaje)
+                setContent(mensaje, "text/html; charset=utf-8")
             }
             Transport.send(message)
             println("El correo ha sido enviado satisfactoriamente")
