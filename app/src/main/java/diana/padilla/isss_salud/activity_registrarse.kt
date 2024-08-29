@@ -5,6 +5,8 @@ import android.app.AlertDialog
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.text.method.HideReturnsTransformationMethod
+import android.text.method.PasswordTransformationMethod
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
@@ -54,6 +56,24 @@ class activity_registrarse : AppCompatActivity() {
         val txtCorreo1 = findViewById<EditText>(R.id.txtCorreoRegistro)
         val txtContrasena1 = findViewById<EditText>(R.id.txtContrasena1)
         val btnCrearRegistro: Button = findViewById(R.id.btnCrearRegistro)
+
+        var isPasswordVisible = false
+        val passwordview = txtContrasena1
+        val togglePasswordVisibility = findViewById<ImageView>(R.id.togglePasswordVisibility)
+
+        togglePasswordVisibility.setOnClickListener {
+            if (isPasswordVisible) {
+                // Ocultar contraseña
+                passwordview.transformationMethod = PasswordTransformationMethod.getInstance()
+                togglePasswordVisibility.setImageResource(R.drawable.ic_visibility_off)
+            } else {
+                // Mostrar contraseña
+                passwordview.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                togglePasswordVisibility.setImageResource(R.drawable.ic_visibility)
+            }
+            isPasswordVisible = !isPasswordVisible
+            passwordview.setSelection(passwordview.text.length)
+        }
 
         val spTipoSangre = findViewById<Spinner>(R.id.spTipoSangre)
         val listaTipoSangre = listOf("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-")
