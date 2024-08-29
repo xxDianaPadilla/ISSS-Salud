@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_mensajeria"
+    style="@style/background2">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        style="@style/backgroundBox2"
+        android:layout_width="0dp"
+        android:layout_height="96dp"
+        android:background="@drawable/fondo_gris2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/ivSmallLogo"
+            android:layout_width="115dp"
+            android:layout_height="115dp"
+            android:layout_marginStart="-10dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_logo_isss_small" />
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/raleway_bold_italic"
+            android:text="Mensajería"
+            android:textAlignment="center"
+            android:textSize="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout5"
+        style="@style/backgroundBox3"
+        android:layout_width="86dp"
+        android:layout_height="0dp"
+        android:background="@drawable/fondo_gris2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+        <ImageView
+            android:id="@+id/ivMenuCircle"
+            style="@style/backgroundMenu2"
+            android:layout_width="41dp"
+            android:layout_height="43dp"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="37dp"
+            app:layout_constraintStart_toEndOf="@+id/BtnChats"
+            app:layout_constraintTop_toBottomOf="@+id/btnCitas" />
+
+        <ImageView
+            android:id="@+id/btnCitas"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnNoticias"
+            app:srcCompat="@drawable/ic_citas" />
+
+        <ImageView
+            android:id="@+id/BtnChats"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="45dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnCitas"
+            app:srcCompat="@drawable/ic_active_chat" />
+
+        <ImageView
+            android:id="@+id/btnPerfil"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/BtnChats"
+            app:srcCompat="@drawable/ic_perfil" />
+
+        <ImageView
+            android:id="@+id/btnNoticias"
+            android:layout_width="35dp"
+            android:layout_height="34dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_home" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/txtBuscarDoctores"
+        android:layout_width="372dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_edittext_background"
+        android:ems="10"
+        android:hint="Buscar"
+        android:inputType="none"
+        android:focusable="false"
+        android:textColor="#000000"
+        android:textColorHint="#888888"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.542"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/txtBuscarDoctores"
+        app:layout_constraintEnd_toEndOf="@+id/txtBuscarDoctores"
+        app:layout_constraintHorizontal_bias="0.948"
+        app:layout_constraintStart_toStartOf="@+id/txtBuscarDoctores"
+        app:layout_constraintTop_toTopOf="@+id/txtBuscarDoctores"
+        app:srcCompat="@drawable/ic_busqueda" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcvDoctores"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/constraintLayout5"
+        app:layout_constraintTop_toBottomOf="@+id/txtBuscarDoctores" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
