@@ -4,6 +4,7 @@ import Modelo.ClaseConexion
 import Modelo.Perfil
 import android.content.Intent
 import android.content.res.Configuration
+import android.net.Uri
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -26,6 +27,8 @@ class activity_perfil : AppCompatActivity() {
     lateinit var telefonoPerfilE: EditText
     lateinit var duiPerfilE: EditText
     lateinit var tipoSangreE: EditText
+    lateinit var openLinkButton: Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,6 +39,16 @@ class activity_perfil : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        openLinkButton = findViewById(R.id.btnDescargarExpediente)
+
+        openLinkButton.setOnClickListener {
+            val url = "https://www.uv.es/~navasqui/aero/Energiadeuniman.pdfhttps://www.uv.es/~navasqui/aero/Energiadeuniman.pdf"
+            val intent = Intent(Intent.ACTION_VIEW)
+            intent.data = Uri.parse(url)
+            startActivity(intent)
+        }
+
 
         cargarDatosPerfilEnPantalla()
 
