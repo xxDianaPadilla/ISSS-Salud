@@ -26,7 +26,7 @@ import javax.mail.internet.MimeMessage
         //Incio de sesión
         val session = Session.getInstance(props, object : javax.mail.Authenticator() {
             override fun getPasswordAuthentication(): PasswordAuthentication {
-                return PasswordAuthentication("issssalud@gmail.com", "ejwx ahup kxjy xjsw")
+                return PasswordAuthentication("issssaludteam@gmail.com", "x x q n t k b m a h m a y y w c")
             }
         })
 
