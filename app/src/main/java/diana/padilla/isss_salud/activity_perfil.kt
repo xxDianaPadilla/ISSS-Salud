@@ -43,7 +43,7 @@ class activity_perfil : AppCompatActivity() {
         openLinkButton = findViewById(R.id.btnDescargarExpediente)
 
         openLinkButton.setOnClickListener {
-            val url = "https://www.uv.es/~navasqui/aero/Energiadeuniman.pdfhttps://www.uv.es/~navasqui/aero/Energiadeuniman.pdf"
+            val url = "https://www.canva.com/design/DAGOuctkzZg/uAXshmbnec-xCLQHHWmJCw/view?utm_content=DAGOuctkzZg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
             val intent = Intent(Intent.ACTION_VIEW)
             intent.data = Uri.parse(url)
             startActivity(intent)
