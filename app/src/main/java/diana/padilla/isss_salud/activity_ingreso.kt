@@ -2,6 +2,7 @@ package diana.padilla.isss_salud
 
 import Modelo.ClaseConexion
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.app.Application
 import android.content.Intent
 import android.content.res.Configuration
@@ -110,7 +111,6 @@ companion object variablesGlobales{
                     Toast.LENGTH_SHORT
                 ).show()
             } else {
-                val pantallaNoticias = Intent(this, activity_noticias::class.java)
 
                 CoroutineScope(Dispatchers.IO).launch {
 
@@ -118,22 +118,37 @@ companion object variablesGlobales{
 
                     val contrasenaEncriptacion = hashSHA256(txtContrasena.text.toString())
 
-                    val comprobarUsuario =
-                        objConexion?.prepareStatement("SELECT * FROM Usuarios WHERE correo_electronico = ? AND contrasena = ?")!!
+                    val comprobarUsuario = objConexion?.prepareStatement("SELECT id_rol FROM Usuarios WHERE correo_electronico = ? AND contrasena = ?")!!
                     comprobarUsuario.setString(1, txtCorreo.text.toString())
                     comprobarUsuario.setString(2, contrasenaEncriptacion)
                     val resultado = comprobarUsuario.executeQuery()
 
                     if (resultado.next()) {
-                        val correoIng = txtCorreo.text.toString()
-                        pantallaNoticias.putExtra("correoIng", correoIng)
+                        val idRol = resultado.getInt("id_rol")
+                        if(idRol == 2){
+                            val pantallaNoticias = Intent(this@activity_ingreso, activity_noticias::class.java)
+                            pantallaNoticias.putExtra("correoIng", txtCorreo.text.toString())
+                            miMorreo = txtCorreo.text.toString()
 
-                        miMorreo = txtCorreo.text.toString()
-                        runOnUiThread{
-                            Toast.makeText(this@activity_ingreso, "Bienvenid@!", Toast.LENGTH_SHORT).show()
+                            runOnUiThread{
+                                Toast.makeText(this@activity_ingreso, "Bienvenid@!", Toast.LENGTH_SHORT).show()
+                            }
+
+                            startActivity(pantallaNoticias)
+                            finish()
+                        }else{
+                            runOnUiThread{
+                                val alertDialog = AlertDialog.Builder(this@activity_ingreso).apply {
+                                    setTitle("Acceso denegado")
+                                    setMessage("Credenciales inválidas, aplicación exclusiva para usuarios pacientes del ISSS")
+                                    setPositiveButton("Aceptar"){ dialog, _ ->
+                                        dialog.dismiss()
+                                    }
+                                }.create()
+                                alertDialog.show()
+                            }
                         }
-                        startActivity(pantallaNoticias)
-                        finish()
+
                     } else {
                         runOnUiThread{
                             Toast.makeText(this@activity_ingreso, "Usuario no encontrado, verifique las credenciales", Toast.LENGTH_LONG).show()
