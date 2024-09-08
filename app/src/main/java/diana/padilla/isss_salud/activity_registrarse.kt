@@ -76,10 +76,15 @@ class activity_registrarse : AppCompatActivity() {
         }
 
         val spTipoSangre = findViewById<Spinner>(R.id.spTipoSangre)
+        val spSexo = findViewById<Spinner>(R.id.spSexo)
         val listaTipoSangre = listOf("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-")
+        val listaSexo = listOf("Hombre", "Mujer")
         val adapterTipoSangre =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaTipoSangre)
         spTipoSangre.adapter = adapterTipoSangre
+        val adapterSexo =
+            ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaSexo)
+        spSexo.adapter = adapterSexo
 
 
 

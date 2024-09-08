@@ -35,7 +35,7 @@
             android:layout_width="185dp"
             android:layout_height="60dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:textAlignment="textStart"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -45,7 +45,7 @@
             style="@style/buttonStyle2"
             android:layout_width="145dp"
             android:layout_height="60dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="24dp"
             android:fontFamily="@font/raleway_bold_italic"
             android:text="Registrarse"
@@ -53,35 +53,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/textView2"
-            style="@style/TextColor2"
-            android:layout_width="145dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/raleway_extrabold_italic"
-            android:text="Bienvenido a ISSS Salud"
-            android:textAlignment="center"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesionIngresoInterfaz" />
-
         <Button
             android:id="@+id/btnCrearRegistro"
             style="@style/buttonStyle2"
             android:layout_width="300dp"
             android:layout_height="60dp"
-            android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/raleway_extrabold_italic"
             android:text="Registrarse"
             android:textSize="17sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtContrasena1" />
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/textView12"
@@ -99,99 +82,132 @@
             app:layout_constraintTop_toTopOf="@+id/btnIniciarSesionIngresoInterfaz" />
 
         <EditText
-            android:id="@+id/txtDUI"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:backgroundTint="#E5E5E5"
-            android:ems="10"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:hint="DUI"
-            style="@style/TextColor2"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-        <EditText
             android:id="@+id/txtContrasena1"
+            style="@style/TextColor2"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
+            android:layout_marginBottom="4dp"
             android:backgroundTint="#E5E5E5"
             android:ems="10"
             android:fontFamily="@font/raleway_bold_italic"
             android:hint="Contraseña"
             android:inputType="textPassword"
-            style="@style/TextColor2"
             android:textColorHint="#c8c8c8"
             android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/btnCrearRegistro"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtCorreoRegistro" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/txtCorreoRegistro"
+            android:id="@+id/txtDUI"
+            style="@style/TextColor2"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
+            android:layout_marginBottom="5dp"
             android:backgroundTint="#E5E5E5"
             android:ems="10"
             android:fontFamily="@font/raleway_bold_italic"
-            android:hint="Correo"
-            android:inputType="textEmailAddress"
-            style="@style/TextColor2"
+            android:hint="DUI"
             android:textColorHint="#c8c8c8"
             android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/spTipoSangre"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtTelefono" />
-
-        <EditText
-            android:id="@+id/txtTelefono"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:backgroundTint="#E5E5E5"
-            android:ems="10"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:hint="Teléfono"
-            android:inputType="phone"
-            style="@style/TextColor2"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spTipoSangre" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <Spinner
             android:id="@+id/spTipoSangre"
             style="@style/TextColor2"
             android:layout_width="290dp"
             android:layout_height="40dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginBottom="5dp"
             android:backgroundTint="#E5E5E5"
             android:ems="10"
             android:fontFamily="@font/raleway_bold_italic"
             android:inputType="text"
             android:textColorHint="#c8c8c8"
             android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/editTextText"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/txtDUI" />
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/txtTelefono"
+            style="@style/TextColor2"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#E5E5E5"
+            android:ems="10"
+            android:fontFamily="@font/raleway_bold_italic"
+            android:hint="Teléfono"
+            android:inputType="phone"
+            android:textColorHint="#c8c8c8"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/txtCorreoRegistro"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/txtCorreoRegistro"
+            style="@style/TextColor2"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#E5E5E5"
+            android:ems="10"
+            android:fontFamily="@font/raleway_bold_italic"
+            android:hint="Correo"
+            android:inputType="textEmailAddress"
+            android:textColorHint="#c8c8c8"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/txtContrasena1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ImageView
             android:id="@+id/togglePasswordVisibility"
             android:layout_width="25dp"
             android:layout_height="26dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginBottom="10dp"
             app:layout_constraintBottom_toBottomOf="@+id/txtContrasena1"
             app:layout_constraintEnd_toEndOf="@+id/txtContrasena1"
-            app:layout_constraintHorizontal_bias="0.958"
-            app:layout_constraintStart_toStartOf="@+id/txtContrasena1"
-            app:layout_constraintTop_toTopOf="@+id/txtContrasena1"
-            app:layout_constraintVertical_bias="0.0"
             app:srcCompat="@drawable/ic_visibility_off" />
+
+        <Spinner
+            android:id="@+id/spSexo"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#E5E5E5"
+            android:ems="10"
+            android:fontFamily="@font/raleway_bold_italic"
+            android:inputType="text"
+            android:textColorHint="#c8c8c8"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/txtTelefono"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/editTextText"
+            android:layout_width="290dp"
+            android:layout_height="40dp"
+            android:layout_marginBottom="5dp"
+            android:backgroundTint="#E5E5E5"
+            android:ems="10"
+            android:fontFamily="@font/raleway_bold_italic"
+            android:hint="Edad"
+            android:textColorHint="#c8c8c8"
+            android:textSize="15sp"
+            app:layout_constraintBottom_toTopOf="@+id/spSexo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

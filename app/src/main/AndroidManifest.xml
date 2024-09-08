@@ -26,9 +26,6 @@
         android:theme="@style/Theme.ISSS_Salud"
         tools:targetApi="31">
         <activity
-            android:name=".Expedientes"
-            android:exported="false" />
-        <activity
             android:name=".activity_item_doctor"
             android:exported="false" />
         <activity
