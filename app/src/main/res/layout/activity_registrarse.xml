@@ -128,7 +128,7 @@
             android:inputType="text"
             android:textColorHint="#c8c8c8"
             android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/editTextText"
+            app:layout_constraintBottom_toTopOf="@+id/txtEdad"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
@@ -181,6 +181,7 @@
 
         <Spinner
             android:id="@+id/spSexo"
+            style="@style/TextColor2"
             android:layout_width="290dp"
             android:layout_height="40dp"
             android:layout_marginBottom="5dp"
@@ -195,7 +196,8 @@
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
-            android:id="@+id/editTextText"
+            android:id="@+id/txtEdad"
+            style="@style/TextColor2"
             android:layout_width="290dp"
             android:layout_height="40dp"
             android:layout_marginBottom="5dp"
@@ -203,6 +205,9 @@
             android:ems="10"
             android:fontFamily="@font/raleway_bold_italic"
             android:hint="Edad"
+            android:inputType="date"
+            android:focusable="false"
+            android:clickable="false"
             android:textColorHint="#c8c8c8"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/spSexo"

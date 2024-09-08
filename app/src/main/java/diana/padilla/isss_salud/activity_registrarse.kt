@@ -2,8 +2,10 @@ package diana.padilla.isss_salud
 
 import Modelo.ClaseConexion
 import android.app.AlertDialog
+import android.app.DatePickerDialog
 import android.content.Intent
 import android.content.res.Configuration
+import android.icu.util.Calendar
 import android.os.Bundle
 import android.text.method.HideReturnsTransformationMethod
 import android.text.method.PasswordTransformationMethod
@@ -55,6 +57,7 @@ class activity_registrarse : AppCompatActivity() {
         val txtTelefono = findViewById<EditText>(R.id.txtTelefono)
         val txtCorreo1 = findViewById<EditText>(R.id.txtCorreoRegistro)
         val txtContrasena1 = findViewById<EditText>(R.id.txtContrasena1)
+        val txtEdad = findViewById<EditText>(R.id.txtEdad)
         val btnCrearRegistro: Button = findViewById(R.id.btnCrearRegistro)
 
         var isPasswordVisible = false
@@ -78,7 +81,7 @@ class activity_registrarse : AppCompatActivity() {
         val spTipoSangre = findViewById<Spinner>(R.id.spTipoSangre)
         val spSexo = findViewById<Spinner>(R.id.spSexo)
         val listaTipoSangre = listOf("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-")
-        val listaSexo = listOf("Hombre", "Mujer")
+        val listaSexo = listOf("Masculino", "Femenino")
         val adapterTipoSangre =
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaTipoSangre)
         spTipoSangre.adapter = adapterTipoSangre
@@ -86,6 +89,41 @@ class activity_registrarse : AppCompatActivity() {
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaSexo)
         spSexo.adapter = adapterSexo
 
+        txtEdad.setOnClickListener{
+            val calendario = Calendar.getInstance()
+            val anio = calendario.get(Calendar.YEAR)
+            val mes = calendario.get(Calendar.MONTH)
+            val dia = calendario.get(Calendar.DAY_OF_MONTH)
+
+            val calendarioMayorEdad = Calendar.getInstance()
+            calendarioMayorEdad.set(anio - 18, mes, dia)
+
+            val datePickerDialog = DatePickerDialog(
+                this,
+                { view, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
+                    val calendarioSeleccionado = Calendar.getInstance()
+                    calendarioSeleccionado.set(anioSeleccionado, mesSeleccionado, diaSeleccionado)
+
+                    if(calendarioSeleccionado.after(calendarioMayorEdad)){
+                        AlertDialog.Builder(this)
+                            .setTitle("Fecha inválida")
+                            .setMessage("Debe seleccionar una fecha que demuestre que es mayor de edad")
+                            .setPositiveButton("OK"){ dialog, _ ->
+                                dialog.dismiss()
+                            }
+                            .show()
+                    }else{
+                        val fechaSeleccionada = "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
+                        txtEdad.setText(fechaSeleccionada)
+                    }
+                },
+                anio, mes, dia
+            )
+
+            datePickerDialog.datePicker.maxDate = calendario.timeInMillis
+
+            datePickerDialog.show()
+        }
 
 
         fun hashSHA256(contrasenaEncriptada: String): String {
@@ -97,6 +135,7 @@ class activity_registrarse : AppCompatActivity() {
         btnCrearRegistro.setOnClickListener {
 
             val dui = txtDUI.text.toString()
+            val edad = txtEdad.text.toString()
             val tel = txtTelefono.text.toString()
             val correo = txtCorreo1.text.toString().trim()
             val contrasena = txtContrasena1.text.toString()
@@ -113,6 +152,11 @@ class activity_registrarse : AppCompatActivity() {
             } else if (!duiRegex.matches(dui)) {
                 txtDUI.setError("Error, el DUI no es valido. Debe tener el formato adecuado, por ejemplo, 12345678-9.")
                 valid = false
+            }
+
+            if(edad.isEmpty()){
+                txtEdad.setError("El campo de edad no puede estar vacío")
+                valid = false;
             }
 
             if (tel.isEmpty()) {
@@ -180,12 +224,14 @@ class activity_registrarse : AppCompatActivity() {
                                         hashSHA256(txtContrasena1.text.toString())
 
                                     val addUsuarios =
-                                        objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena) values (?, ?, ?, ?, ?)")!!
+                                        objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena, sexo, edad) values (?, ?, ?, ?, ?, ?, ?)")!!
                                     addUsuarios.setString(1, txtDUI.text.toString())
                                     addUsuarios.setString(2, spTipoSangre.selectedItem.toString())
                                     addUsuarios.setString(3, txtTelefono.text.toString())
                                     addUsuarios.setString(4, txtCorreo1.text.toString())
                                     addUsuarios.setString(5, contrasenaEncriptacion)
+                                    addUsuarios.setString(6, spSexo.selectedItem.toString())
+                                    addUsuarios.setString(7, txtEdad.text.toString())
 
                                     addUsuarios.executeUpdate()
 
@@ -198,6 +244,7 @@ class activity_registrarse : AppCompatActivity() {
                                         txtDUI.setText("")
                                         txtTelefono.setText("")
                                         txtCorreo1.setText("")
+                                        txtEdad.setText("")
                                         txtContrasena1.setText("")
                                     }
                                 } catch (e: java.sql.SQLIntegrityConstraintViolationException) {
