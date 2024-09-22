@@ -21,6 +21,7 @@ class AdaptadorDocBusqueda(var Datos: List<ChatsDoctores>): RecyclerView.Adapter
         holder.txtDoctorName.text = item.nombre_doctor
         Glide.with(holder.ImageDoctor.context)
             .load(item.foto_doctor_url)
+            .error("https://i.pinimg.com/236x/2a/2e/7f/2a2e7f0f60b750dfb36c15c268d0118d.jpg")
             .into(holder.ImageDoctor)
     }
 

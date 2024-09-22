@@ -95,6 +95,12 @@ lateinit var tipoSangre: EditText
                     "Error, para enviar el formulario debe llenar todas las casillas.",
                     Toast.LENGTH_SHORT
                 ).show()
+            }else if(nombreSolicitante.any {it.isDigit()}){
+                AlertDialog.Builder(this@activity_citas_medicas)
+                    .setTitle("Solicitante inválido")
+                    .setMessage("El nombre del solicitante no puede contener números.")
+                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                    .show()
             }else{
                 CoroutineScope(Dispatchers.IO).launch {
                     val objConexion = ClaseConexion().cadenaConexion()

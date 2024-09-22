@@ -24,9 +24,18 @@ class AdaptadorChats(var Datos: List<ChatsDoctores>): RecyclerView.Adapter<ViewH
         val item = Datos[position]
         val context = holder.itemView.context
         holder.txtDoctorNombre.text = item.nombre_doctor
-        Glide.with(holder.ivDoctorFoto.context)
-            .load(item.foto_doctor_url)
-            .into(holder.ivDoctorFoto)
+
+        if(item.foto_doctor_url.contains("C:") || item.foto_doctor_url.contains("\\")){
+            Glide.with(holder.ivDoctorFoto.context)
+                .load("https://i.pinimg.com/236x/2a/2e/7f/2a2e7f0f60b750dfb36c15c268d0118d.jpg")
+                .into(holder.ivDoctorFoto)
+        }else {
+
+            Glide.with(holder.ivDoctorFoto.context)
+                .load(item.foto_doctor_url)
+                .error("https://i.pinimg.com/236x/2a/2e/7f/2a2e7f0f60b750dfb36c15c268d0118d.jpg")
+                .into(holder.ivDoctorFoto)
+        }
 
         holder.ivDoctorFoto.setOnClickListener {
             val pantallaPerfilDoctor = Intent(context, activity_perfil_doctor::class.java).apply {

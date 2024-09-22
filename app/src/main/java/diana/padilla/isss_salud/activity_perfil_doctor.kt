@@ -196,6 +196,7 @@ class activity_perfil_doctor : AppCompatActivity() {
             if (doctor != null) {
                 Glide.with(this@activity_perfil_doctor)
                     .load(doctor.foto_doctor_url)
+                    .error("https://i.pinimg.com/236x/2a/2e/7f/2a2e7f0f60b750dfb36c15c268d0118d.jpg")
                     .into(ImgDoctorPerfil2)
                 txtViewCorreo.text = doctor.correo_doctor
                 txtViewNombreDoctorP.text = doctor.nombre_doctor

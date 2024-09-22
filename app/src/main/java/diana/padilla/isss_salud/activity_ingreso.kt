@@ -146,6 +146,9 @@ companion object variablesGlobales{
                                     }
                                 }.create()
                                 alertDialog.show()
+
+                                txtCorreo.setText("");
+                                txtContrasena.setText("");
                             }
                         }
 
