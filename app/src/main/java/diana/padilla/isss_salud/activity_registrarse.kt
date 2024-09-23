@@ -112,6 +112,7 @@ class activity_registrarse : AppCompatActivity() {
                                 dialog.dismiss()
                             }
                             .show()
+                        txtEdad.setText("");
                     }else{
                         val fechaSeleccionada = "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
                         txtEdad.setText(fechaSeleccionada)
@@ -155,8 +156,13 @@ class activity_registrarse : AppCompatActivity() {
             }
 
             if(edad.isEmpty()){
-                txtEdad.setError("El campo de edad no puede estar vacío")
-                valid = false;
+                AlertDialog.Builder(this)
+                    .setTitle("Campo vacío")
+                    .setMessage("Debe seleccionar una fecha de nacimiento para poder registrarse")
+                    .setPositiveButton("OK"){ dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    .show()
             }
 
             if (tel.isEmpty()) {
