@@ -58,6 +58,7 @@ class activity_registrarse : AppCompatActivity() {
         val txtCorreo1 = findViewById<EditText>(R.id.txtCorreoRegistro)
         val txtContrasena1 = findViewById<EditText>(R.id.txtContrasena1)
         val txtEdad = findViewById<EditText>(R.id.txtEdad)
+        val txtNombre = findViewById<EditText>(R.id.txtNombreU)
         val btnCrearRegistro: Button = findViewById(R.id.btnCrearRegistro)
 
         var isPasswordVisible = false
@@ -140,10 +141,12 @@ class activity_registrarse : AppCompatActivity() {
             val tel = txtTelefono.text.toString()
             val correo = txtCorreo1.text.toString().trim()
             val contrasena = txtContrasena1.text.toString()
+            val nombre = txtNombre.text.toString()
             val duiRegex = Regex("^\\d{8}-\\d\$")
             val telefonoRegex = Regex("^\\d{4}-\\d{4}\$")
             val correoPattern = Regex("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
             val contrasenaRegex = Regex("^(?=.*[0-9!@#\$%^&*()-_=+\\|\\[{\\]};:'\",<.>/?]).{6,}\$")
+            val nombreRegex = Regex("^[\\p{L}\\s.,;:!?áéíóúÁÉÍÓÚñÑ]+$")
 
             var valid = true
 
@@ -152,6 +155,14 @@ class activity_registrarse : AppCompatActivity() {
                 valid = false
             } else if (!duiRegex.matches(dui)) {
                 txtDUI.setError("Error, el DUI no es valido. Debe tener el formato adecuado, por ejemplo, 12345678-9.")
+                valid = false
+            }
+
+            if(nombre.isEmpty()){
+                txtNombre.setError("El nombre de usuario no puede estar vacío")
+                valid = false
+            }else if(!nombreRegex.matches(nombre)){
+                txtNombre.setError("Ingrese un nombre válido")
                 valid = false
             }
 
@@ -230,7 +241,7 @@ class activity_registrarse : AppCompatActivity() {
                                         hashSHA256(txtContrasena1.text.toString())
 
                                     val addUsuarios =
-                                        objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena, sexo, edad) values (?, ?, ?, ?, ?, ?, ?)")!!
+                                        objConexion?.prepareStatement("insert into Usuarios (dui, tipo_sangre, telefono, correo_electronico, contrasena, sexo, edad, nombre_usuario) values (?, ?, ?, ?, ?, ?, ?, ?)")!!
                                     addUsuarios.setString(1, txtDUI.text.toString())
                                     addUsuarios.setString(2, spTipoSangre.selectedItem.toString())
                                     addUsuarios.setString(3, txtTelefono.text.toString())
@@ -238,6 +249,7 @@ class activity_registrarse : AppCompatActivity() {
                                     addUsuarios.setString(5, contrasenaEncriptacion)
                                     addUsuarios.setString(6, spSexo.selectedItem.toString())
                                     addUsuarios.setString(7, txtEdad.text.toString())
+                                    addUsuarios.setString(8, txtNombre.text.toString())
 
                                     addUsuarios.executeUpdate()
 
@@ -247,6 +259,7 @@ class activity_registrarse : AppCompatActivity() {
                                             .setMessage("La cuenta se ha creado exitosamente.")
                                             .setPositiveButton("Aceptar", null)
                                             .show()
+                                        txtNombre.setText("")
                                         txtDUI.setText("")
                                         txtTelefono.setText("")
                                         txtCorreo1.setText("")

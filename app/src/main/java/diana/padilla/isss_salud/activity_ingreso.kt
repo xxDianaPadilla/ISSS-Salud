@@ -27,6 +27,7 @@ class activity_ingreso : AppCompatActivity() {
 
 companion object variablesGlobales{
      lateinit var miMorreo: String
+     var idUsuarioGlobal: Int = 0
 }
 
     @SuppressLint("SuspiciousIndentation")
@@ -118,17 +119,19 @@ companion object variablesGlobales{
 
                     val contrasenaEncriptacion = hashSHA256(txtContrasena.text.toString())
 
-                    val comprobarUsuario = objConexion?.prepareStatement("SELECT id_rol FROM Usuarios WHERE correo_electronico = ? AND contrasena = ?")!!
+                    val comprobarUsuario = objConexion?.prepareStatement("SELECT id_usuario, id_rol FROM Usuarios WHERE correo_electronico = ? AND contrasena = ?")!!
                     comprobarUsuario.setString(1, txtCorreo.text.toString())
                     comprobarUsuario.setString(2, contrasenaEncriptacion)
                     val resultado = comprobarUsuario.executeQuery()
 
                     if (resultado.next()) {
                         val idRol = resultado.getInt("id_rol")
+                        val idUsuario = resultado.getInt("id_usuario")
                         if(idRol == 2){
                             val pantallaNoticias = Intent(this@activity_ingreso, activity_noticias::class.java)
                             pantallaNoticias.putExtra("correoIng", txtCorreo.text.toString())
                             miMorreo = txtCorreo.text.toString()
+                            variablesGlobales.idUsuarioGlobal = idUsuario
 
                             runOnUiThread{
                                 Toast.makeText(this@activity_ingreso, "Bienvenid@!", Toast.LENGTH_SHORT).show()

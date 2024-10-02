@@ -20,14 +20,16 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         style="@style/backgroundBox"
-        android:layout_width="333dp"
-        android:layout_height="466dp"
+        android:layout_width="350dp"
+        android:layout_height="534dp"
         android:layout_marginTop="40dp"
         android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IvLogoIsss">
+        app:layout_constraintTop_toBottomOf="@+id/IvLogoIsss"
+        app:layout_constraintVertical_bias="0.725">
 
         <Button
             android:id="@+id/btnIniciarSesionIngresoInterfaz"
@@ -86,7 +88,7 @@
             style="@style/TextColor2"
             android:layout_width="290dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="#E5E5E5"
             android:ems="10"
             android:fontFamily="@font/raleway_bold_italic"
@@ -96,7 +98,6 @@
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/btnCrearRegistro"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent" />
 
         <EditText
@@ -202,17 +203,33 @@
             android:layout_height="40dp"
             android:layout_marginBottom="5dp"
             android:backgroundTint="#E5E5E5"
+            android:clickable="false"
             android:ems="10"
+            android:focusable="false"
             android:fontFamily="@font/raleway_bold_italic"
             android:hint="Edad"
             android:inputType="date"
-            android:focusable="false"
-            android:clickable="false"
             android:textColorHint="#c8c8c8"
             android:textSize="15sp"
             app:layout_constraintBottom_toTopOf="@+id/spSexo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <EditText
+            android:id="@+id/txtNombreU"
+            style="@style/TextColor2"
+            android:layout_width="290dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#E5E5E5"
+            android:ems="10"
+            android:fontFamily="@font/raleway_bold_italic"
+            android:hint="Nombre"
+            android:textColorHint="#c8c8c8"
+            android:textSize="15sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesionIngresoInterfaz" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

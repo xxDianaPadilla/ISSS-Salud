@@ -1,7 +1,5 @@
 package diana.padilla.isss_salud
 
-
-
 import Modelo.ClaseConexion
 import Modelo.Usuarios
 import android.app.AlertDialog
@@ -29,6 +27,7 @@ lateinit var dui: EditText
 lateinit var correo: EditText
 lateinit var telefono: EditText
 lateinit var tipoSangre: EditText
+lateinit var nombreSolicitante: EditText
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,35 +79,28 @@ lateinit var tipoSangre: EditText
         correo = findViewById<EditText>(R.id.txtCorreoSolicitud)
         telefono = findViewById<EditText>(R.id.txtTelefonoCitas)
         tipoSangre = findViewById<EditText>(R.id.txtTipoSangreSolicitud)
-        val txtNombreCitas = findViewById<EditText>(R.id.txtNombreCitas)
+        nombreSolicitante = findViewById<EditText>(R.id.txtNombreCitas)
         val txtMotivoCitas = findViewById<EditText>(R.id.txtMotivoCitas)
         val btnEnviarFormulario = findViewById<Button>(R.id.btnEnviarFormulario)
 
         btnEnviarFormulario.setOnClickListener {
-            val nombreSolicitante = txtNombreCitas.text.toString()
             val motivoCita = txtMotivoCitas.text.toString()
             val fechaSolicitud = txtFechaSolicitud.text.toString()
 
-            if(nombreSolicitante.isEmpty() || motivoCita.isEmpty() || fechaSolicitud.isEmpty()){
+            if(motivoCita.isEmpty() || fechaSolicitud.isEmpty()){
                 Toast.makeText(
                     this@activity_citas_medicas,
                     "Error, para enviar el formulario debe llenar todas las casillas.",
                     Toast.LENGTH_SHORT
                 ).show()
-            }else if(nombreSolicitante.any {it.isDigit()}){
-                AlertDialog.Builder(this@activity_citas_medicas)
-                    .setTitle("Solicitante inválido")
-                    .setMessage("El nombre del solicitante no puede contener números.")
-                    .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
-                    .show()
             }else{
                 CoroutineScope(Dispatchers.IO).launch {
                     val objConexion = ClaseConexion().cadenaConexion()
 
-                    val addSolicitud = objConexion?.prepareStatement("INSERT INTO SolicitudCitas (nombre_solicitante, motivo_cita, fecha_solicitud) VALUES (?, ?, ?)")!!
-                    addSolicitud.setString(1, txtNombreCitas.text.toString())
-                    addSolicitud.setString(2, txtMotivoCitas.text.toString())
-                    addSolicitud.setString(3, txtFechaSolicitud.text.toString())
+                    val addSolicitud = objConexion?.prepareStatement("INSERT INTO SolicitudCitas (motivo_cita, fecha_solicitud, id_usuario) VALUES (?, ?, ?)")!!
+                    addSolicitud.setString(1, txtMotivoCitas.text.toString())
+                    addSolicitud.setString(2, txtFechaSolicitud.text.toString())
+                    addSolicitud.setInt(3, activity_ingreso.variablesGlobales.idUsuarioGlobal)
 
                     addSolicitud.executeQuery()
 
@@ -118,7 +110,6 @@ lateinit var tipoSangre: EditText
                             .setMessage("El formulario se ha enviado exitosamente.")
                             .setPositiveButton("Aceptar", null)
                             .show()
-                        txtNombreCitas.setText("")
                         txtMotivoCitas.setText("")
                         txtFechaSolicitud.setText("")
                     }
@@ -204,7 +195,7 @@ lateinit var tipoSangre: EditText
         withContext(Dispatchers.IO){
             val objConexion = ClaseConexion().cadenaConexion()
             val obtenerUsuario =
-                objConexion?.prepareStatement("SELECT dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
+                objConexion?.prepareStatement("SELECT dui, correo_electronico, telefono, tipo_sangre, nombre_usuario FROM Usuarios WHERE correo_electronico = ?")!!
             obtenerUsuario.setString(1, correoDeLaVariableGlobal)
             val resultSet = obtenerUsuario.executeQuery()
 
@@ -213,8 +204,9 @@ lateinit var tipoSangre: EditText
                 var correo_electronico: String = resultSet.getString("correo_electronico")
                 var telefono: String = resultSet.getString("telefono")
                 var tipo_sangre: String = resultSet.getString("tipo_sangre")
+                var nombre_usuario: String = resultSet.getString("nombre_usuario")
 
-                val usuarioCompleto = Usuarios(dui, correo_electronico, telefono, tipo_sangre)
+                val usuarioCompleto = Usuarios(dui, correo_electronico, telefono, tipo_sangre, nombre_usuario)
                 println("Esto son los datos del usuario $usuarioCompleto")
                 usuario.add(usuarioCompleto)
             }
@@ -235,6 +227,8 @@ lateinit var tipoSangre: EditText
                 telefono.hint = miTelefono
                 val miTipoSangre = usuarios[0].tipo_sangre
                 tipoSangre.hint = miTipoSangre
+                val miNombre = usuarios[0].nombre_usuario
+                nombreSolicitante.hint = miNombre
             }
         }
     }
