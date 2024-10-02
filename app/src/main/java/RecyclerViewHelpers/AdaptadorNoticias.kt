@@ -19,12 +19,23 @@ class AdaptadorNoticias(var Datos: List<NoticiasNuevas>): RecyclerView.Adapter<V
 
     override fun onBindViewHolder(holder: ViewHolderNoticias, position: Int) {
         val item = Datos[position]
+        val context = holder.itemView.context
         Glide.with(holder.image.context)
             .load(item.imageURL)
             .into(holder.image)
         holder.title.text = item.title
         holder.description.text = item.description
         holder.date.text = item.fecha
+
+        holder.itemView.setOnClickListener{
+            val pantallaNoticiasCompletas = Intent(context, activity_Noticias_completas::class.java)
+            pantallaNoticiasCompletas.putExtra("news_title", item.title)
+            pantallaNoticiasCompletas.putExtra("news_description", item.description)
+            pantallaNoticiasCompletas.putExtra("news_date", item.fecha)
+            pantallaNoticiasCompletas.putExtra("news_image", item.imageURL)
+
+            context.startActivity(pantallaNoticiasCompletas)
+        }
     }
 
     override fun getItemCount(): Int {

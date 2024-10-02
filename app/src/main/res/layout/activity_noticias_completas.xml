@@ -5,6 +5,7 @@
     android:id="@+id/PantallaNoticia"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    style="@style/background2"
     tools:context=".activity_Noticias_completas">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -12,8 +13,9 @@
         style="@style/backgroundBox2"
         android:layout_width="373dp"
         android:layout_height="96dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.578"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -46,17 +48,20 @@
         android:id="@+id/detail_news_image"
         android:layout_width="370dp"
         android:layout_height="200dp"
-        android:layout_marginTop="70dp"
+        android:layout_marginTop="68dp"
         android:scaleType="centerCrop"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.536"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     <TextView
         android:id="@+id/detail_news_description"
-        android:layout_width="370dp"
+        android:layout_width="363dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="16dp"
+        android:textAlignment="textStart"
+        android:justificationMode="inter_word"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_news_title" />
@@ -65,8 +70,11 @@
         android:id="@+id/detail_news_date"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="28dp"
         android:textSize="12sp"
+        android:textAlignment="textEnd"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.828"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_news_description" />
 
@@ -74,21 +82,22 @@
         android:id="@+id/detail_news_title"
         android:layout_width="370dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="16dp"
         android:textSize="22sp"
         android:textStyle="bold"
+        android:textAlignment="textStart"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detail_news_image" />
 
     <ImageView
-        android:id="@+id/imageView5"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="22dp"
-        android:layout_marginTop="15dp"
+        android:id="@+id/btnBack"
+        android:layout_width="31dp"
+        android:layout_height="27dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/constraintLayout"
-        app:srcCompat="@drawable/ic_regresar" />
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -44,7 +44,7 @@
         <TextView
             android:id="@+id/txtViewDescripcionNoticias"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="35dp"
             android:layout_marginStart="7dp"
             android:layout_marginTop="13dp"
             android:layout_marginEnd="7dp"

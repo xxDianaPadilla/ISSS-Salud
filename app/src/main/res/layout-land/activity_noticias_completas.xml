@@ -28,7 +28,7 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageView5" />
+                app:layout_constraintTop_toBottomOf="@+id/btnBack" />
 
             <TextView
                 android:id="@+id/detail_news_description"
@@ -61,7 +61,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/detail_news_image" />
 
             <ImageView
-                android:id="@+id/imageView5"
+                android:id="@+id/btnBack"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_marginStart="22dp"
