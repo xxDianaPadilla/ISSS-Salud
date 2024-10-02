@@ -33,7 +33,7 @@ class activity_citas_agendadas : AppCompatActivity() {
         val recyclerView: RecyclerView = findViewById(R.id.rcvPacientes)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
-        fun obtenerCitasAgendadas(): List<CitasAgendadas>{
+        fun obtenerCitasAgendadas(idUsuario: Int): List<CitasAgendadas>{
             val objConexion = ClaseConexion().cadenaConexion()
             val listaCitasAgendadas = mutableListOf<CitasAgendadas>()
 
@@ -44,7 +44,7 @@ class activity_citas_agendadas : AppCompatActivity() {
                 cm.id_cita, 
                 cm.fecha_cita, 
                 cm.hora_cita, 
-                u.correo_electronico AS solicitante, 
+                u.nombre_usuario AS solicitante, 
                 d.nombre_doctor AS doctor 
             FROM 
                 CitasMedicas cm 
@@ -52,6 +52,8 @@ class activity_citas_agendadas : AppCompatActivity() {
                 Usuarios u ON cm.id_usuario = u.id_usuario 
             INNER JOIN 
                 Doctores d ON cm.id_doctor = d.id_doctor
+            WHERE 
+                cm.id_usuario = $idUsuario
         """
 
                 val resultSet = statement.executeQuery(query)
@@ -80,7 +82,8 @@ class activity_citas_agendadas : AppCompatActivity() {
         }
 
         CoroutineScope(Dispatchers.IO).launch {
-            val citasAgendadas = obtenerCitasAgendadas()
+            val idUsuario = activity_ingreso.variablesGlobales.idUsuarioGlobal
+            val citasAgendadas = obtenerCitasAgendadas(idUsuario)
             withContext(Dispatchers.Main){
                 val adapter = AdaptadorAgendadas(citasAgendadas)
                 recyclerView.adapter = adapter
