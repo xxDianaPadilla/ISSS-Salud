@@ -2,6 +2,8 @@ package diana.padilla.isss_salud
 
 import Modelo.ClaseConexion
 import Modelo.Perfil
+import Modelo.ReportGenerator
+import Modelo.openGeneratedPDF
 import android.content.Intent
 import android.content.res.Configuration
 import android.net.Uri
@@ -19,6 +21,8 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.File
+
 
 class activity_perfil : AppCompatActivity() {
 
@@ -27,7 +31,8 @@ class activity_perfil : AppCompatActivity() {
     lateinit var telefonoPerfilE: EditText
     lateinit var duiPerfilE: EditText
     lateinit var tipoSangreE: EditText
-    lateinit var openLinkButton: Button
+    lateinit var descargarPDF: Button
+    lateinit var etDUI: EditText
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,15 +45,25 @@ class activity_perfil : AppCompatActivity() {
             insets
         }
 
-        openLinkButton = findViewById(R.id.btnDescargarExpediente)
+        descargarPDF = findViewById(R.id.btnDescargarExpediente)
+        etDUI = findViewById(R.id.etDUI)
 
-        openLinkButton.setOnClickListener {
-            val url = "https://www.canva.com/design/DAGOuctkzZg/uAXshmbnec-xCLQHHWmJCw/view?utm_content=DAGOuctkzZg&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton"
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.data = Uri.parse(url)
-            startActivity(intent)
+        try {
+            descargarPDF.setOnClickListener {
+                val dui = etDUI.text.toString()
+
+                // Generar el reporte
+                val reportGenerator = ReportGenerator(this)
+                val generatedFile: File? = reportGenerator.generateReport(dui)
+
+                // Abrir el archivo PDF generado
+                generatedFile?.let {
+                    openGeneratedPDF(this, it)
+                }
+            }
+        }catch (e: Exception){
+            println(e)
         }
-
 
         cargarDatosPerfilEnPantalla()
 

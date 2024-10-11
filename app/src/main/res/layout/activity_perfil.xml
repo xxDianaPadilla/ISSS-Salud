@@ -64,6 +64,14 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
+            <EditText
+                android:id="@+id/etDUI"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Enter DUI"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="801dp" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/constraintLayout"
                 style="@style/backgroundBox2"

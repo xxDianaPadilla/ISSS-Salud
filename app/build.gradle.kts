@@ -35,6 +35,14 @@ android {
     }
 }
 
+configurations.all {
+    resolutionStrategy {
+        // Fuerza a Gradle a usar la versión 1.38 de Bouncy Castle
+        force("org.bouncycastle:bcprov-jdk14:1.38")
+    }
+
+}
+
 dependencies {
 
     implementation("com.airbnb.android:lottie:6.4.1")
@@ -57,4 +65,14 @@ dependencies {
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
+
+    implementation("net.sf.jasperreports:jasperreports:6.20.0"){
+        exclude(group = "org.bouncycastle")
+    }
+    implementation("org.apache.poi:poi:5.2.2")
+    implementation("com.lowagie:itext:2.1.7"){
+        exclude(group = "org.bouncycastle")
+    }
+    implementation("org.apache.commons:commons-lang3:3.12.0")
+    implementation("org.apache.commons:commons-collections4:4.4")
 }
