@@ -49,6 +49,7 @@ class AdaptadorChats(var Datos: List<ChatsDoctores>): RecyclerView.Adapter<ViewH
             val pantallaBandejaChat = Intent(context, activity_bandeja_chat::class.java)
             pantallaBandejaChat.putExtra("doctor_image", item.foto_doctor_url)
             pantallaBandejaChat.putExtra("nombre_doctor", item.nombre_doctor)
+            pantallaBandejaChat.putExtra("id_doctor", item.id_doctor)
 
             context.startActivity(pantallaBandejaChat)
         }

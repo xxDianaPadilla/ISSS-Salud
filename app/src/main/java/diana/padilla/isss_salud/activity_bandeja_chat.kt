@@ -1,15 +1,25 @@
 package diana.padilla.isss_salud
 
+import Modelo.ClaseConexion
+import Modelo.Mensajes
+import RecyclerViewHelpers.AdaptadorMensajes
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class activity_bandeja_chat : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -25,6 +35,46 @@ class activity_bandeja_chat : AppCompatActivity() {
         val image = intent.getStringExtra("doctor_image")
         val nombreDoctor = intent.getStringExtra("nombre_doctor")
 
+        val id_usuario = activity_ingreso.variablesGlobales.idUsuarioGlobal
+        val idDoctor = intent.getIntExtra("id_doctor", 0)
+
+        val rcvMensajes = findViewById<RecyclerView>(R.id.rcvMensajes)
+
+        val listaMensajes = mutableListOf<Mensajes>()
+
+        val layoutManager = LinearLayoutManager(this)
+        layoutManager.stackFromEnd = true // Esta propiedad asegura que el scroll empiece desde el final, mostrando los mensajes más recientes.
+
+        val adapter = AdaptadorMensajes(listaMensajes, id_usuario)
+        rcvMensajes.adapter = adapter
+        rcvMensajes.layoutManager = layoutManager
+
+        CoroutineScope(Dispatchers.IO).launch {
+            val conexion = ClaseConexion().cadenaConexion()
+            val statement = conexion?.prepareStatement("SELECT * FROM MensajesChat WHERE (id_remitente = ? AND id_destinatario = ?) OR (id_remitente = ? AND id_destinatario = ?) ORDER BY id_mensaje ASC")!!
+
+            statement.setInt(1, id_usuario)
+            statement.setInt(2, idDoctor)
+            statement.setInt(3, idDoctor)
+            statement.setInt(4, id_usuario)
+
+            val resultSet = statement.executeQuery()
+
+            while (resultSet.next() == true){
+                val idRemitente = resultSet.getInt("id_remitente")
+                val tipoRemitente = resultSet.getString("tipo_remitente")
+                val idDestinatario = resultSet.getInt("id_destinatario")
+                val tipoDestinatario = resultSet.getString("tipo_destinatario")
+                val mensaje = resultSet.getString("mensaje")
+
+                listaMensajes.add(Mensajes(idRemitente, tipoRemitente, idDestinatario, tipoDestinatario, mensaje))
+            }
+
+            withContext(Dispatchers.Main){
+                adapter.notifyDataSetChanged()
+            }
+        }
+
         val ivFotoDoctorC: ImageView = findViewById(R.id.ivFotoDoctorC)
         val txtNombreDoctor: TextView = findViewById(R.id.txtNombreDoctor)
 
@@ -39,6 +89,35 @@ class activity_bandeja_chat : AppCompatActivity() {
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
         val btnBackC = findViewById<ImageView>(R.id.btnBackC)
         val btnEnviarMensaje = findViewById<ImageView>(R.id.btnEnviarMensaje)
+        val txtMensaje = findViewById<EditText>(R.id.txtMensaje)
+
+        btnEnviarMensaje.setOnClickListener {
+            val mensaje = txtMensaje.text.toString()
+            val idUsuario = activity_ingreso.variablesGlobales.idUsuarioGlobal
+
+            if(mensaje.isNotEmpty()){
+                CoroutineScope(Dispatchers.IO).launch {
+                    val conexion = ClaseConexion().cadenaConexion()
+                    val statement = conexion?.prepareStatement("INSERT INTO MensajesChat (id_remitente, tipo_remitente, id_destinatario, tipo_destinatario, mensaje) VALUES (?, 'PACIENTE', ?, 'DOCTOR', ?)")!!
+
+                    statement.setInt(1, idUsuario)
+                    statement.setInt(2, idDoctor)
+                    statement.setString(3, mensaje)
+
+                    statement.executeUpdate()
+
+                    withContext(Dispatchers.Main) {
+                        // Agregar el mensaje al RecyclerView
+                        val nuevoMensaje = Mensajes(idUsuario, "PACIENTE", idDoctor, "DOCTOR", mensaje)
+                        listaMensajes.add(nuevoMensaje)
+                        adapter.notifyDataSetChanged()
+
+                        // Limpiar el campo de texto después de enviar el mensaje
+                        txtMensaje.text.clear()
+                    }
+                }
+            }
+        }
 
         if(modoOscuro == Configuration.UI_MODE_NIGHT_YES){
             btnBackC.setImageResource(R.drawable.ic_regresar_dm)
