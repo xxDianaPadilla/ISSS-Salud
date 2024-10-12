@@ -8,6 +8,7 @@ import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import diana.padilla.isss_salud.R
+import diana.padilla.isss_salud.activity_bandeja_chat
 import diana.padilla.isss_salud.activity_perfil_doctor
 
 class AdaptadorChats(var Datos: List<ChatsDoctores>): RecyclerView.Adapter<ViewHolderChats>() {
@@ -43,6 +44,13 @@ class AdaptadorChats(var Datos: List<ChatsDoctores>): RecyclerView.Adapter<ViewH
             }
             context.startActivity(pantallaPerfilDoctor)
         }
-    }
 
+        holder.itemView.setOnClickListener{
+            val pantallaBandejaChat = Intent(context, activity_bandeja_chat::class.java)
+            pantallaBandejaChat.putExtra("doctor_image", item.foto_doctor_url)
+            pantallaBandejaChat.putExtra("nombre_doctor", item.nombre_doctor)
+
+            context.startActivity(pantallaBandejaChat)
+        }
+    }
 }
