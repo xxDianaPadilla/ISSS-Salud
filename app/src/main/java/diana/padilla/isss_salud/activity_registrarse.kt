@@ -260,16 +260,10 @@ class activity_registrarse : AppCompatActivity() {
                                         txtEdad.setText("")
                                         txtContrasena1.setText("")
                                     }
+                                }catch (e: Exception) {
+                                    println(e)
                                 }
-                                catch (e: java.sql.SQLIntegrityConstraintViolationException) {
-                                    withContext(Dispatchers.Main) {
-                                        AlertDialog.Builder(this@activity_registrarse)
-                                            .setTitle("Error de registro")
-                                            .setMessage("El correo electronico ya ha sido empleada. Por favor, elige otro.")
-                                            .setPositiveButton("Aceptar", null)
-                                            .show()
-                                    }
-                                }
+
                             }
                         }
                     }catch (e: Exception){
