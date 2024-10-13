@@ -24,6 +24,8 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import java.security.MessageDigest
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class activity_registrarse : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -90,39 +92,37 @@ class activity_registrarse : AppCompatActivity() {
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaSexo)
         spSexo.adapter = adapterSexo
 
-        txtEdad.setOnClickListener{
+        txtEdad.setOnClickListener {
             val calendario = Calendar.getInstance()
             val anio = calendario.get(Calendar.YEAR)
-            val mes = calendario.get(Calendar.MONTH)
+            val mes = calendario.get(Calendar.MONTH) // 0-indexed
             val dia = calendario.get(Calendar.DAY_OF_MONTH)
 
-            val calendarioMayorEdad = Calendar.getInstance()
-            calendarioMayorEdad.set(anio - 18, mes, dia)
+            // Calcular la fecha límite para que la persona tenga al menos 18 años
+            val calendarioMayorEdad = Calendar.getInstance().apply {
+                set(anio - 18, mes, dia)
+            }
 
             val datePickerDialog = DatePickerDialog(
                 this,
-                { view, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
-                    val calendarioSeleccionado = Calendar.getInstance()
-                    calendarioSeleccionado.set(anioSeleccionado, mesSeleccionado, diaSeleccionado)
+                { _, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
+                    // Correct month handling: Add 1 to mesSeleccionado
+                    val fechaSeleccionada = LocalDate.of(anioSeleccionado, mesSeleccionado + 1, diaSeleccionado)
 
-                    if(calendarioSeleccionado.after(calendarioMayorEdad)){
-                        AlertDialog.Builder(this)
-                            .setTitle("Fecha inválida")
-                            .setMessage("Debe seleccionar una fecha que demuestre que es mayor de edad")
-                            .setPositiveButton("OK"){ dialog, _ ->
-                                dialog.dismiss()
-                            }
-                            .show()
-                        txtEdad.setText("");
-                    }else{
-                        val fechaSeleccionada = "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
-                        txtEdad.setText(fechaSeleccionada)
-                    }
+                    // Formatear la fecha seleccionada con el formato "dd-MM-yyyy"
+                    val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
+                    val fechaFormateada = fechaSeleccionada.format(formatter)
+
+                    // Establecer la fecha formateada en el campo de texto
+                    txtEdad.setText(fechaFormateada)
                 },
-                anio, mes, dia
+                anio - 18, mes, dia // Fijar como fecha inicial 18 años atrás
             )
 
-            datePickerDialog.datePicker.maxDate = calendario.timeInMillis
+            // Limitar la selección de fecha a personas mayores de 18 años
+            datePickerDialog.datePicker.maxDate = calendarioMayorEdad.timeInMillis // Fecha máxima: hace 18 años
+            calendarioMayorEdad.add(Calendar.YEAR, -82) // Limitar la fecha mínima (máximo 100 años de antigüedad)
+            datePickerDialog.datePicker.minDate = calendarioMayorEdad.timeInMillis // Fecha mínima
 
             datePickerDialog.show()
         }
@@ -266,7 +266,8 @@ class activity_registrarse : AppCompatActivity() {
                                         txtEdad.setText("")
                                         txtContrasena1.setText("")
                                     }
-                                } catch (e: java.sql.SQLIntegrityConstraintViolationException) {
+                                }
+                                catch (e: java.sql.SQLIntegrityConstraintViolationException) {
                                     withContext(Dispatchers.Main) {
                                         AlertDialog.Builder(this@activity_registrarse)
                                             .setTitle("Error de registro")

@@ -18,220 +18,228 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        style="@style/backgroundBox"
+    <ScrollView
         android:layout_width="350dp"
-        android:layout_height="534dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="40dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/IvLogoIsss"
-        app:layout_constraintVertical_bias="0.725">
+        app:layout_constraintTop_toBottomOf="@+id/IvLogoIsss">
 
-        <Button
-            android:id="@+id/btnIniciarSesionIngresoInterfaz"
-            style="@style/buttonStyle3"
-            android:layout_width="185dp"
-            android:layout_height="60dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="10dp"
-            android:textAlignment="textStart"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btnRegistrarseIngresoInterfaz"
-            style="@style/buttonStyle2"
-            android:layout_width="145dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="24dp"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:text="Registrarse"
-            android:textSize="17sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btnCrearRegistro"
-            style="@style/buttonStyle2"
-            android:layout_width="300dp"
-            android:layout_height="60dp"
-            android:layout_marginBottom="10dp"
-            android:fontFamily="@font/raleway_extrabold_italic"
-            android:text="Registrarse"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/textView12"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            style="@style/backgroundBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/raleway_extrabold_italic"
-            android:text="Iniciar Sesión"
-            android:textColor="#000000"
-            android:textColorLink="#000000"
-            android:textSize="17sp"
-            app:layout_constraintBottom_toBottomOf="@+id/btnIniciarSesionIngresoInterfaz"
-            app:layout_constraintEnd_toStartOf="@+id/btnRegistrarseIngresoInterfaz"
-            app:layout_constraintHorizontal_bias="0.82"
-            app:layout_constraintStart_toStartOf="@+id/btnIniciarSesionIngresoInterfaz"
-            app:layout_constraintTop_toTopOf="@+id/btnIniciarSesionIngresoInterfaz" />
+            android:layout_marginTop="0dp"
+            android:layout_marginBottom="0dp">
 
-        <EditText
-            android:id="@+id/txtContrasena1"
-            style="@style/TextColor2"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:backgroundTint="#E5E5E5"
-            android:ems="10"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:hint="Contraseña"
-            android:inputType="textPassword"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/btnCrearRegistro"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <Button
+                android:id="@+id/btnIniciarSesionIngresoInterfaz"
+                style="@style/buttonStyle3"
+                android:layout_width="185dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="10dp"
+                android:textAlignment="textStart"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <EditText
-            android:id="@+id/txtDUI"
-            style="@style/TextColor2"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="#E5E5E5"
-            android:ems="10"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:hint="DUI"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/spTipoSangre"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            <Button
+                android:id="@+id/btnRegistrarseIngresoInterfaz"
+                style="@style/buttonStyle2"
+                android:layout_width="145dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="24dp"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:text="Registrarse"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <Spinner
-            android:id="@+id/spTipoSangre"
-            style="@style/TextColor2"
-            android:layout_width="290dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="#E5E5E5"
-            android:ems="10"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:inputType="text"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/txtEdad"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            <Button
+                android:id="@+id/btnCrearRegistro"
+                style="@style/buttonStyle2"
+                android:layout_width="300dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/raleway_extrabold_italic"
+                android:text="Registrarse"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtContrasena1" />
 
-        <EditText
-            android:id="@+id/txtTelefono"
-            style="@style/TextColor2"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="#E5E5E5"
-            android:ems="10"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:hint="Teléfono"
-            android:inputType="phone"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/txtCorreoRegistro"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/raleway_extrabold_italic"
+                android:text="Iniciar Sesión"
+                android:textColor="#000000"
+                android:textColorLink="#000000"
+                android:textSize="17sp"
+                app:layout_constraintBottom_toBottomOf="@+id/btnIniciarSesionIngresoInterfaz"
+                app:layout_constraintEnd_toStartOf="@+id/btnRegistrarseIngresoInterfaz"
+                app:layout_constraintHorizontal_bias="0.82"
+                app:layout_constraintStart_toStartOf="@+id/btnIniciarSesionIngresoInterfaz"
+                app:layout_constraintTop_toTopOf="@+id/btnIniciarSesionIngresoInterfaz" />
 
-        <EditText
-            android:id="@+id/txtCorreoRegistro"
-            style="@style/TextColor2"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="#E5E5E5"
-            android:ems="10"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:hint="Correo"
-            android:inputType="textEmailAddress"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/txtContrasena1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/txtContrasena1"
+                style="@style/TextColor2"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#E5E5E5"
+                android:ems="10"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:hint="Contraseña"
+                android:inputType="textPassword"
+                android:textColorHint="#c8c8c8"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtCorreoRegistro" />
 
-        <ImageView
-            android:id="@+id/togglePasswordVisibility"
-            android:layout_width="25dp"
-            android:layout_height="26dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/txtContrasena1"
-            app:layout_constraintEnd_toEndOf="@+id/txtContrasena1"
-            app:srcCompat="@drawable/ic_visibility_off" />
+            <EditText
+                android:id="@+id/txtDUI"
+                style="@style/TextColor2"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#E5E5E5"
+                android:ems="10"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:hint="DUI"
+                android:inputType="phone"
+                android:textColorHint="#c8c8c8"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtNombreU" />
 
-        <Spinner
-            android:id="@+id/spSexo"
-            style="@style/TextColor2"
-            android:layout_width="290dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="#E5E5E5"
-            android:ems="10"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:inputType="text"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/txtTelefono"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <Spinner
+                android:id="@+id/spTipoSangre"
+                style="@style/TextColor2"
+                android:layout_width="290dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#E5E5E5"
+                android:ems="10"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:inputType="text"
+                android:textColorHint="#c8c8c8"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtDUI" />
 
-        <EditText
-            android:id="@+id/txtEdad"
-            style="@style/TextColor2"
-            android:layout_width="290dp"
-            android:layout_height="40dp"
-            android:layout_marginBottom="5dp"
-            android:backgroundTint="#E5E5E5"
-            android:clickable="false"
-            android:ems="10"
-            android:focusable="false"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:hint="Edad"
-            android:inputType="date"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintBottom_toTopOf="@+id/spSexo"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            <EditText
+                android:id="@+id/txtTelefono"
+                style="@style/TextColor2"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#E5E5E5"
+                android:ems="10"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:hint="Teléfono"
+                android:inputType="phone"
+                android:textColorHint="#c8c8c8"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spSexo" />
 
-        <EditText
-            android:id="@+id/txtNombreU"
-            style="@style/TextColor2"
-            android:layout_width="290dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:backgroundTint="#E5E5E5"
-            android:ems="10"
-            android:fontFamily="@font/raleway_bold_italic"
-            android:hint="Nombre"
-            android:textColorHint="#c8c8c8"
-            android:textSize="15sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesionIngresoInterfaz" />
+            <EditText
+                android:id="@+id/txtCorreoRegistro"
+                style="@style/TextColor2"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#E5E5E5"
+                android:ems="10"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:hint="Correo"
+                android:inputType="textEmailAddress"
+                android:textColorHint="#c8c8c8"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtTelefono" />
+
+            <ImageView
+                android:id="@+id/togglePasswordVisibility"
+                android:layout_width="25dp"
+                android:layout_height="26dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="@+id/txtContrasena1"
+                app:layout_constraintEnd_toEndOf="@+id/txtContrasena1"
+                app:srcCompat="@drawable/ic_visibility_off" />
+
+            <Spinner
+                android:id="@+id/spSexo"
+                style="@style/TextColor2"
+                android:layout_width="290dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#E5E5E5"
+                android:ems="10"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:inputType="text"
+                android:textColorHint="#c8c8c8"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtEdad" />
+
+            <EditText
+                android:id="@+id/txtEdad"
+                style="@style/TextColor2"
+                android:layout_width="290dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#E5E5E5"
+                android:clickable="false"
+                android:ems="10"
+                android:focusable="false"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:hint="Fecha nacimiento"
+                android:inputType="date"
+                android:textColorHint="#c8c8c8"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/spTipoSangre" />
+
+            <EditText
+                android:id="@+id/txtNombreU"
+                style="@style/TextColor2"
+                android:layout_width="290dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="#E5E5E5"
+                android:ems="10"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:hint="Nombre completo"
+                android:textColorHint="#c8c8c8"
+                android:textSize="15sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnIniciarSesionIngresoInterfaz" />
 
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
