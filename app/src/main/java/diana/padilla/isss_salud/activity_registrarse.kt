@@ -92,29 +92,23 @@ class activity_registrarse : AppCompatActivity() {
             ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, listaSexo)
         spSexo.adapter = adapterSexo
 
-        txtEdad.setOnClickListener {
+        txtEdad.setOnClickListener{
             val calendario = Calendar.getInstance()
             val anio = calendario.get(Calendar.YEAR)
-            val mes = calendario.get(Calendar.MONTH) // 0-indexed
+            val mes = calendario.get(Calendar.MONTH)
             val dia = calendario.get(Calendar.DAY_OF_MONTH)
 
-            // Calcular la fecha límite para que la persona tenga al menos 18 años
-            val calendarioMayorEdad = Calendar.getInstance().apply {
-                set(anio - 18, mes, dia)
-            }
+            val calendarioMayorEdad = Calendar.getInstance()
+            calendarioMayorEdad.set(anio-18,mes,dia)
 
             val datePickerDialog = DatePickerDialog(
                 this,
-                { _, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
-                    // Correct month handling: Add 1 to mesSeleccionado
-                    val fechaSeleccionada = LocalDate.of(anioSeleccionado, mesSeleccionado + 1, diaSeleccionado)
+                { view, anioSeleccionado, mesSeleccionado, diaSeleccionado ->
+                    val calendarioSeleccionado = Calendar.getInstance()
+                    calendarioSeleccionado.set(anioSeleccionado, mesSeleccionado, diaSeleccionado)
 
-                    // Formatear la fecha seleccionada con el formato "dd-MM-yyyy"
-                    val formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy")
-                    val fechaFormateada = fechaSeleccionada.format(formatter)
-
-                    // Establecer la fecha formateada en el campo de texto
-                    txtEdad.setText(fechaFormateada)
+                    val fechaSeleccionada = "$diaSeleccionado/${mesSeleccionado + 1}/$anioSeleccionado"
+                    txtEdad.setText(fechaSeleccionada)
                 },
                 anio - 18, mes, dia // Fijar como fecha inicial 18 años atrás
             )
