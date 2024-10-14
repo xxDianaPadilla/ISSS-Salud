@@ -19,10 +19,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ScrollView
-        android:layout_width="350dp"
+        android:layout_width="333dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
                 android:layout_width="185dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="24dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:textAlignment="textStart"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -49,9 +49,9 @@
             <Button
                 android:id="@+id/btnRegistrarseIngresoInterfaz"
                 style="@style/buttonStyle2"
-                android:layout_width="145dp"
+                android:layout_width="150dp"
                 android:layout_height="60dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="16dp"
                 android:layout_marginEnd="24dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Registrarse"
@@ -85,7 +85,7 @@
                 android:textSize="17sp"
                 app:layout_constraintBottom_toBottomOf="@+id/btnIniciarSesionIngresoInterfaz"
                 app:layout_constraintEnd_toStartOf="@+id/btnRegistrarseIngresoInterfaz"
-                app:layout_constraintHorizontal_bias="0.82"
+                app:layout_constraintHorizontal_bias="0.8"
                 app:layout_constraintStart_toStartOf="@+id/btnIniciarSesionIngresoInterfaz"
                 app:layout_constraintTop_toTopOf="@+id/btnIniciarSesionIngresoInterfaz" />
 
@@ -227,7 +227,7 @@
                 style="@style/TextColor2"
                 android:layout_width="290dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="20dp"
                 android:backgroundTint="#E5E5E5"
                 android:ems="10"
                 android:fontFamily="@font/raleway_bold_italic"

@@ -89,15 +89,6 @@ class activity_noticias : AppCompatActivity() {
             iconHome.setImageResource(R.drawable.ic_active_home)
         }
 
-        val iconNotificaciones = findViewById<ImageView>(R.id.ivNotificaciones)
-        val modoOscuro2 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-
-        if(modoOscuro2 == Configuration.UI_MODE_NIGHT_YES){
-            iconNotificaciones.setImageResource(R.drawable.ic_darkmode_notificaciones)
-        }else{
-            iconNotificaciones.setImageResource(R.drawable.ic_notificaciones)
-        }
-
         val iconCitas = findViewById<ImageView>(R.id.btnCitas)
         val modoOscuro4 = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
 

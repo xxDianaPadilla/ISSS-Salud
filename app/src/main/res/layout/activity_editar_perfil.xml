@@ -166,13 +166,13 @@
                 android:id="@+id/txtViewDuiPerfil"
                 android:layout_width="170dp"
                 android:layout_height="39dp"
-                android:layout_marginStart="20dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="3dp"
+                android:background="@drawable/ic_edittext_background"
                 android:clickable="false"
                 android:focusable="false"
                 android:inputType="none"
                 android:textColorHint="@color/black"
-                android:background="@drawable/ic_edittext_background"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView24" />
 
@@ -181,15 +181,13 @@
                 android:layout_width="172dp"
                 android:layout_height="38dp"
                 android:layout_marginTop="3dp"
-                android:layout_marginEnd="20dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/ic_edittext_background"
                 android:clickable="false"
                 android:focusable="false"
                 android:inputType="none"
                 android:textColorHint="@color/black"
-                android:background="@drawable/ic_edittext_background"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="1.0"
-                app:layout_constraintStart_toEndOf="@+id/txtViewDuiPerfil"
                 app:layout_constraintTop_toBottomOf="@+id/textView26" />
 
             <TextView
