@@ -87,7 +87,6 @@ class activity_bandeja_chat : AppCompatActivity() {
         }
 
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        val btnBackC = findViewById<ImageView>(R.id.btnBackC)
         val btnEnviarMensaje = findViewById<ImageView>(R.id.btnEnviarMensaje)
         val txtMensaje = findViewById<EditText>(R.id.txtMensaje)
 
@@ -117,16 +116,6 @@ class activity_bandeja_chat : AppCompatActivity() {
                     }
                 }
             }
-        }
-
-        if(modoOscuro == Configuration.UI_MODE_NIGHT_YES){
-            btnBackC.setImageResource(R.drawable.ic_regresar_dm)
-        }else{
-            btnBackC.setImageResource(R.drawable.ic_regresar)
-        }
-
-        btnBackC.setOnClickListener {
-            finish()
         }
 
         val iconHome = findViewById<ImageView>(R.id.btnNoticias)

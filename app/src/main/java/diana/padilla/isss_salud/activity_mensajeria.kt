@@ -37,8 +37,11 @@ class activity_mensajeria : AppCompatActivity() {
         fun obtenerDoctores(): List<ChatsDoctores>{
             val objConexion = ClaseConexion().cadenaConexion()
 
-            val statement = objConexion?.createStatement()
-            val resultSet = statement?.executeQuery("SELECT * FROM Doctores")!!
+            val statement = objConexion?.prepareStatement("SELECT DISTINCT D.id_doctor, D.correo_doctor, D.contrasena_doctor, D.nombre_doctor, D.foto_doctor, D.id_especialidad, D.id_unidad FROM Doctores D JOIN MensajesChat M ON D.id_doctor = M.id_destinatario WHERE M.id_remitente = ? AND M.tipo_destinatario = 'DOCTOR'")!!
+
+            statement.setInt(1, activity_ingreso.variablesGlobales.idUsuarioGlobal)
+
+            val resultSet = statement.executeQuery()
 
             val listaDoctores = mutableListOf<ChatsDoctores>()
 

@@ -2,9 +2,13 @@ package RecyclerViewHelpers
 
 import Modelo.ChatsDoctores
 import android.content.Intent
+import android.graphics.Color
+import android.util.TypedValue
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import diana.padilla.isss_salud.R
@@ -46,6 +50,7 @@ class AdaptadorChats(var Datos: List<ChatsDoctores>): RecyclerView.Adapter<ViewH
         }
 
         holder.itemView.setOnClickListener{
+
             val pantallaBandejaChat = Intent(context, activity_bandeja_chat::class.java)
             pantallaBandejaChat.putExtra("doctor_image", item.foto_doctor_url)
             pantallaBandejaChat.putExtra("nombre_doctor", item.nombre_doctor)

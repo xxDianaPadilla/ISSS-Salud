@@ -7,5 +7,6 @@ data class ChatsDoctores(
     val nombre_doctor: String,
     val foto_doctor_url: String,
     val especialidad: String,
-    val unidad_medica: String
+    val unidad_medica: String,
+    var tieneMensajesNuevos: Boolean = false
 )
