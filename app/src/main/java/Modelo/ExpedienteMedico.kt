@@ -6,7 +6,7 @@ data class ExpedienteMedico(
     val nombreUsuario: String,
     val dui: String,
     val sexo: String,
-    val edad: Date,
+    val edad: String,
     val tipoSangre: String,
     val telefono: String,
     val correoElectronico: String,

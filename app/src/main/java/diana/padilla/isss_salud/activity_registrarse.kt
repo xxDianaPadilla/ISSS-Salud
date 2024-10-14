@@ -200,15 +200,17 @@ class activity_registrarse : AppCompatActivity() {
                         val objConexion = ClaseConexion().cadenaConexion()
 
                         val checkDuplicados =
-                            objConexion?.prepareStatement("SELECT * FROM Usuarios WHERE dui = ? OR telefono = ?")
-                        checkDuplicados?.setString(1, dui)
-                        checkDuplicados?.setString(2, tel)
-                        val resultSet = checkDuplicados?.executeQuery()
+                            objConexion?.prepareStatement("SELECT * FROM Usuarios WHERE dui = ? OR telefono = ? OR correo_electronico = ?")!!
+                        checkDuplicados.setString(1, dui)
+                        checkDuplicados.setString(2, tel)
+                        checkDuplicados.setString(3, correo)
+                        val resultSet = checkDuplicados.executeQuery()
 
                         if (resultSet != null && resultSet.next()) {
                             withContext(Dispatchers.Main) {
                                 val duiExistente = resultSet.getString("dui")
                                 val telefonoExistente = resultSet.getString("telefono")
+                                val correoExistente = resultSet.getString("correo_electronico")
                                 if (duiExistente == dui) {
                                     AlertDialog.Builder(this@activity_registrarse)
                                         .setTitle("Error de registro")
@@ -220,6 +222,14 @@ class activity_registrarse : AppCompatActivity() {
                                     AlertDialog.Builder(this@activity_registrarse)
                                         .setTitle("Error de registro")
                                         .setMessage("El teléfono ya ha sido empleado. Por favor, elige otro.")
+                                        .setPositiveButton("Aceptar", null)
+                                        .show()
+                                }
+
+                                if(correoExistente == correo){
+                                    AlertDialog.Builder(this@activity_registrarse)
+                                        .setTitle("Error de registro")
+                                        .setMessage("El correo electrónico ya ha sido empleado. Por favor, elige otro.")
                                         .setPositiveButton("Aceptar", null)
                                         .show()
                                 }
