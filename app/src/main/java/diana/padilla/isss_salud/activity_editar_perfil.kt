@@ -3,6 +3,7 @@ package diana.padilla.isss_salud
 import Modelo.ClaseConexion
 import Modelo.Perfil
 import android.app.Activity
+import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.res.Configuration
@@ -64,26 +65,40 @@ class activity_editar_perfil : AppCompatActivity() {
             val nuevoTelefono = txtViewTelefonoPerfil.text.toString()
             val telefonoRegex = Regex("^\\d{4}-\\d{4}\$")
             if(nuevoTelefono.isEmpty()){
-                Toast.makeText(
-                    this,
-                    "Error, para actualizar debes llenar el campo de teléfono",
-                    Toast.LENGTH_SHORT
-                ).show()
+                txtViewTelefonoPerfil.setError("El teléfono no puede estar vacío")
             }else if (!telefonoRegex.matches(nuevoTelefono)) {
-                Toast.makeText(
-                    this@activity_editar_perfil,
-                    "Error, El número de teléfono no es válido.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                txtViewTelefonoPerfil.setError("Error, el número de teléfono no es válido. Debe tener el formato adecuado, por ejemplo, 1234-5678.")
             }else{
-                ActualizarTelefonoEnBaseDeDatos(nuevoTelefono)
-                Toast.makeText(
-                    this@activity_editar_perfil,
-                    "El teléfono se ha actualizado exitosamente.",
-                    Toast.LENGTH_SHORT
-                ).show()
+                verificarTelefonoEnBaseDeDatos(nuevoTelefono) {telefonoExiste ->
+                    if(telefonoExiste){
+                        runOnUiThread {
+                            val dialogBuilder = AlertDialog.Builder(this)
+                            dialogBuilder.setMessage("El número de teléfono ya está registrado. Por favor, ingrese otro número.")
+                                .setCancelable(false)
+                                .setPositiveButton("OK") {dialog, _-> dialog.dismiss()}
+                            val alert = dialogBuilder.create()
+                            alert.setTitle("Teléfono inválido")
+                            alert.show()
+                        }
+                    }else{
+                        ActualizarTelefonoEnBaseDeDatos(nuevoTelefono)
 
-                txtViewTelefonoPerfil.setText("")
+                        runOnUiThread {
+                            Toast.makeText(
+                                this@activity_editar_perfil,
+                                "El teléfono se ha actualizado exitosamente.",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+
+                        txtViewTelefonoPerfil.setText("")
+                        txtViewTelefonoPerfil.hint = nuevoTelefono
+                        val intent = Intent()
+                        intent.putExtra("nuevoTelefono", nuevoTelefono)
+                        setResult(Activity.RESULT_OK, intent)
+                        finish()
+                    }
+                }
             }
         }
 
@@ -208,6 +223,10 @@ class activity_editar_perfil : AppCompatActivity() {
             updateTelefono?.setString(1, nuevoTelefono)
             updateTelefono?.setString(2, correoDeLaVariableGlobal)
             updateTelefono?.executeUpdate()
+
+            /*runOnUiThread {
+                Toast.makeText(this@activity_editar_perfil, "El teléfono se ha actualizado exitosamente.", Toast.LENGTH_SHORT).show()
+            }*/
         }
     }
 
@@ -270,6 +289,22 @@ class activity_editar_perfil : AppCompatActivity() {
                 txtViewTelefonoPerfil.hint = miTelefono2
                 val miTipoSangre2 = perfiles2[0].tipo_sangre
                 txtViewTipoSangre.hint = miTipoSangre2
+            }
+        }
+    }
+
+    private fun verificarTelefonoEnBaseDeDatos(nuevoTelefono: String, callback: (Boolean) -> Unit){
+        CoroutineScope(Dispatchers.IO).launch {
+            val objConexion = ClaseConexion().cadenaConexion()
+            val consultaTelefono = objConexion?.prepareStatement("SELECT COUNT(*) FROM Usuarios WHERE telefono = ?")!!
+            consultaTelefono.setString(1, nuevoTelefono)
+
+            val resultado = consultaTelefono.executeQuery()
+            if(resultado != null && resultado.next()){
+                val telefonoExiste = resultado.getInt(1) > 0
+                callback(telefonoExiste)
+            }else{
+                callback(false)
             }
         }
     }

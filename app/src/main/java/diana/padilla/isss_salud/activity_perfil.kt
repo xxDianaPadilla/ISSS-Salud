@@ -3,6 +3,7 @@ package diana.padilla.isss_salud
 import Modelo.ClaseConexion
 import Modelo.ExpedienteMedico
 import Modelo.Perfil
+import android.app.Activity
 import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -38,6 +39,10 @@ import java.io.File
 import java.io.FileOutputStream
 
 class activity_perfil : AppCompatActivity() {
+
+    companion object {
+        const val REQUEST_CODE = 100
+    }
 
     lateinit var imagenPerfil: ImageView
     lateinit var correoPerfilE: EditText
@@ -147,8 +152,8 @@ class activity_perfil : AppCompatActivity() {
 
         btnEditarPerfil.setOnClickListener {
             val pantallaEditarPerfil = Intent(this, activity_editar_perfil::class.java)
-            startActivity(pantallaEditarPerfil)
-            overridePendingTransition(0,0)
+            startActivityForResult(pantallaEditarPerfil, REQUEST_CODE)  // Cambia a startActivityForResult
+            overridePendingTransition(0, 0)
         }
     }
 
@@ -198,7 +203,7 @@ class activity_perfil : AppCompatActivity() {
                     resultSet.getString("nombre_usuario"),
                     resultSet.getString("dui"),
                     resultSet.getString("sexo"),
-                    resultSet.getDate("edad"),
+                    resultSet.getString("edad"),
                     resultSet.getString("tipo_sangre"),
                     resultSet.getString("telefono"),
                     resultSet.getString("correo_electronico"),
@@ -229,7 +234,7 @@ class activity_perfil : AppCompatActivity() {
                 val miCorreo = perfiles[0].correo_electronico
                 correoPerfilE.hint = miCorreo
                 val miTelefono = perfiles[0].telefono
-                telefonoPerfilE.hint = miTelefono
+                telefonoPerfilE.hint = miTelefono // Solo actualiza si el hint está vacío
                 val miTipoSangre = perfiles[0].tipo_sangre
                 tipoSangreE.hint = miTipoSangre
             }
@@ -330,6 +335,17 @@ class activity_perfil : AppCompatActivity() {
             } else {
                 // Permiso denegado, mostrar mensaje
                 Toast.makeText(this, "Permiso de escritura denegado", Toast.LENGTH_LONG).show()
+            }
+        }
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val nuevoTelefono = data?.getStringExtra("nuevoTelefono")
+            if (nuevoTelefono != null) {
+                telefonoPerfilE.hint = nuevoTelefono // Actualiza el hint con el nuevo número
             }
         }
     }
