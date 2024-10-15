@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/ivSmallLogo"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
+            android:layout_width="100dp"
+            android:layout_height="110dp"
             android:layout_marginStart="-10dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -81,9 +81,9 @@
 
         <ImageView
             android:id="@+id/BtnChats"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:layout_marginEnd="72dp"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="70dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnPerfil"
             app:layout_constraintTop_toTopOf="parent"
@@ -102,8 +102,8 @@
 
         <ImageView
             android:id="@+id/btnNoticias"
-            android:layout_width="35dp"
-            android:layout_height="34dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

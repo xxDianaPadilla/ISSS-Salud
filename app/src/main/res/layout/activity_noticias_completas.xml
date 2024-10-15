@@ -21,8 +21,8 @@
 
         <ImageView
             android:id="@+id/ivSmallLogo"
-            android:layout_width="115dp"
-            android:layout_height="115dp"
+            android:layout_width="100dp"
+            android:layout_height="110dp"
             android:layout_marginStart="-10dp"
             android:scaleType="centerCrop"
             app:layout_constraintBottom_toBottomOf="parent"

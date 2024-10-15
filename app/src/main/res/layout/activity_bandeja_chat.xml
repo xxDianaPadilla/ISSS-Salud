@@ -95,7 +95,7 @@
         android:layout_marginBottom="13dp"
         app:layout_constraintBottom_toTopOf="@+id/btnCitas"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.4600"
+        app:layout_constraintHorizontal_bias="0.46"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -111,9 +111,9 @@
 
     <ImageView
         android:id="@+id/BtnChats"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_marginEnd="72dp"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnPerfil"
         app:layout_constraintTop_toTopOf="parent"
@@ -132,8 +132,8 @@
 
     <ImageView
         android:id="@+id/btnNoticias"
-        android:layout_width="35dp"
-        android:layout_height="34dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginStart="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"

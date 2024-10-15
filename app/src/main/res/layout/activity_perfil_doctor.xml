@@ -89,26 +89,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/raleway_extrabold_italic"
         android:text="Unidad médica:"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintStart_toEndOf="@+id/ivHospitalP"
-        app:layout_constraintTop_toBottomOf="@+id/specialty"
-        app:layout_constraintVertical_bias="0.100" />
+        app:layout_constraintTop_toBottomOf="@+id/specialty" />
 
     <TextView
         android:id="@+id/txtViewCorreo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="92dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/raleway_extrabold_italic"
-        android:textSize="20sp"
 
+        android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/ivCorreoP"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/email_label"
         tools:text="Correo:" />
 
     <TextView
@@ -116,7 +114,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/raleway_extrabold_italic"
         android:text="Doctor:"
         android:textSize="20sp"
@@ -128,33 +126,30 @@
         android:layout_width="35dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivCorreoP"
+        app:layout_constraintTop_toBottomOf="@+id/txtViewCorreo"
         app:srcCompat="@drawable/ic_botiquin" />
 
     <TextView
         android:id="@+id/email_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/raleway_extrabold_italic"
         android:text="Acceso directos"
         android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/txtViewCorreo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.061"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <ImageView
         android:id="@+id/ivCorreoP"
         android:layout_width="35dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/email_label"
         app:srcCompat="@drawable/ic_correo" />
@@ -164,7 +159,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:fontFamily="@font/raleway_extrabold_italic"
         android:text="Especialidad:"
         android:textSize="20sp"
@@ -176,9 +171,9 @@
         android:layout_width="35dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="23dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivBotiquinP"
+        app:layout_constraintTop_toBottomOf="@+id/doctor_title"
         app:srcCompat="@drawable/ic_especialidad" />
 
     <ImageView
@@ -186,20 +181,17 @@
         android:layout_width="35dp"
         android:layout_height="24dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="17dp"
-        app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
+        android:layout_marginTop="24dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivEspecialidadP"
-        app:layout_constraintVertical_bias="0.146"
+        app:layout_constraintTop_toBottomOf="@+id/specialty"
         app:srcCompat="@drawable/ic_hospital" />
 
     <ImageView
         android:id="@+id/btnRegresar"
         android:layout_width="25dp"
         android:layout_height="30dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="40dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.064"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -215,57 +207,61 @@
 
     <TextView
         android:id="@+id/txtViewCorreoDoctor"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/raleway_semibold"
         android:textColor="#294898"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/txtViewCorreo"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/email_label" />
 
     <TextView
         android:id="@+id/txtViewNombreDoctorP"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/raleway_italic"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/doctor_title"
         app:layout_constraintTop_toBottomOf="@+id/txtViewCorreoDoctor" />
 
     <TextView
         android:id="@+id/txtViewEspecialidadDoctor"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
         android:fontFamily="@font/raleway_italic"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/specialty"
         app:layout_constraintTop_toBottomOf="@+id/txtViewNombreDoctorP" />
 
     <TextView
         android:id="@+id/txtViewUnidadMedicaDoctor"
-        android:layout_width="150dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
         android:fontFamily="@font/raleway_italic"
         android:textSize="20sp"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.03"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/medical_unit"
-        app:layout_constraintTop_toBottomOf="@+id/txtViewEspecialidadDoctor"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/txtViewEspecialidadDoctor" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

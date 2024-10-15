@@ -57,11 +57,13 @@
                 android:layout_width="180dp"
                 android:layout_height="50dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="7dp"
                 android:layout_marginBottom="100dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Expediente"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/btnCerrarSesion"
                 app:layout_constraintStart_toStartOf="parent" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -76,8 +78,8 @@
 
                 <ImageView
                     android:id="@+id/ivSmallLogo"
-                    android:layout_width="115dp"
-                    android:layout_height="115dp"
+                    android:layout_width="100dp"
+                    android:layout_height="110dp"
                     android:layout_marginStart="-10dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -224,13 +226,15 @@
                 style="@style/buttonStyle2"
                 android:layout_width="180dp"
                 android:layout_height="50dp"
+                android:layout_marginStart="7dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginBottom="100dp"
                 android:fontFamily="@font/raleway_bold_italic"
                 android:text="Cerrar sesión"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnDescargarExpediente" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
@@ -272,7 +276,7 @@
             android:id="@+id/BtnChats"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginEnd="72dp"
+            android:layout_marginEnd="70dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnPerfil"
             app:layout_constraintTop_toTopOf="parent"
@@ -282,7 +286,7 @@
         <ImageView
             android:id="@+id/btnPerfil"
             android:layout_width="35dp"
-            android:layout_height="34dp"
+            android:layout_height="35dp"
             android:layout_marginEnd="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -291,8 +295,8 @@
 
         <ImageView
             android:id="@+id/btnNoticias"
-            android:layout_width="35dp"
-            android:layout_height="34dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginStart="48dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

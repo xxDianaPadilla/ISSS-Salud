@@ -36,67 +36,101 @@
                 style="@style/TextColor2"
                 android:layout_width="301dp"
                 android:layout_height="30dp"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="16dp"
                 android:paddingLeft="15dp"
                 android:paddingBottom="4dp"
                 android:text="Nombre Paciente"
                 android:textSize="18sp"
                 android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/txtViewHoraCita"
                 style="@style/TextColor2"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="7dp"
                 android:inputType="textMultiLine"
-                android:paddingLeft="15dp"
-                android:paddingBottom="4dp"
+                android:paddingLeft="0dp"
+                android:paddingBottom="0dp"
                 android:text="Hora Cita"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView29"
                 app:layout_constraintTop_toBottomOf="@+id/txtViewDescripcionCita" />
 
             <TextView
                 android:id="@+id/txtViewDoctorCita"
                 style="@style/TextColor2"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="7dp"
-                android:paddingLeft="15dp"
-                android:paddingBottom="4dp"
+                android:paddingLeft="0dp"
+                android:paddingBottom="0dp"
                 android:text="Doctor Cita"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView30"
                 app:layout_constraintTop_toBottomOf="@+id/txtViewHoraCita" />
 
             <TextView
                 android:id="@+id/txtViewDescripcionCita"
                 style="@style/TextColor2"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="7dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="7dp"
-                android:paddingLeft="15dp"
-                android:paddingBottom="4dp"
+                android:fontFamily="@font/raleway_semibold"
+                android:paddingLeft="0dp"
+                android:paddingBottom="0dp"
                 android:text="Descripción Cita"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/textView23"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewNombrePaciente" />
+
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:text="Descripción:"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtViewNombrePaciente" />
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:text="Fecha y Hora:"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewDescripcionCita" />
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/raleway_bold_italic"
+                android:text="Doctor:"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/txtViewHoraCita" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
