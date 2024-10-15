@@ -152,6 +152,6 @@ class activity_mensajeria : AppCompatActivity() {
 
     override fun onResume() {
         super.onResume()
-        cargarDoctores()  
+        cargarDoctores()
     }
 }
