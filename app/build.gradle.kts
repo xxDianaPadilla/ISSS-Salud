@@ -46,6 +46,7 @@ dependencies {
     implementation(files("libs/activation.jar"))
     implementation(files("libs/additionnal.jar"))
     implementation(files("libs/mail.jar"))
+    implementation(libs.androidx.legacy.support.v4)
     annotationProcessor ("com.github.bumptech.glide:compiler:4.12.0")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("androidx.cardview:cardview:1.0.0")
