@@ -3,6 +3,7 @@ package diana.padilla.isss_salud
 import Modelo.ChatsDoctores
 import Modelo.ClaseConexion
 import RecyclerViewHelpers.AdaptadorChats
+import RecyclerViewHelpers.AdaptadorDocBusqueda
 import android.content.Intent
 import android.content.res.Configuration
 import android.os.Bundle
@@ -20,6 +21,9 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 class activity_mensajeria : AppCompatActivity() {
+
+    private lateinit var rcvDoctores: RecyclerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,45 +34,10 @@ class activity_mensajeria : AppCompatActivity() {
             insets
         }
 
-        val rcvDoctores = findViewById<RecyclerView>(R.id.rcvDoctores)
-
+        rcvDoctores = findViewById<RecyclerView>(R.id.rcvDoctores)
         rcvDoctores.layoutManager = LinearLayoutManager(this)
 
-        fun obtenerDoctores(): List<ChatsDoctores>{
-            val objConexion = ClaseConexion().cadenaConexion()
-
-            val statement = objConexion?.prepareStatement("SELECT DISTINCT D.id_doctor, D.correo_doctor, D.contrasena_doctor, D.nombre_doctor, D.foto_doctor, D.id_especialidad, D.id_unidad FROM Doctores D JOIN MensajesChat M ON D.id_doctor = M.id_destinatario WHERE M.id_remitente = ? AND M.tipo_destinatario = 'DOCTOR'")!!
-
-            statement.setInt(1, activity_ingreso.variablesGlobales.idUsuarioGlobal)
-
-            val resultSet = statement.executeQuery()
-
-            val listaDoctores = mutableListOf<ChatsDoctores>()
-
-            while (resultSet.next()){
-                val id_doctor = resultSet.getInt("id_doctor")
-                val correo_doctor = resultSet.getString("correo_doctor")
-                val contrasena_doctor = resultSet.getString("contrasena_doctor")
-                val nombre_doctor = resultSet.getString("nombre_doctor")
-                val foto_doctor = resultSet.getString("foto_doctor")
-                val id_especialidad = resultSet.getInt("id_especialidad")
-                val id_unidad = resultSet.getInt("id_unidad")
-
-                val valoresJuntos = ChatsDoctores(id_doctor, correo_doctor, contrasena_doctor, nombre_doctor, foto_doctor, id_especialidad.toString(), id_unidad.toString())
-
-                listaDoctores.add(valoresJuntos)
-            }
-
-            return listaDoctores
-        }
-
-        CoroutineScope(Dispatchers.IO).launch {
-            val doctoresDB = obtenerDoctores()
-            withContext(Dispatchers.Main){
-                val adapter = AdaptadorChats(doctoresDB)
-                rcvDoctores.adapter = adapter
-            }
-        }
+        cargarDoctores()
 
         val logoIsssSmall = findViewById<ImageView>(R.id.ivSmallLogo)
         val modoOscuro = resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
@@ -140,5 +109,49 @@ class activity_mensajeria : AppCompatActivity() {
             startActivity(pantallaHistorial)
             overridePendingTransition(0,0)
         }
+    }
+
+    private fun obtenerDoctores(): List<ChatsDoctores>{
+        val objConexion = ClaseConexion().cadenaConexion()
+
+        val statement = objConexion?.prepareStatement("SELECT DISTINCT D.id_doctor, D.correo_doctor, D.contrasena_doctor, D.nombre_doctor, D.foto_doctor, D.id_especialidad, D.id_unidad FROM Doctores D JOIN MensajesChat M ON D.id_doctor = M.id_destinatario WHERE M.id_remitente = ? AND M.tipo_destinatario = 'DOCTOR'")!!
+
+        statement.setInt(1, activity_ingreso.variablesGlobales.idUsuarioGlobal)
+
+        val resultSet = statement.executeQuery()
+
+        val listaDoctores = mutableListOf<ChatsDoctores>()
+
+        while (resultSet.next()){
+            val id_doctor = resultSet.getInt("id_doctor")
+            val correo_doctor = resultSet.getString("correo_doctor")
+            val contrasena_doctor = resultSet.getString("contrasena_doctor")
+            val nombre_doctor = resultSet.getString("nombre_doctor")
+            val foto_doctor = resultSet.getString("foto_doctor")
+            val id_especialidad = resultSet.getInt("id_especialidad")
+            val id_unidad = resultSet.getInt("id_unidad")
+
+            val valoresJuntos = ChatsDoctores(id_doctor, correo_doctor, contrasena_doctor, nombre_doctor, foto_doctor, id_especialidad.toString(), id_unidad.toString())
+
+            listaDoctores.add(valoresJuntos)
+        }
+
+        return listaDoctores
+    }
+
+
+    private fun cargarDoctores() {
+        CoroutineScope(Dispatchers.IO).launch {
+            val doctoresDB = obtenerDoctores()
+            withContext(Dispatchers.Main) {
+                val adapter = AdaptadorChats(doctoresDB)
+                rcvDoctores.adapter = adapter
+            }
+        }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        cargarDoctores()  
     }
 }
