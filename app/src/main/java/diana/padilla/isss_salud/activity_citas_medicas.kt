@@ -189,14 +189,14 @@ lateinit var nombreSolicitante: EditText
         }
     }
 
-    suspend fun obtenerCosas(correoDeLaVariableGlobal: String): List<Usuarios> {
+    suspend fun obtenerCosas(IdDeLaVariableGlobal: Int): List<Usuarios> {
         val usuario = mutableListOf<Usuarios>()
 
         withContext(Dispatchers.IO){
             val objConexion = ClaseConexion().cadenaConexion()
             val obtenerUsuario =
-                objConexion?.prepareStatement("SELECT dui, correo_electronico, telefono, tipo_sangre, nombre_usuario FROM Usuarios WHERE correo_electronico = ?")!!
-            obtenerUsuario.setString(1, correoDeLaVariableGlobal)
+                objConexion?.prepareStatement("SELECT dui, correo_electronico, telefono, tipo_sangre, nombre_usuario FROM Usuarios WHERE id_usuario = ?")!!
+            obtenerUsuario.setInt(1, IdDeLaVariableGlobal)
             val resultSet = obtenerUsuario.executeQuery()
 
             while (resultSet.next()) {
@@ -216,8 +216,8 @@ lateinit var nombreSolicitante: EditText
 
     fun cargarDatosDeUsuarioEnPantalla() {
         CoroutineScope(Dispatchers.Main).launch {
-            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
-            val usuarios = obtenerCosas(correoDeLaVariableGlobal)
+            val IdDeLaVariableGlobal = activity_ingreso.variablesGlobales.idUsuarioGlobal
+            val usuarios = obtenerCosas(IdDeLaVariableGlobal)
             if (usuarios.isNotEmpty()) {
                 val miDui = usuarios[0].dui
                 dui.hint = miDui

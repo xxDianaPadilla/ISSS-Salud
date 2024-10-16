@@ -157,14 +157,14 @@ class activity_perfil : AppCompatActivity() {
         }
     }
 
-    suspend fun obtenerDatosPerfil(correoDeLaVariableGlobal: String): List<Perfil>{
+    suspend fun obtenerDatosPerfil(idDeLaVariableGlobal: Int): List<Perfil>{
         val perfil = mutableListOf<Perfil>()
 
         withContext(Dispatchers.IO){
             val objConexion = ClaseConexion().cadenaConexion()
             val obtenerPerfil =
-                objConexion?.prepareStatement("SELECT foto_usuario, dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
-            obtenerPerfil.setString(1, correoDeLaVariableGlobal)
+                objConexion?.prepareStatement("SELECT foto_usuario, dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE id_usuario = ?")!!
+            obtenerPerfil.setInt(1, idDeLaVariableGlobal)
             val resultSet = obtenerPerfil.executeQuery()
 
             while (resultSet.next()){
@@ -221,8 +221,8 @@ class activity_perfil : AppCompatActivity() {
 
     fun cargarDatosPerfilEnPantalla() {
         CoroutineScope(Dispatchers.Main).launch {
-            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
-            val perfiles = obtenerDatosPerfil(correoDeLaVariableGlobal)
+            val idDeLaVariableGlobal = activity_ingreso.variablesGlobales.idUsuarioGlobal
+            val perfiles = obtenerDatosPerfil(idDeLaVariableGlobal)
 
             if (perfiles.isNotEmpty()) {
                 val miFoto = perfiles[0].foto_usuario
@@ -344,8 +344,16 @@ class activity_perfil : AppCompatActivity() {
 
         if (requestCode == REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             val nuevoTelefono = data?.getStringExtra("nuevoTelefono")
+            val nuevoCorreo = data?.getStringExtra("nuevoCorreo")
             if (nuevoTelefono != null) {
-                telefonoPerfilE.hint = nuevoTelefono // Actualiza el hint con el nuevo número
+                if (telefonoPerfilE.hint != nuevoTelefono) {
+                    telefonoPerfilE.hint = nuevoTelefono
+                }
+            }
+            if (nuevoCorreo != null) {
+                if (correoPerfilE.hint != nuevoCorreo) {
+                    correoPerfilE.hint = nuevoCorreo
+                }
             }
         }
     }

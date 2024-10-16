@@ -63,40 +63,80 @@ class activity_editar_perfil : AppCompatActivity() {
 
         btnActualizar.setOnClickListener {
             val nuevoTelefono = txtViewTelefonoPerfil.text.toString()
+            val nuevoCorreo = txtCorrePerfil.text.toString()
             val telefonoRegex = Regex("^\\d{4}-\\d{4}\$")
-            if(nuevoTelefono.isEmpty()){
-                txtViewTelefonoPerfil.setError("El teléfono no puede estar vacío")
-            }else if (!telefonoRegex.matches(nuevoTelefono)) {
-                txtViewTelefonoPerfil.setError("Error, el número de teléfono no es válido. Debe tener el formato adecuado, por ejemplo, 1234-5678.")
+            val correoRegex = Regex("[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}")
+            if(nuevoTelefono.isEmpty()  && nuevoCorreo.isEmpty()){
+                runOnUiThread {
+                    val dialogBuilder = AlertDialog.Builder(this)
+                    dialogBuilder.setMessage("Ingrese un nuevo correo o un nuevo número de teléfono para actualizar")
+                        .setCancelable(false)
+                        .setPositiveButton("OK") {dialog, _-> dialog.dismiss()}
+                    val alert = dialogBuilder.create()
+                    alert.setTitle("Datos faltantes")
+                    alert.show()
+                }
             }else{
-                verificarTelefonoEnBaseDeDatos(nuevoTelefono) {telefonoExiste ->
-                    if(telefonoExiste){
-                        runOnUiThread {
-                            val dialogBuilder = AlertDialog.Builder(this)
-                            dialogBuilder.setMessage("El número de teléfono ya está registrado. Por favor, ingrese otro número.")
-                                .setCancelable(false)
-                                .setPositiveButton("OK") {dialog, _-> dialog.dismiss()}
-                            val alert = dialogBuilder.create()
-                            alert.setTitle("Teléfono inválido")
-                            alert.show()
+                if (nuevoTelefono.isNotEmpty()) {
+                    if (!telefonoRegex.matches(nuevoTelefono)) {
+                        txtViewTelefonoPerfil.setError("Error, el número de teléfono no es válido. Debe tener el formato adecuado, por ejemplo, 1234-5678.")
+                    } else {
+                        verificarTelefonoEnBaseDeDatos(nuevoTelefono) { telefonoExiste ->
+                            if (telefonoExiste) {
+                                runOnUiThread {
+                                    val dialogBuilder = AlertDialog.Builder(this)
+                                    dialogBuilder.setMessage("El número de teléfono ya está registrado. Por favor, ingrese otro número.")
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                                    val alert = dialogBuilder.create()
+                                    alert.setTitle("Teléfono inválido")
+                                    alert.show()
+                                }
+                            } else {
+                                ActualizarTelefonoEnBaseDeDatos(nuevoTelefono)
+                                runOnUiThread {
+                                    Toast.makeText(this@activity_editar_perfil, "El teléfono se ha actualizado exitosamente.", Toast.LENGTH_SHORT).show()
+                                }
+                                txtViewTelefonoPerfil.setText("")
+                                txtViewTelefonoPerfil.hint = nuevoTelefono
+                                val intent = Intent()
+                                intent.putExtra("nuevoTelefono", nuevoTelefono)
+                                setResult(Activity.RESULT_OK, intent)
+                                finish()
+                            }
                         }
-                    }else{
-                        ActualizarTelefonoEnBaseDeDatos(nuevoTelefono)
+                    }
+                }
 
-                        runOnUiThread {
-                            Toast.makeText(
-                                this@activity_editar_perfil,
-                                "El teléfono se ha actualizado exitosamente.",
-                                Toast.LENGTH_SHORT
-                            ).show()
+                // Validar y actualizar el correo si fue ingresado
+                if (nuevoCorreo.isNotEmpty()) {
+                    if (!correoRegex.matches(nuevoCorreo)) {
+                        txtCorrePerfil.setError("Error, el correo electrónico no es válido. Debe contener el formato adecuado, por ejemplo, ejemplo@gmail.com.")
+                    } else {
+                        verificarCorreoEnBaseDeDatos(nuevoCorreo) { correoExiste ->
+                            if (correoExiste) {
+                                runOnUiThread {
+                                    val dialogBuilder = AlertDialog.Builder(this)
+                                    dialogBuilder.setMessage("El correo electrónico ya está registrado. Por favor, ingrese otro correo.")
+                                        .setCancelable(false)
+                                        .setPositiveButton("OK") { dialog, _ -> dialog.dismiss() }
+                                    val alert = dialogBuilder.create()
+                                    alert.setTitle("Correo inválido")
+                                    alert.show()
+                                }
+                            } else {
+                                ActualizarCorreoEnBaseDeDatos(nuevoCorreo)
+                                runOnUiThread {
+                                    Toast.makeText(this@activity_editar_perfil, "El correo electrónico se ha actualizado exitosamente.", Toast.LENGTH_SHORT).show()
+                                }
+                                txtCorrePerfil.setText("")
+                                txtCorrePerfil.hint = nuevoCorreo
+                                val intent = Intent()
+                                intent.putExtra("nuevoCorreo", nuevoCorreo)
+                                setResult(Activity.RESULT_OK, intent)
+                                finish()
+                            }
                         }
-
-                        txtViewTelefonoPerfil.setText("")
-                        txtViewTelefonoPerfil.hint = nuevoTelefono
-                        val intent = Intent()
-                        intent.putExtra("nuevoTelefono", nuevoTelefono)
-                        setResult(Activity.RESULT_OK, intent)
-                        finish()
                     }
                 }
             }
@@ -217,11 +257,11 @@ class activity_editar_perfil : AppCompatActivity() {
     private fun ActualizarTelefonoEnBaseDeDatos(nuevoTelefono: String){
         CoroutineScope(Dispatchers.IO).launch {
             val objConexion = ClaseConexion().cadenaConexion()
-            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
+            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.idUsuarioGlobal
 
-            val updateTelefono = objConexion?.prepareStatement("UPDATE Usuarios SET telefono = ? WHERE correo_electronico = ?")
+            val updateTelefono = objConexion?.prepareStatement("UPDATE Usuarios SET telefono = ? WHERE id_usuario = ?")
             updateTelefono?.setString(1, nuevoTelefono)
-            updateTelefono?.setString(2, correoDeLaVariableGlobal)
+            updateTelefono?.setInt(2, correoDeLaVariableGlobal)
             updateTelefono?.executeUpdate()
 
             /*runOnUiThread {
@@ -244,14 +284,14 @@ class activity_editar_perfil : AppCompatActivity() {
         }
     }
 
-    suspend fun datosPerfil(correoDeLaVariableGlobal: String): List<Perfil> {
+    suspend fun datosPerfil(idDeLaVariableGlobal: Int): List<Perfil> {
         val perfil2 = mutableListOf<Perfil>()
 
         withContext(Dispatchers.IO){
             val objConexion = ClaseConexion().cadenaConexion()
             val obtenerPerfil2 =
-                objConexion?.prepareStatement("SELECT foto_usuario, dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE correo_electronico = ?")!!
-            obtenerPerfil2.setString(1, correoDeLaVariableGlobal)
+                objConexion?.prepareStatement("SELECT foto_usuario, dui, correo_electronico, telefono, tipo_sangre FROM Usuarios WHERE id_usuario = ?")!!
+            obtenerPerfil2.setInt(1, idDeLaVariableGlobal)
             val resultSet = obtenerPerfil2.executeQuery()
 
             while (resultSet.next()) {
@@ -273,8 +313,8 @@ class activity_editar_perfil : AppCompatActivity() {
 
     fun cargarDatosPerfil2EnPantalla() {
         CoroutineScope(Dispatchers.Main).launch {
-            val correoDeLaVariableGlobal = activity_ingreso.variablesGlobales.miMorreo
-            val perfiles2 = datosPerfil(correoDeLaVariableGlobal)
+            val idDeLaVariableGlobal = activity_ingreso.variablesGlobales.idUsuarioGlobal
+            val perfiles2 = datosPerfil(idDeLaVariableGlobal)
 
             if (perfiles2.isNotEmpty()) {
                 val miFoto2 = perfiles2[0].foto_usuario
@@ -306,6 +346,34 @@ class activity_editar_perfil : AppCompatActivity() {
             }else{
                 callback(false)
             }
+        }
+    }
+
+    private fun verificarCorreoEnBaseDeDatos(nuevoCorreo: String, callback: (Boolean) -> Unit) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val objConexion = ClaseConexion().cadenaConexion()
+            val consultaCorreo = objConexion?.prepareStatement("SELECT COUNT(*) FROM Usuarios WHERE correo_electronico = ?")!!
+            consultaCorreo.setString(1, nuevoCorreo)
+
+            val resultado = consultaCorreo.executeQuery()
+            if (resultado != null && resultado.next()) {
+                val correoExiste = resultado.getInt(1) > 0
+                callback(correoExiste)
+            } else {
+                callback(false)
+            }
+        }
+    }
+
+    private fun ActualizarCorreoEnBaseDeDatos(nuevoCorreo: String) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val objConexion = ClaseConexion().cadenaConexion()
+            val idUsuarioGlobal = activity_ingreso.variablesGlobales.idUsuarioGlobal
+
+            val updateCorreo = objConexion?.prepareStatement("UPDATE Usuarios SET correo_electronico = ? WHERE id_usuario = ?")
+            updateCorreo?.setString(1, nuevoCorreo)
+            updateCorreo?.setInt(2, idUsuarioGlobal)
+            updateCorreo?.executeUpdate()
         }
     }
 }
