@@ -44,43 +44,62 @@ class activity_correo_para_codigo : AppCompatActivity() {
         fun generarHTMLCorreo(codigoRecuperacion: String): String{
             return """
 <html>
-<body style="font-family: Arial, sans-serif;
-            background-color: #ffffff;
-            margin: 0;
-            padding: 0;">
-    <div class="container" style="width: 100%;
-            max-width: 700px; 
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 40px 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);">
-        <div class="logo" style="text-align: center;
-            margin-bottom: 50px;">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Logo_ISSS.svg/525px-Logo_ISSS.svg.png" alt="ISSS Salud Logo" width="200">
+    <body style="font-family: Arial, sans-serif; 
+                background-color: #f4f4f4; 
+                margin: 0; 
+                padding: 0;">
+        <div class="container" style="width: 100%; 
+                max-width: 600px; 
+                margin: 0 auto; 
+                background-color: #ffffff; 
+                padding: 30px 20px; 
+                border-radius: 8px; 
+                box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            
+            <!-- Header -->
+            <div class="header" style="text-align: center; 
+                    margin-bottom: 30px; 
+                    color: #0056b3;">
+                <h1 style="font-size: 24px; 
+                    font-weight: bold; 
+                    margin: 0;">ISSS Salud</h1>
+                <p style="margin: 5px 0 0; 
+                    font-size: 16px; 
+                    color: #666;">Recuperación de Contraseña</p>
+            </div>
+            
+            <!-- Message -->
+            <div class="message" style="text-align: center; 
+                    color: #333; 
+                    margin-bottom: 40px;">
+                <p style="font-size: 16px;">Hola, has solicitado recuperar tu contraseña. Usa el siguiente código para restablecerla:</p>
+                <div class="code" style="display: inline-block; 
+                    padding: 15px 25px; 
+                    font-size: 22px; 
+                    font-weight: bold; 
+                    color: #ffffff; 
+                    background-color: #0056b3; 
+                    border-radius: 5px; 
+                    margin-top: 20px;">$codigoRecuperacion</div>
+            </div>
+            
+            <!-- Info -->
+            <div class="info" style="text-align: center; 
+                    font-size: 14px; 
+                    color: #666;">
+                <p>Si no solicitaste este cambio, por favor ignora este correo.</p>
+            </div>
+            
+            <!-- Footer -->
+            <div class="footer" style="margin-top: 40px; 
+                    text-align: center; 
+                    font-size: 12px; 
+                    color: #999;">
+                <p>ISSS Salud &copy; 2024</p>
+            </div>
         </div>
-        <div class="message" style="text-align: center;
-            color: #333;
-            margin-bottom: 50px;">
-            <h2>Recuperación de Contraseña</h2>
-            <p>Hola, has solicitado recuperar tu contraseña. Usa el siguiente código para restablecerla:</p>
-            <div class="code" style="display: inline-block;
-            padding: 15px 30px; 
-            font-size: 24px; 
-            color: #000;
-            background-color: #0099ff;
-            border-radius: 8px; 
-            margin-bottom: 50px; 
-            text-decoration: none;">$codigoRecuperacion</div>
-            <p>Si no solicitaste este cambio, por favor ignora este correo.</p>
-        </div>
-        <div class="footer-logo" style="text-align: center;
-            margin-top: 40px;">
-            <img src="https://www.isss.gob.sv/wp-content/uploads/2023/12/isss-1.png" alt="ISSS Salud Full Logo" width="250">
-        </div>
-    </div>
-</body>
-</html>
+    </body>
+    </html>
 """.trimIndent()
         }
 
