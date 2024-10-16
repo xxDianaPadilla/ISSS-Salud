@@ -273,7 +273,7 @@ class activity_perfil : AppCompatActivity() {
                 pdfDocument.finishPage(page)
 
                 // Guardar PDF en el almacenamiento del dispositivo
-                val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), "Expediente_Medico_$idUsuario.pdf")
+                val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "Expediente_Medico_$idUsuario.pdf")
                 pdfDocument.writeTo(FileOutputStream(file))
                 pdfDocument.close()
 
