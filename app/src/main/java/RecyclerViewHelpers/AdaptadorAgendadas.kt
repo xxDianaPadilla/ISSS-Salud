@@ -19,9 +19,9 @@ class AdaptadorAgendadas(var Datos: List<CitasAgendadas>): RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: ViewHolderAgendadas, position: Int) {
         val agendadas = Datos[position]
-        holder.nombre.text = "Paciente: ${agendadas.nomPaciente}"
-        holder.FechaCita.text = "Fecha: ${agendadas.fechaCita}"
-        holder.horaCita.text = "Hora: ${agendadas.horaCita}"
-        holder.doctorCita.text = "Doctor: ${agendadas.doctorCita}"
+        holder.nombre.text = agendadas.nomPaciente
+        holder.FechaCita.text = agendadas.fechaCita
+        holder.horaCita.text = agendadas.horaCita
+        holder.doctorCita.text = agendadas.doctorCita
     }
 }
