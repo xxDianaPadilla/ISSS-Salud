@@ -8,6 +8,7 @@ import android.app.AlertDialog
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.app.PendingIntent
+import android.content.ContentValues
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -18,6 +19,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Environment
+import android.provider.MediaStore
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
@@ -42,6 +44,7 @@ class activity_perfil : AppCompatActivity() {
 
     companion object {
         const val REQUEST_CODE = 100
+        const val PERMISSION_REQUEST_CODE = 1
     }
 
     lateinit var imagenPerfil: ImageView
@@ -65,7 +68,7 @@ class activity_perfil : AppCompatActivity() {
         openExpediente = findViewById(R.id.btnDescargarExpediente)
 
         openExpediente.setOnClickListener {
-            generarExpedientePDF()
+            solicitarPermisoParaGenerarPDF()
         }
 
         cargarDatosPerfilEnPantalla()
@@ -273,68 +276,91 @@ class activity_perfil : AppCompatActivity() {
                 pdfDocument.finishPage(page)
 
                 // Guardar PDF en el almacenamiento del dispositivo
-                val file = File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "Expediente_Medico_$idUsuario.pdf")
-                pdfDocument.writeTo(FileOutputStream(file))
-                pdfDocument.close()
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+                    val resolver = contentResolver
+                    val contentValues = ContentValues().apply {
+                        put(MediaStore.MediaColumns.DISPLAY_NAME, "Expediente_Medico_$idUsuario.pdf")
+                        put(MediaStore.MediaColumns.MIME_TYPE, "application/pdf")
+                        put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_DOWNLOADS) // Esto lo guarda en el directorio "Descargas"
+                    }
 
-                mostrarNotificacion(file)
+                    val uri = resolver.insert(MediaStore.Downloads.EXTERNAL_CONTENT_URI, contentValues)
 
-                // Mostrar un AlertDialog de éxito
-                AlertDialog.Builder(this@activity_perfil)
-                    .setTitle("Descarga exitosa")
-                    .setMessage("El expediente médico ha sido descargado correctamente.")
-                    .setPositiveButton("OK", null)
-                    .show()
+                    uri?.let {
+                        resolver.openOutputStream(it)?.use { outputStream ->
+                            pdfDocument.writeTo(outputStream)
+                            pdfDocument.close()
+                            mostrarNotificacion(it)
+                        }
+                    } ?: run {
+                        Toast.makeText(this@activity_perfil, "Error al guardar PDF", Toast.LENGTH_SHORT).show()
+                    }
+                } else {
+                    // Para versiones anteriores a Android 10
+                    val downloadsDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
+                    val file = File(downloadsDir, "Expediente_Medico_$idUsuario.pdf")
+                    pdfDocument.writeTo(FileOutputStream(file))
+                    pdfDocument.close()
+                    mostrarNotificacion(Uri.fromFile(file))
+                }
             } else {
                 Toast.makeText(this@activity_perfil, "No se pudo obtener el expediente médico.", Toast.LENGTH_LONG).show()
             }
         }
     }
 
-    private fun mostrarNotificacion(file: File) {
+    private fun mostrarNotificacion(fileUri: Uri) {
         val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         val channelId = "mi_canal"
 
-        // Crear el canal de notificación (si no se ha creado anteriormente)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channel = NotificationChannel(channelId, "Nombre del canal", NotificationManager.IMPORTANCE_DEFAULT)
             notificationManager.createNotificationChannel(channel)
         }
 
-        // Crea un intent para abrir el archivo PDF
         val intent = Intent(Intent.ACTION_VIEW).apply {
-            setDataAndType(FileProvider.getUriForFile(this@activity_perfil, "diana.padilla.isss_salud.fileprovider", file), "application/pdf")
-            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION // Permitir el acceso de lectura al archivo
+            setDataAndType(fileUri, "application/pdf")
+            flags = Intent.FLAG_GRANT_READ_URI_PERMISSION
         }
 
-        // Crear el PendingIntent con FLAG_IMMUTABLE
         val pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE or PendingIntent.FLAG_UPDATE_CURRENT)
 
-        // Construir la notificación
         val notification = NotificationCompat.Builder(this, channelId)
-            .setSmallIcon(R.drawable.ic_darkmode_notificaciones) // Cambia esto por tu ícono de notificación
+            .setSmallIcon(R.drawable.ic_darkmode_notificaciones)
             .setContentTitle("Descarga completada")
             .setContentText("Tu expediente médico ha sido descargado.")
             .setContentIntent(pendingIntent)
-            .setAutoCancel(true) // La notificación se eliminará al tocarla
+            .setAutoCancel(true)
             .build()
 
-        // Mostrar la notificación
         notificationManager.notify(1, notification)
+    }
+
+    private fun solicitarPermisoParaGenerarPDF() {
+        val permissions = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            arrayOf(android.Manifest.permission.READ_MEDIA_IMAGES)
+        } else {
+            arrayOf(android.Manifest.permission.READ_EXTERNAL_STORAGE)
+        }
+
+        if (ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
+            generarExpedientePDF() // El permiso ya ha sido concedido, generar el PDF
+        } else {
+            // Solicitar el permiso
+            ActivityCompat.requestPermissions(this, permissions, PERMISSION_REQUEST_CODE)
+        }
     }
 
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
 
-        if (requestCode == 1) {
-            // Verificar si el permiso fue concedido
-            if ((grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED)) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permiso concedido, generar el PDF
                 generarExpedientePDF()
             } else {
-                // Permiso denegado, mostrar mensaje
-                Toast.makeText(this, "Permiso de escritura denegado", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "Permiso denegado", Toast.LENGTH_LONG).show()
             }
         }
     }
