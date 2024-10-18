@@ -6,8 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import diana.padilla.isss_salud.R
+import java.text.SimpleDateFormat
+import java.util.Locale
 
-class AdaptadorMensajes(private val listaMensajes: List<Mensajes>, private val idUsuario: Int): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class AdaptadorMensajes(private val listaMensajes: MutableList<Mensajes>, private val idUsuario: Int): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val VIEW_TYPE_PACIENTE = 1
     private val VIEW_TYPE_DOCTOR = 2
@@ -41,4 +43,12 @@ class AdaptadorMensajes(private val listaMensajes: List<Mensajes>, private val i
             holder.mensajeDoctor.text = mensaje.mensaje
         }
     }
+
+    fun actualizarMensajes(nuevaLista: List<Mensajes>) {
+        listaMensajes.clear()
+        listaMensajes.addAll(nuevaLista)
+
+        notifyDataSetChanged()
+    }
 }
+

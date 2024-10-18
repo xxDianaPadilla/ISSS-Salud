@@ -169,7 +169,7 @@
                 android:layout_marginTop="15dp"
                 android:layout_marginBottom="3dp"
                 android:fontFamily="@font/raleway_bold_italic"
-                android:text="Fecha solicitud"
+                android:text="Solicitar fecha"
                 android:textSize="19sp"
                 app:layout_constraintBottom_toTopOf="@+id/txtFechaSolicitud"
                 app:layout_constraintStart_toStartOf="parent"
